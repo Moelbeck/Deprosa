@@ -1,0 +1,25 @@
+﻿@*Logo + Search bar + basket*@
+@* This whole thing should hide in mobile and the search should be in the layout nav bar*@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 col-sm-4 col-xs-12">
+            <img class="img-responsive center-block" src="~/images/allegro.png" alt="Brand logo" />
+        </div>
+        <div class="col-md-8 col-sm-6 col-xs-10">
+            <div class="input-group input-group-lg">
+                <input type="text" id="input-search" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <span class="fa fa-search" aria-hidden="true"></span>
+                    </button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <button type="button" asp-controller="Home" asp-action="Contact" class="btn btn-default btn-lg">
+                <span id="cart-button" class="fa fa-shopping-cart" aria-hidden="true"></span> Cart
+            </button>
+        </div>
+    </div>
+</div>
+<hr />

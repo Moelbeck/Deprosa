@@ -1,0 +1,166 @@
+C:\Work\Salvir\salvir.WebApi\bin\ApplicationInsights.config
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\csc.exe
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\vbc.exe
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\VBCSCompiler.exe
+C:\Work\Salvir\salvir.WebApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Work\Salvir\salvir.WebApi\bin\salvir.WebApi.dll.config
+C:\Work\Salvir\salvir.WebApi\bin\salvir.WebApi.dll
+C:\Work\Salvir\salvir.WebApi\bin\salvir.WebApi.pdb
+C:\Work\Salvir\salvir.WebApi\bin\Antlr3.Runtime.dll
+C:\Work\Salvir\salvir.WebApi\bin\AutoMapper.dll
+C:\Work\Salvir\salvir.WebApi\bin\EntityFramework.dll
+C:\Work\Salvir\salvir.WebApi\bin\EntityFramework.SqlServer.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.DependencyCollector.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.Web.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.WindowsServer.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.ApplicationInsights.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Work\Salvir\salvir.WebApi\bin\Newtonsoft.Json.dll
+C:\Work\Salvir\salvir.WebApi\bin\Owin.dll
+C:\Work\Salvir\salvir.WebApi\bin\salvir.Common.dll
+C:\Work\Salvir\salvir.WebApi\bin\salvir.Interface.dll
+C:\Work\Salvir\salvir.WebApi\bin\salvir.Model.dll
+C:\Work\Salvir\salvir.WebApi\bin\salvir.Repository.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Net.Http.Formatting.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Helpers.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Http.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Http.Owin.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Http.WebHost.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Mvc.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Optimization.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Razor.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.WebPages.Deployment.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.WebPages.dll
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.WebPages.Razor.dll
+C:\Work\Salvir\salvir.WebApi\bin\WebGrease.dll
+C:\Work\Salvir\salvir.WebApi\bin\salvir.Common.pdb
+C:\Work\Salvir\salvir.WebApi\bin\salvir.Interface.pdb
+C:\Work\Salvir\salvir.WebApi\bin\salvir.Model.pdb
+C:\Work\Salvir\salvir.WebApi\bin\salvir.Repository.pdb
+C:\Work\Salvir\salvir.WebApi\bin\AutoMapper.xml
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.DependencyCollector.xml
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.Web.xml
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AI.WindowsServer.xml
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.ApplicationInsights.xml
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Work\Salvir\salvir.WebApi\bin\Newtonsoft.Json.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Net.Http.Formatting.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Helpers.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Http.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Http.WebHost.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Mvc.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Optimization.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Razor.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.WebPages.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.WebPages.Deployment.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.WebPages.Razor.xml
+C:\Work\Salvir\salvir.WebApi\bin\Antlr3.Runtime.pdb
+C:\Work\Salvir\salvir.WebApi\bin\EntityFramework.xml
+C:\Work\Salvir\salvir.WebApi\bin\EntityFramework.SqlServer.xml
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Work\Salvir\salvir.WebApi\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Work\Salvir\salvir.WebApi\bin\System.Web.Http.Owin.xml
+C:\Work\Salvir\salvir.WebApi\obj\Debug\salvir.WebApi.csprojResolveAssemblyReference.cache
+C:\Work\Salvir\salvir.WebApi\obj\Debug\salvir.WebApi.dll
+C:\Work\Salvir\salvir.WebApi\obj\Debug\salvir.WebApi.pdb
+C:\Work\Salvir\salvir.WebApi\bin\XmlDocument.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\ApplicationInsights.config
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\csc.exe
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\System.Collections.Immutable.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\System.Reflection.Metadata.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\vbc.exe
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\VBCSCompiler.exe
+C:\Work\Salvir Github\salvir.WebApi\bin\roslyn\VBCSCompiler.exe.config
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.WebApi.dll.config
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.WebApi.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.WebApi.pdb
+C:\Work\Salvir Github\salvir.WebApi\bin\XmlDocument.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Antlr3.Runtime.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\AutoMapper.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\EntityFramework.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\EntityFramework.SqlServer.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.DependencyCollector.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.Web.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.WindowsServer.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.ApplicationInsights.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Newtonsoft.Json.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\Owin.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.Common.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.Interface.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.Model.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.Repository.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Net.Http.Formatting.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Helpers.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Http.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Http.Owin.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Http.WebHost.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Mvc.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Optimization.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Razor.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.WebPages.Deployment.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.WebPages.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.WebPages.Razor.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\WebGrease.dll
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.Common.pdb
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.Interface.pdb
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.Model.pdb
+C:\Work\Salvir Github\salvir.WebApi\bin\salvir.Repository.pdb
+C:\Work\Salvir Github\salvir.WebApi\bin\AutoMapper.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.DependencyCollector.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.Web.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AI.WindowsServer.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.ApplicationInsights.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Newtonsoft.Json.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Net.Http.Formatting.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Helpers.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Http.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Http.WebHost.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Mvc.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Optimization.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Razor.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.WebPages.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.WebPages.Deployment.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.WebPages.Razor.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Antlr3.Runtime.pdb
+C:\Work\Salvir Github\salvir.WebApi\bin\EntityFramework.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\EntityFramework.SqlServer.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Work\Salvir Github\salvir.WebApi\bin\System.Web.Http.Owin.xml
+C:\Work\Salvir Github\salvir.WebApi\obj\Debug\salvir.WebApi.csprojResolveAssemblyReference.cache
+C:\Work\Salvir Github\salvir.WebApi\obj\Debug\salvir.WebApi.dll
+C:\Work\Salvir Github\salvir.WebApi\obj\Debug\salvir.WebApi.pdb

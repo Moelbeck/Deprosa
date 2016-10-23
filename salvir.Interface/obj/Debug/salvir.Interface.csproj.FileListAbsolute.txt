@@ -1,0 +1,9 @@
+C:\Work\Salvir\salvir.Interface\bin\Debug\salvir.Interface.dll
+C:\Work\Salvir\salvir.Interface\bin\Debug\salvir.Interface.pdb
+C:\Work\Salvir\salvir.Interface\bin\Debug\salvir.Common.dll
+C:\Work\Salvir\salvir.Interface\bin\Debug\salvir.Model.dll
+C:\Work\Salvir\salvir.Interface\bin\Debug\salvir.Common.pdb
+C:\Work\Salvir\salvir.Interface\bin\Debug\salvir.Model.pdb
+C:\Work\Salvir\salvir.Interface\obj\Debug\salvir.Interface.csprojResolveAssemblyReference.cache
+C:\Work\Salvir\salvir.Interface\obj\Debug\salvir.Interface.dll
+C:\Work\Salvir\salvir.Interface\obj\Debug\salvir.Interface.pdb

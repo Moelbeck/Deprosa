@@ -1,0 +1,7 @@
+C:\Work\Salvir\salvir.Model\bin\Debug\salvir.Model.dll
+C:\Work\Salvir\salvir.Model\bin\Debug\salvir.Model.pdb
+C:\Work\Salvir\salvir.Model\bin\Debug\salvir.Common.dll
+C:\Work\Salvir\salvir.Model\bin\Debug\salvir.Common.pdb
+C:\Work\Salvir\salvir.Model\obj\Debug\salvir.Model.csprojResolveAssemblyReference.cache
+C:\Work\Salvir\salvir.Model\obj\Debug\salvir.Model.dll
+C:\Work\Salvir\salvir.Model\obj\Debug\salvir.Model.pdb

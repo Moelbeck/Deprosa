@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.Common", "salvir.Common\salvir.Common.csproj", "{31900E7A-2FBA-4044-B41C-2E861B8F2B24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.Interface", "salvir.Interface\salvir.Interface.csproj", "{BD925CE6-2517-4585-8452-70CB36F03C42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.Model", "salvir.Model\salvir.Model.csproj", "{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.Repository", "salvir.Repository\salvir.Repository.csproj", "{30E341C1-9AEE-46CC-9405-7B78C45DD237}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.WebApi", "salvir.WebApi\salvir.WebApi.csproj", "{467E37DF-53D1-4C08-BE4E-2DF8146CBA8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.WebSite", "salvir.WebSite\salvir.WebSite.csproj", "{6910B280-DA84-4C72-B264-A723DEDC264B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31900E7A-2FBA-4044-B41C-2E861B8F2B24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31900E7A-2FBA-4044-B41C-2E861B8F2B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31900E7A-2FBA-4044-B41C-2E861B8F2B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31900E7A-2FBA-4044-B41C-2E861B8F2B24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD925CE6-2517-4585-8452-70CB36F03C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD925CE6-2517-4585-8452-70CB36F03C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD925CE6-2517-4585-8452-70CB36F03C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD925CE6-2517-4585-8452-70CB36F03C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30E341C1-9AEE-46CC-9405-7B78C45DD237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30E341C1-9AEE-46CC-9405-7B78C45DD237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30E341C1-9AEE-46CC-9405-7B78C45DD237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30E341C1-9AEE-46CC-9405-7B78C45DD237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{467E37DF-53D1-4C08-BE4E-2DF8146CBA8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{467E37DF-53D1-4C08-BE4E-2DF8146CBA8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{467E37DF-53D1-4C08-BE4E-2DF8146CBA8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{467E37DF-53D1-4C08-BE4E-2DF8146CBA8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6910B280-DA84-4C72-B264-A723DEDC264B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6910B280-DA84-4C72-B264-A723DEDC264B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6910B280-DA84-4C72-B264-A723DEDC264B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6910B280-DA84-4C72-B264-A723DEDC264B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

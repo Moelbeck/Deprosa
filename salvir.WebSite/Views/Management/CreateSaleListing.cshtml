@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Annonce";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+@model bzale.Web.Model.SaleListingCreateViewModel
+<div class="row" id="updatethis">
+    <div class="col-md-8">
+        <section>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @if (Model.SelectedMainCategory == null)
+                    {
+                        @Html.DisplayNameFor(e => e.MainCategories)
+                        @Html.DropDownListFor(e => e.SelectedMainCategory, Model.MainCategoriesSelectList, "Vælg",
+                      new { @onchange = "SelectMainCategory(this.value)" });
+                    }
+                    @if (Model.SelectedMainCategory != null)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                @Html.DisplayNameFor(e => e.SelectedMainCategory)
+                            </div>
+                        </div>
+                        @Html.DisplayNameFor(e => e.SubCategories)
+                        @Html.DropDownListFor(e => e.SelectedSubCategory, Model.SubCategoriesSelectList, "Vælg",
+                      new { @onchange = "SelectSubCategory(this.value)" });
+                    }
+                    @if (Model.SelectedSubCategory != null)
+                    {
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                @Html.DisplayNameFor(e => e.SelectedSubCategory)
+                            </div>
+                        </div>
+                        @Html.DisplayNameFor(e => e.ProductTypes)
+                        @Html.DropDownListFor(e => e.SelectedProductType, Model.ProductTypesSelectList, "Vælg",
+                      new { @onchange = "SelectProductType(this.value)" });
+                    }
+
+                    @if (Model.SelectedProductType != null)
+                    {
+
+                        if (Model.SelectedProductType.Types.HasFlag(depross.Common.eSalelistingTypes.Dimensions))
+                        {
+                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_Dimension.cshtml", Model)
+                        }
+                        if (Model.SelectedProductType.Types.HasFlag(depross.Common.eSalelistingTypes.RAM))
+                        {
+                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_ram.cshtml", Model)
+                        }
+                    }
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+<script>
+    function SelectMainCategory(val) {
+        window.location.href = "/Management/SetSelectedMainCategory?categoryid=" + val;
+    }
+    function SelectSubCategory(val) {
+        window.location.href = "/Management/SetSelectedSubCategory?categoryid=" + val;
+    }
+    function SelectProductType(val) {
+        window.location.href = "/Management/SetSelectedProductType?producttypeid=" + val;
+    }
+
+</script>
+

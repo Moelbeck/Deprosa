@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>salvir.Model</RootNamespace>
+    <AssemblyName>salvir.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Advertisement.cs" />
+    <Compile Include="Model\Advertiser.cs" />
+    <Compile Include="Model\Base\BaseComment.cs" />
+    <Compile Include="Model\Base\BaseContactInfo.cs" />
+    <Compile Include="Model\Base\BaseLog.cs" />
+    <Compile Include="Model\Base\Entity.cs" />
+    <Compile Include="Model\CategoryPreferences.cs" />
+    <Compile Include="Model\Comment.cs" />
+    <Compile Include="Model\CommentAnswer.cs" />
+    <Compile Include="Model\Company.cs" />
+    <Compile Include="Model\Image.cs" />
+    <Compile Include="Model\Log\LogUserLogin.cs" />
+    <Compile Include="Model\Log\LogUserSaleListing.cs" />
+    <Compile Include="Model\Log\LogUserSearch.cs" />
+    <Compile Include="Model\MainCategory.cs" />
+    <Compile Include="Model\Manufacturer.cs" />
+    <Compile Include="Model\ProductType.cs" />
+    <Compile Include="Model\Rating.cs" />
+    <Compile Include="Model\SaleListing.cs" />
+    <Compile Include="Model\SubCategory.cs" />
+    <Compile Include="Model\Subscription.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\salvir.Common\salvir.Common.csproj">
+      <Project>{31900E7A-2FBA-4044-B41C-2E861B8F2B24}</Project>
+      <Name>salvir.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
