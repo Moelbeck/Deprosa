@@ -2,3 +2,8 @@ C:\Work\Salvir\salvir.Common\bin\Debug\salvir.Common.dll
 C:\Work\Salvir\salvir.Common\bin\Debug\salvir.Common.pdb
 C:\Work\Salvir\salvir.Common\obj\Debug\salvir.Common.dll
 C:\Work\Salvir\salvir.Common\obj\Debug\salvir.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\bin\Debug\salvir.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\bin\Debug\salvir.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Debug\salvir.Common.csprojResolveAssemblyReference.cache
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Debug\salvir.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Debug\salvir.Common.pdb

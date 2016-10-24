@@ -35,9 +35,9 @@ namespace depross.Repository.DatabaseContext
         {
             if (Database.Exists())
             {
-                Database.Initialize(true);
-                var config = new Configuration();
-                config.Seed(this);
+                //Database.Initialize(true);
+                //var config = new Configuration();
+                //config.Seed(this);
             }
         }
     }

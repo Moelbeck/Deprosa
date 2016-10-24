@@ -13,8 +13,8 @@ namespace Repository.Migrations
         private bool ShouldSeed;
         public Configuration()
         {
-            ShouldSeed = false;
-            AutomaticMigrationsEnabled = true;
+            ShouldSeed = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         public void Seed(BzaleDatabaseContext context)

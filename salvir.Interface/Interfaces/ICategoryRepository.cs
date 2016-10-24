@@ -16,7 +16,5 @@ namespace depross.Interfaces
         void UpdateMainCategory(MainCategory category);
 
         void RemoveMainCategory(int id);
-
-        //IQueryable<MainCategory> GetCategoriesByString(string searchstring, int page, int size);
     }
 }

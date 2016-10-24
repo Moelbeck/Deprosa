@@ -17,16 +17,12 @@ namespace depross.Repository.Abstract
 
         protected IQueryable<T> Get(Expression<Func<T, bool>> predicate)
         {
-
-
             IQueryable<T> query = _entities.Set<T>().Where(predicate).AsNoTracking();
             return query;
         }
         protected T GetSingle(Expression<Func<T, bool>> predicate)
         {
-           
             return _entities.Set<T>().Where(predicate).AsNoTracking().FirstOrDefault(); 
-
         }
 
         protected virtual T Add(T entity)
@@ -51,9 +47,7 @@ namespace depross.Repository.Abstract
         {
             entity.Updated = DateTime.Now;
             entity.Deleted = null;
-            //var current = _entities.Set<T>().Where(e => e.ID == entity.ID);
             _entities.Set<T>().Attach(entity);
-           var returnresult = _entities.Entry(entity).State =  EntityState.Modified;
         }
 
         protected virtual void Save()

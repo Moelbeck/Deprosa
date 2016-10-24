@@ -5,3 +5,10 @@ C:\Work\Salvir\salvir.Model\bin\Debug\salvir.Common.pdb
 C:\Work\Salvir\salvir.Model\obj\Debug\salvir.Model.csprojResolveAssemblyReference.cache
 C:\Work\Salvir\salvir.Model\obj\Debug\salvir.Model.dll
 C:\Work\Salvir\salvir.Model\obj\Debug\salvir.Model.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\bin\Debug\salvir.Model.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\bin\Debug\salvir.Model.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\bin\Debug\salvir.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\bin\Debug\salvir.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\obj\Debug\salvir.Model.csprojResolveAssemblyReference.cache
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\obj\Debug\salvir.Model.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\obj\Debug\salvir.Model.pdb
