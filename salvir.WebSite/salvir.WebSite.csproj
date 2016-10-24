@@ -243,7 +243,6 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\SaleListingController.cs" />
     <Compile Include="Enum\Enum.cs" />
@@ -261,7 +260,6 @@
     <Compile Include="Model\ViewModel\SaleListingCreateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
-    <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\HttpBaseClient\HttpBaseClient.cs" />
@@ -345,12 +343,6 @@
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Home\_Home.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
@@ -369,7 +361,7 @@
     </Content>
     <Content Include="Views\Management\AccountManagement.cshtml" />
     <Content Include="Views\Management\CompanyManagement.cshtml" />
-    <Content Include="Views\Management\CreateSaleListing.cshtml" />
+    <Content Include="Views\SaleListing\CreateSaleListing.cshtml" />
     <Content Include="Views\Management\Index.cshtml" />
     <Content Include="Views\Management\_ManagementLayout.cshtml" />
     <Content Include="Views\Management\_ViewStart.cshtml" />
@@ -378,11 +370,19 @@
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
     <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Include="Views\_ViewImports.cshtml" />
+    <Content Include="Views\Shared\Partial\Salelisting\_Weight.cshtml" />
+    <Content Include="Views\Shared\Partial\Salelisting\_Thickness.cshtml" />
+    <Content Include="Views\Shared\Partial\Salelisting\_Length.cshtml" />
+    <Content Include="Views\Shared\Partial\Salelisting\_Processor.cshtml" />
+    <Content Include="Views\Shared\Partial\Salelisting\_Screen.cshtml" />
+    <Content Include="Views\Shared\Partial\Salelisting\_Harddisk.cshtml" />
+    <Content Include="Views\Shared\Partial\Salelisting\_Car.cshtml" />
+    <Content Include="Views\Shared\Partial\Salelisting\_PrivateCar.cshtml" />
+    <Content Include="Views\Shared\Partial\Salelisting\_CompanyCar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Services\Internal\" />
-    <Folder Include="Views\SaleListing\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

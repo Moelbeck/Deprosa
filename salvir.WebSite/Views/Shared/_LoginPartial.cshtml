@@ -4,7 +4,7 @@
     <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("Opret Annonce", "CreateSaleListing", "Management");
+                @Html.ActionLink("Opret Annonce", "CreateSaleListing", "SaleListing");
             </li>
             <li>
                 @Html.ActionLink(string.Format("Hej {0} !", @CurrentUser.FirstName), "Index", "Management");

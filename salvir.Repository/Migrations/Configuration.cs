@@ -161,7 +161,7 @@ namespace Repository.Migrations
                     new ProductType { Name = "Anden stentype", Types = (eSalelistingTypes.Weight | eSalelistingTypes.Dimensions), Category = stenSub },
                 #endregion
                 #region Søm og skruer
-                    new ProductType { Name = "Træ", Types = (eSalelistingTypes.Lenght | eSalelistingTypes.Thickness), Category = soemogskruerSub },
+                    new ProductType { Name = "Træ", Types = (eSalelistingTypes.Length | eSalelistingTypes.Thickness), Category = soemogskruerSub },
                     new ProductType { Name = "Beton", Types = (eSalelistingTypes.Weight | eSalelistingTypes.Dimensions), Category = soemogskruerSub },
                     new ProductType { Name = "Anden skrue/søm type", Types = (eSalelistingTypes.Weight | eSalelistingTypes.Dimensions), Category = soemogskruerSub },
                 #endregion

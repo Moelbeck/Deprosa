@@ -50,7 +50,7 @@ namespace WebService.Api.Controllers
         /// Create a new account - Post
         /// </summary>
         [HttpPost, Route("create")]
-        public IHttpActionResult CreateNewAccount([FromBody] AccountCreateDTO newaccount)
+        public IHttpActionResult Register([FromBody] AccountCreateDTO newaccount)
         {
             if (ModelState.IsValid)
             {

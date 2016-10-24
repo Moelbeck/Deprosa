@@ -7,7 +7,7 @@ namespace bzale.Service
 {
     public class Konstanter
     {
-        public static string BASEURI = @"http://localhost:54490/api/";
+        public static string BASEURI = @"http://localhost:1337/api/";
 
 
         #region Paging

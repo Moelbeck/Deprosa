@@ -63,17 +63,6 @@ namespace depross.Common
         Account=2
     }
 
-    //public enum eJobType
-    //{
-    //    None=0,
-    //    Murer = 1,
-    //    Tømrer = 2,
-    //    Smed =4,
-    //    Kontor = 8,
-    //    Lager = 16,
-
-    //}
-
     public enum eLogSaleListingType
     {
         None =0,
@@ -100,7 +89,7 @@ namespace depross.Common
         Dimensions =1,
         Weight =2,
         Thickness =4,
-        Lenght= 8,
+        Length= 8,
         Processor = 16,
         RAM = 32,
         Harddisk = 64,
