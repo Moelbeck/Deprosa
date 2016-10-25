@@ -1,0 +1,4 @@
+C:\Work\Deprosa\salvir.Common\bin\Release\salvir.Common.dll
+C:\Work\Deprosa\salvir.Common\bin\Release\salvir.Common.pdb
+C:\Work\Deprosa\salvir.Common\obj\Release\salvir.Common.dll
+C:\Work\Deprosa\salvir.Common\obj\Release\salvir.Common.pdb

@@ -1,0 +1,29 @@
+﻿@using bzale.Web.Model;
+@if (CurrentUser.Email != null)
+{
+    <form asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Opret Annonce", "CreateSaleListing", "SaleListing");
+            </li>
+            <li>
+                @Html.ActionLink(string.Format("Hej {0} !", @CurrentUser.FirstName), "Index", "Management");
+            </li>
+            <li>
+                @Html.ActionLink("Log af", "Logout", "Account");
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <div class="navbar-collapse collapse">
+
+        <ul class="nav navbar-nav navbar-right">
+
+            @Html.ActionLink("Login", "Login", "Account");
+            @Html.ActionLink("Register", "Register", "Account");
+
+        </ul>
+    </div>
+}

@@ -83,6 +83,8 @@ namespace salvir.WebApi.Authenticator
             if (_accountService.IsEmailInDatabase(username))
             {
                 IIdentity identity = new GenericIdentity(username);
+                IPrincipal principal = new GenericPrincipal(identity, new string[] {});
+                Thread.CurrentPrincipal = principal;
                 return true;
             }
             //}

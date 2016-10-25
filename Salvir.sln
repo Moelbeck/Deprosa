@@ -13,9 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.Repository", "salvir
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.WebApi", "salvir.WebApi\salvir.WebApi.csproj", "{467E37DF-53D1-4C08-BE4E-2DF8146CBA8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.WebSite", "salvir.WebSite\salvir.WebSite.csproj", "{6910B280-DA84-4C72-B264-A723DEDC264B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.WebSites", "salvir.WebSite\salvir.WebSites.csproj", "{6910B280-DA84-4C72-B264-A723DEDC264B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.API", "salvir.API\salvir.API.csproj", "{11C6A161-034C-4D40-B9B8-07F36078D36C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "salvir.Web", "salvir.Web\salvir.Web.csproj", "{459320E3-7C93-45E3-AB29-345083E0AE4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{11C6A161-034C-4D40-B9B8-07F36078D36C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11C6A161-034C-4D40-B9B8-07F36078D36C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11C6A161-034C-4D40-B9B8-07F36078D36C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459320E3-7C93-45E3-AB29-345083E0AE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459320E3-7C93-45E3-AB29-345083E0AE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459320E3-7C93-45E3-AB29-345083E0AE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459320E3-7C93-45E3-AB29-345083E0AE4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
