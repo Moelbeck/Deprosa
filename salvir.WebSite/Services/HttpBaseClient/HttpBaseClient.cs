@@ -4,7 +4,9 @@ using Newtonsoft.Json;
 using System.Text;
 using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
+using bzale.Web.Model;
 
 namespace bzale.WebsiteService
 {
@@ -41,30 +43,43 @@ namespace bzale.WebsiteService
             HttpResponseMessage response = null;
             using (var client = new HttpClient())
             {
-                string jsonstring = null;
-                if ((content is bool) || (content is object && content != null))
+                string jsonstring = JsonConvert.SerializeObject(content);
+                var request = new HttpRequestMessage()
                 {
-                    jsonstring = JsonConvert.SerializeObject(content);
-                }
+                    RequestUri = new Uri(uri),
+                    Content = new StringContent(jsonstring, Encoding.UTF8, "application/json"),
+                };
+                request.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", CurrentUser.Email, "password"))));
+
                 switch (method)
                 {
                     case eHttpMethodType.GET:
-                        response = client.GetAsync(uri).Result;
+                        request.Method = HttpMethod.Get;
+                        response = client.SendAsync(request).Result;
                         break;
                     case eHttpMethodType.POST:
                         if (jsonstring != null)
                         {
-                            response = client.PostAsync(uri, new StringContent(jsonstring, Encoding.UTF8, "application/json")).Result;
+                            request.Method = HttpMethod.Post;
+                            response = client.SendAsync(request).Result;
+                            //response = client.PostAsync(uri, new StringContent(jsonstring, Encoding.UTF8, "application/json")).Result;
                         }
                         break;
                     case eHttpMethodType.PUT:
                         if (jsonstring != null)
                         {
-                            response = client.PutAsync(uri, new StringContent(jsonstring, Encoding.UTF8, "application/json")).Result;
+                            request.Method = HttpMethod.Put;
+                            response = client.SendAsync(request).Result;
+                            //response = client.PutAsync(uri, new StringContent(jsonstring, Encoding.UTF8, "application/json")).Result;
                         }
                         break;
                     case eHttpMethodType.DELETE:
-                        response = client.DeleteAsync(uri).Result;
+                        if (jsonstring != null)
+                        {
+                            request.Method = HttpMethod.Delete;
+                            response = client.SendAsync(request).Result;
+                            //response = client.DeleteAsync(uri).Result;
+                        }
                         break;
                 }
 

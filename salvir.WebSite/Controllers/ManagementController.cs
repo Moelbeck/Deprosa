@@ -125,7 +125,7 @@ namespace bzale.Web.Controllers
             return PartialView("CompanyManagement", ModelState);
         }
         #endregion
-        private CompanyDTO CreateCompanyFromVatValidation(VatValidationDTO dto)
+        private CompanyDTO CreateCompanyFromVatValidation(VatValidationDTO dto) 
         {
             CompanyDTO company = null;
             //1:Adresse, 2: postnummer, 3: by

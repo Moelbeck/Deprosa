@@ -2,6 +2,7 @@
 using biz2biz.Service.Automapper;
 using Microsoft.Owin;
 using salvir.API;
+using salvir.WebApi.Authenticator;
 
 [assembly: OwinStartup(typeof(Startup))]
 namespace salvir.API
@@ -28,9 +29,11 @@ namespace salvir.API
             httpConfiguration.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
+
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            httpConfiguration.MessageHandlers.Add(new AuthenticationMessageHandler());
             app.UseWebApi(httpConfiguration);
 
             // Make ./public the default root of the static files in our Web Application.

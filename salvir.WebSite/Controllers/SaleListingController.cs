@@ -40,7 +40,7 @@ namespace bzale.Web.Controllers
         {
             CurrentSalelistingCreate.SaleListingViewModel = null;
 
-            CurrentSalelistingCreate.SaleListingViewModel.MainCategories = await _categoryService.GetAllMainCategories(1, int.MaxValue);
+            CurrentSalelistingCreate.SaleListingViewModel.MainCategories = await _categoryService.GetAllMainCategories();
             return View(CurrentSalelistingCreate.SaleListingViewModel);
         }
 
@@ -64,7 +64,7 @@ namespace bzale.Web.Controllers
             {
                 CurrentSalelistingCreate.SaleListingViewModel.SelectedSubCategory
                     = CurrentSalelistingCreate.SaleListingViewModel.SubCategories.FirstOrDefault(e => e.ID == categoryid);
-                CurrentSalelistingCreate.SaleListingViewModel.ProductTypes = await _categoryService.GetProductTypesForCategory(categoryid, 1);
+                CurrentSalelistingCreate.SaleListingViewModel.ProductTypes = await _categoryService.GetProductTypesForCategory(categoryid);
             }
             return PartialView("CreateSalelisting", CurrentSalelistingCreate.SaleListingViewModel);
 

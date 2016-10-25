@@ -1,4 +1,6 @@
 ﻿using System.Web.Http;
+using VATChecker;
+
 //using VATChecker;
 
 namespace depross.WebApi
@@ -14,13 +16,12 @@ namespace depross.WebApi
         //?cc={cc}&vatnr={vatnr}
         public IHttpActionResult GetValidateVAT(string cc, string vatnr)
         {
-            //ViesVatCheck validateVat = new ViesVatCheck();
-            //validateVat.VATNumber = vatnr;
-            //validateVat.CountryCode = cc;
-            //validateVat.CheckVat();
+            ViesVatCheck validateVat = new ViesVatCheck();
+            validateVat.VATNumber = vatnr;
+            validateVat.CountryCode = cc;
+            validateVat.CheckVat();
 
-            //return Ok(validateVat);
-            return Ok();
+            return Ok(validateVat);
         }
     }
 }
