@@ -1,12 +1,12 @@
-﻿using depross.Common;
-using depross.Model;
+﻿using deprosa.Common;
+using deprosa.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace depross.Service
+namespace deprosa.Service
 {
     public class SubscriptionService
     {

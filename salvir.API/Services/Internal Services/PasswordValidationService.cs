@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace depross.Service
+namespace deprosa.Service
 {
     public class PasswordValidationService
     {

@@ -1,5 +1,5 @@
-﻿using depross.Common;
-using depross.ViewModel;
+﻿using deprosa.Common;
+using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

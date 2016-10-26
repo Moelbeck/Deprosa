@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using depross.Interfaces;
-using depross.Model;
-using depross.Repository;
-using depross.Repository.DatabaseContext;
-using depross.ViewModel;
+using deprosa.Interfaces;
+using deprosa.Model;
+using deprosa.Repository;
+using deprosa.Repository.DatabaseContext;
+using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

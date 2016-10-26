@@ -1,8 +1,8 @@
-﻿using depross.Model.Base;
+﻿using deprosa.Model.Base;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace depross.Model
+namespace deprosa.Model
 {
     /// <summary>
     /// This is for advertisers advertisements, when we come to that part.

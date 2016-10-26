@@ -1,6 +1,6 @@
-﻿using depross.Model.Base;
+﻿using deprosa.Model.Base;
 
-namespace depross.Model
+namespace deprosa.Model
 {
     public class CommentAnswer :BaseComment
     {

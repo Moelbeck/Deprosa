@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using deprosa.Web.Model;
 using deprosa.WebsiteService;
 using System.Web.Mvc;
-using depross.ViewModel;
+using deprosa.ViewModel;
 
-namespace Web2.Controllers
+namespace Web.Controllers
 {
     [Authorize]
     //[RequireHttps]

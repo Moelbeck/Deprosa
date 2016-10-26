@@ -1,6 +1,6 @@
-﻿using depross.ViewModel;
+﻿using deprosa.ViewModel;
 
-namespace depross.Common
+namespace deprosa.Common
 {
     public class ImageUploadRequest
     {

@@ -1,8 +1,8 @@
 ﻿
 
-using depross.Common;
+using deprosa.Common;
 
-namespace depross.ViewModel
+namespace deprosa.ViewModel
 {
     public class AccountDTO
     {

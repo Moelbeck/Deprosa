@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using depross.Model;
-using depross.Repository.DatabaseContext;
-using depross.Repository.Abstract;
-using depross.Interfaces;
+using deprosa.Model;
+using deprosa.Repository.DatabaseContext;
+using deprosa.Repository.Abstract;
+using deprosa.Interfaces;
 
-namespace depross.Repository
+namespace deprosa.Repository
 {
     public class SaleListingRepository : GenericRepository<SaleListing>, ISaleListingRepository
     {

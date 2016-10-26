@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using deprosa.Service;
-using depross.ViewModel;
-using depross.Common;
+using deprosa.ViewModel;
+using deprosa.Common;
 
 namespace deprosa.WebsiteService
 {

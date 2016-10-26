@@ -1,12 +1,12 @@
-﻿using depross.Repository.Abstract;
-using depross.Repository.DatabaseContext;
-using depross.Interfaces;
-using depross.Model;
+﻿using deprosa.Repository.Abstract;
+using deprosa.Repository.DatabaseContext;
+using deprosa.Interfaces;
+using deprosa.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace depross.Repository
+namespace deprosa.Repository
 {
     public class ProductTypeRepository : GenericRepository< ProductType>, IProductTypeRepository
     {

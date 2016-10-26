@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace depross.Model.Base
+namespace deprosa.Model.Base
 {
     public class BaseLog: Entity
     {

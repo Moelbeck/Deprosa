@@ -1,11 +1,11 @@
-﻿using depross.Model.Base;
+﻿using deprosa.Model.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace depross.Model
+namespace deprosa.Model
 {
     /// <summary>
     /// The Sub category. If the main is "Cars", this might be "Van"

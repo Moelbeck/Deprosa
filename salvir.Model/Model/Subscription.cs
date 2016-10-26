@@ -1,9 +1,9 @@
-﻿using depross.Common;
-using depross.Model.Base;
+﻿using deprosa.Common;
+using deprosa.Model.Base;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace depross.Model
+namespace deprosa.Model
 {
     public class Subscription : Entity
     {

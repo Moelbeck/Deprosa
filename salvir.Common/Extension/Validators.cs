@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace depross.Extension
+namespace deprosa.Extension
 {
     public static class Validators
     {

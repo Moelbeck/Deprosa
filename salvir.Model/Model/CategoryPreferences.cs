@@ -1,7 +1,7 @@
-﻿using depross.Model.Base;
+﻿using deprosa.Model.Base;
 using System.Collections.Generic;
 
-namespace depross.Model
+namespace deprosa.Model
 {
     /// <summary>
     /// This is a user's category preferences (Recommendation system needs to be implemented)

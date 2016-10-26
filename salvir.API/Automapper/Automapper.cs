@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using AutoMapper;
-using depross.Model;
-using depross.ViewModel;
+using deprosa.Model;
+using deprosa.ViewModel;
 
 namespace biz2biz.Service.Automapper
 {

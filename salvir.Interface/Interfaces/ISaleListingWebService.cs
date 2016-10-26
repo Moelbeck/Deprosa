@@ -1,9 +1,9 @@
 ﻿
-using depross.Common;
-using depross.ViewModel;
+using deprosa.Common;
+using deprosa.ViewModel;
 using System.Collections.Generic;
 
-namespace depross.Interfaces
+namespace deprosa.Interfaces
 {
     public interface ISaleListingWebService
     {

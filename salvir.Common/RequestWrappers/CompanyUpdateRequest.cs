@@ -1,10 +1,10 @@
-﻿using depross.ViewModel;
+﻿using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace depross.Common
+namespace deprosa.Common
 {
     public class CompanyUpdateRequest
     {

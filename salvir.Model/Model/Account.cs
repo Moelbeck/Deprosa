@@ -1,10 +1,10 @@
 ﻿
-using depross.Common;
-using depross.Model.Base;
+using deprosa.Common;
+using deprosa.Model.Base;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace depross.Model
+namespace deprosa.Model
 {
     /// <summary>
     /// This is the account of a user.

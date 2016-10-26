@@ -1,8 +1,8 @@
-﻿using depross.ViewModel;
+﻿using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
 
-namespace depross.Interfaces
+namespace deprosa.Interfaces
 {
     public interface IRatingWebService
     {

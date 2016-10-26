@@ -1,6 +1,6 @@
-﻿using depross.Model;
+﻿using deprosa.Model;
 
-namespace depross.Interfaces
+namespace deprosa.Interfaces
 {
     public interface IAccountRepository
     {

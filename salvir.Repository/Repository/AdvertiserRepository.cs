@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using depross.Repository.DatabaseContext;
-using depross.Repository.Abstract;
-using depross.Model;
-using depross.Interfaces;
+using deprosa.Repository.DatabaseContext;
+using deprosa.Repository.Abstract;
+using deprosa.Model;
+using deprosa.Interfaces;
 
-namespace depross.Repository
+namespace deprosa.Repository
 {
     public class AdvertiserRepository : GenericRepository< Advertiser>, IAdvertiserRepository
     {

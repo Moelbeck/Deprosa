@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using depross.Repository.DatabaseContext;
-using depross.Repository.Abstract;
+using deprosa.Repository.DatabaseContext;
+using deprosa.Repository.Abstract;
 using System.Linq;
-using depross.Model;
-using depross.Interfaces;
+using deprosa.Model;
+using deprosa.Interfaces;
 using System;
 
-namespace depross.Repository
+namespace deprosa.Repository
 {
     public class MainCategoryRepository : GenericRepository<MainCategory>, IMainCategoryRepository
     {

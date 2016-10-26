@@ -1,6 +1,6 @@
-﻿using depross.Model.Base;
+﻿using deprosa.Model.Base;
 
-namespace depross.Model.Base
+namespace deprosa.Model.Base
 {
     /// <summary>
     /// Comments can belong to both a rating and a sale listings 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace depross.ViewModel
+namespace deprosa.ViewModel
 {
     public class AccountUpdatePasswordViewModel
     {

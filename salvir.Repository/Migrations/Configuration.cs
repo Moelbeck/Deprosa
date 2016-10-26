@@ -1,8 +1,8 @@
 namespace Repository.Migrations
 {
-    using depross.Common;
-    using depross.Model;
-    using depross.Repository.DatabaseContext;
+    using deprosa.Common;
+    using deprosa.Model;
+    using deprosa.Repository.DatabaseContext;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;

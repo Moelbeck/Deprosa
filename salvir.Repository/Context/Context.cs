@@ -1,11 +1,11 @@
 ﻿
-using depross.Model;
-using depross.Model.Base;
+using deprosa.Model;
+using deprosa.Model.Base;
 using Repository.Migrations;
 using System.Data.Entity;
 //using Repository.Migrations;
 
-namespace depross.Repository.DatabaseContext
+namespace deprosa.Repository.DatabaseContext
 {
     public class BzaleDatabaseContext : DbContext
     {

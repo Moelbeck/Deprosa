@@ -152,23 +152,24 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\SaleListingController.cs" />
-    <Compile Include="Enum\Enum.cs" />
+    <Compile Include="Data\Enum\Enum.cs" />
     <Compile Include="Filter\CustomAuthorizeAttributes.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Konstanter\Konstanter.cs" />
+    <Compile Include="Data\Konstanter\Konstanter.cs" />
     <Compile Include="Model\Session\CurrentSalelistingCreate.cs" />
     <Compile Include="Model\Session\CurrentUser.cs" />
+    <Compile Include="Model\ViewModel\FrontPageViewModel.cs" />
     <Compile Include="Model\ViewModel\SaleListingCreateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AccountService.cs" />
-    <Compile Include="Services\CategoryService.cs" />
-    <Compile Include="Services\HttpBaseClient\HttpBaseClient.cs" />
-    <Compile Include="Services\ManufacturerService.cs" />
-    <Compile Include="Services\RatingService.cs" />
-    <Compile Include="Services\SaleListingService.cs" />
-    <Compile Include="Services\VatValidationService.cs" />
+    <Compile Include="Data\Services\AccountService.cs" />
+    <Compile Include="Data\Services\CategoryService.cs" />
+    <Compile Include="Data\Services\HttpBaseClient\HttpBaseClient.cs" />
+    <Compile Include="Data\Services\ManufacturerService.cs" />
+    <Compile Include="Data\Services\RatingService.cs" />
+    <Compile Include="Data\Services\SaleListingService.cs" />
+    <Compile Include="Data\Services\VatValidationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -177,14 +178,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\010.jpg" />
-    <Content Include="Images\011.jpg" />
-    <Content Include="Images\allegro.png" />
-    <Content Include="Images\banner1.svg" />
-    <Content Include="Images\banner2.svg" />
-    <Content Include="Images\banner3.svg" />
-    <Content Include="Images\banner4.svg" />
-    <Content Include="Images\defaultprofile.jpg" />
+    <Content Include="Content\Images\010.jpg" />
+    <Content Include="Content\Images\011.jpg" />
+    <Content Include="Content\Images\allegro.png" />
+    <Content Include="Content\Images\banner1.svg" />
+    <Content Include="Content\Images\banner2.svg" />
+    <Content Include="Content\Images\banner3.svg" />
+    <Content Include="Content\Images\banner4.svg" />
+    <Content Include="Content\Images\defaultprofile.jpg" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -247,7 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

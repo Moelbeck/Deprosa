@@ -1,11 +1,11 @@
-﻿using depross.Repository.DatabaseContext;
-using depross.Model.Base;
+﻿using deprosa.Repository.DatabaseContext;
+using deprosa.Model.Base;
 using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace depross.Repository.Abstract
+namespace deprosa.Repository.Abstract
 {
     public abstract class GenericRepository<T>  where T : Entity 
     {

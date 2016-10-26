@@ -1,12 +1,12 @@
-﻿using depross.Model;
-using depross.ViewModel;
+﻿using deprosa.Model;
+using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace depross.Interfaces
+namespace deprosa.Interfaces
 {
     public interface IProductWebService
     {

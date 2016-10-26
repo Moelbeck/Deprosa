@@ -1,11 +1,11 @@
-﻿using depross.Extension;
-using depross.Model;
-using depross.ViewModel;
+﻿using deprosa.Extension;
+using deprosa.Model;
+using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace depross.service
+namespace deprosa.service
 {
     public class CreateAndUpdateService
     {

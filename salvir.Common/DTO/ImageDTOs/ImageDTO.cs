@@ -1,4 +1,4 @@
-﻿namespace depross.ViewModel
+﻿namespace deprosa.ViewModel
 {
     public class ImageDTO
     {

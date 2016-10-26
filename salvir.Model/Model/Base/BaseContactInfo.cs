@@ -1,6 +1,6 @@
-﻿using depross.Common;
+﻿using deprosa.Common;
 
-namespace depross.Model.Base
+namespace deprosa.Model.Base
 {
     public abstract class BaseContactInfo: Entity
     {

@@ -3,7 +3,7 @@ using VATChecker;
 
 //using VATChecker;
 
-namespace depross.WebApi
+namespace deprosa.WebApi
 {
     [RoutePrefix("api/VAT")]
     //[RequireHttps]

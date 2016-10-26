@@ -1,7 +1,7 @@
-﻿using depross.Common;
-using depross.Model.Base;
+﻿using deprosa.Common;
+using deprosa.Model.Base;
 
-namespace depross.Model
+namespace deprosa.Model
 {
     /// <summary>
     /// This is product types a manufacturer have.

@@ -1,6 +1,6 @@
-﻿using depross.ViewModel;
+﻿using deprosa.ViewModel;
 
-namespace depross.Interfaces
+namespace deprosa.Interfaces
 {
     public interface IAccountWebtService
     {

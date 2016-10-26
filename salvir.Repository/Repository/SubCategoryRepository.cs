@@ -1,11 +1,11 @@
-﻿using depross.Interfaces;
-using depross.Model;
-using depross.Repository.Abstract;
-using depross.Repository.DatabaseContext;
+﻿using deprosa.Interfaces;
+using deprosa.Model;
+using deprosa.Repository.Abstract;
+using deprosa.Repository.DatabaseContext;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace depross.WebService
+namespace deprosa.WebService
 {
     public class SubCategoryRepository : GenericRepository<SubCategory>, ISubCategoryRepository
     {

@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
-using depross.Common;
-using depross.Interfaces;
-using depross.Model;
-using depross.Repository;
-using depross.Repository.DatabaseContext;
-using depross.service;
-using depross.Service;
-using depross.ViewModel;
+using deprosa.Common;
+using deprosa.Interfaces;
+using deprosa.Model;
+using deprosa.Repository;
+using deprosa.Repository.DatabaseContext;
+using deprosa.service;
+using deprosa.Service;
+using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace depross.WebService
+namespace deprosa.WebService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "SaleListingService" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select SaleListingService.svc or SaleListingService.svc.cs at the Solution Explorer and start debugging.

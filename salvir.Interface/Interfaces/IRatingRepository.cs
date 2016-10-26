@@ -1,8 +1,8 @@
-﻿using depross.Model;
+﻿using deprosa.Model;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace depross.Interfaces
+namespace deprosa.Interfaces
 {
     public interface IRatingRepository
     {

@@ -1,7 +1,7 @@
-﻿using depross.Common;
-using depross.Model.Base;
+﻿using deprosa.Common;
+using deprosa.Model.Base;
 
-namespace depross.Model
+namespace deprosa.Model
 {
     /// <summary>
     /// Rating of a company, made by another user. probably missing some fields

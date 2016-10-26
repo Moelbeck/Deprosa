@@ -1,5 +1,5 @@
-﻿using depross.ViewModel;
-using depross.WebService;
+﻿using deprosa.ViewModel;
+using deprosa.WebService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

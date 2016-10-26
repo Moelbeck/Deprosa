@@ -1,12 +1,12 @@
-﻿using depross.Repository.Abstract;
-using depross.Repository.DatabaseContext;
-using depross.Interfaces;
+﻿using deprosa.Repository.Abstract;
+using deprosa.Repository.DatabaseContext;
+using deprosa.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
-using depross.Model;
+using deprosa.Model;
 using System;
 
-namespace depross.Repository
+namespace deprosa.Repository
 {
     public class RatingRepository : GenericRepository< Rating>, IRatingRepository
     {

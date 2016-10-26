@@ -1,8 +1,8 @@
-﻿using depross.Common;
+﻿using deprosa.Common;
 using System;
 using System.Collections.Generic;
 
-namespace depross.ViewModel
+namespace deprosa.ViewModel
 {
     public class SaleListingDTO
     {

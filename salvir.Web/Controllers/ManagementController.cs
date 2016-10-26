@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
-using depross.Common;
-using depross.ViewModel;
+using deprosa.Common;
+using deprosa.ViewModel;
 using Common.Extension;
 using System.Threading.Tasks;
 using System.Collections.Generic;

@@ -1,7 +1,7 @@
-﻿using depross.Common;
+﻿using deprosa.Common;
 using System.ComponentModel.DataAnnotations;
 
-namespace depross.ViewModel
+namespace deprosa.ViewModel
 {
     public class RatingDTO
     {
