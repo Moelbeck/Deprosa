@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>salvir.API</RootNamespace>
+    <RootNamespace>deprosa.API</RootNamespace>
     <AssemblyName>salvir.API</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
@@ -178,21 +178,21 @@
     <Compile Include="VATChecker\VisVatCheck.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\salvir.Common\salvir.Common.csproj">
+    <ProjectReference Include="..\salvir.Common\deprosa.Common.csproj">
       <Project>{31900e7a-2fba-4044-b41c-2e861b8f2b24}</Project>
-      <Name>salvir.Common</Name>
+      <Name>deprosa.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\salvir.Interface\salvir.Interface.csproj">
+    <ProjectReference Include="..\salvir.Interface\deprosa.Interface.csproj">
       <Project>{bd925ce6-2517-4585-8452-70cb36f03c42}</Project>
-      <Name>salvir.Interface</Name>
+      <Name>deprosa.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\salvir.Model\salvir.Model.csproj">
+    <ProjectReference Include="..\salvir.Model\deprosa.Model.csproj">
       <Project>{c244f6f3-25fe-4f1e-97c1-276f4cc4da66}</Project>
-      <Name>salvir.Model</Name>
+      <Name>deprosa.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\salvir.Repository\salvir.Repository.csproj">
+    <ProjectReference Include="..\salvir.Repository\deprosa.Repository.csproj">
       <Project>{30e341c1-9aee-46cc-9405-7b78c45dd237}</Project>
-      <Name>salvir.Repository</Name>
+      <Name>deprosa.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

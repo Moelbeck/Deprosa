@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BD925CE6-2517-4585-8452-70CB36F03C42}</ProjectGuid>
+    <ProjectGuid>{31900E7A-2FBA-4044-B41C-2E861B8F2B24}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>salvir.Interface</RootNamespace>
-    <AssemblyName>salvir.Interface</AssemblyName>
+    <RootNamespace>deprosa.Common</RootNamespace>
+    <AssemblyName>salvir.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,32 +41,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IAccountRepository.cs" />
-    <Compile Include="Interfaces\IAccountWebService.cs" />
-    <Compile Include="Interfaces\IAdvertiserRepository.cs" />
-    <Compile Include="Interfaces\ICategoryRepository.cs" />
-    <Compile Include="Interfaces\ICategoryWebService.cs" />
-    <Compile Include="Interfaces\ICompanyRepository.cs" />
-    <Compile Include="Interfaces\IManufacturerRepository.cs" />
-    <Compile Include="Interfaces\IManufacturerService.cs" />
-    <Compile Include="Interfaces\IProductRepository.cs" />
-    <Compile Include="Interfaces\IProductWebService.cs" />
-    <Compile Include="Interfaces\IRatingRepository.cs" />
-    <Compile Include="Interfaces\IRatingWebService.cs" />
-    <Compile Include="Interfaces\ISaleListingRepository.cs" />
-    <Compile Include="Interfaces\ISaleListingWebService.cs" />
-    <Compile Include="Interfaces\ISubCategoryRepository.cs" />
+    <Compile Include="DTO\AccountDTOs\AccountCreateDTO.cs" />
+    <Compile Include="DTO\AccountDTOs\AccountDTO.cs" />
+    <Compile Include="DTO\AccountDTOs\AccountLoginDTO.cs" />
+    <Compile Include="DTO\AccountDTOs\AccountUpdateDTO.cs" />
+    <Compile Include="DTO\AccountDTOs\AccountUpdatePasswordDTO.cs" />
+    <Compile Include="DTO\CategoryDTO.cs" />
+    <Compile Include="DTO\CommentDTO.cs" />
+    <Compile Include="DTO\CompanyDTO.cs" />
+    <Compile Include="DTO\ImageDTOs\ImageDTO.cs" />
+    <Compile Include="DTO\ImageDTOs\ImageUploadDTO.cs" />
+    <Compile Include="DTO\ManufacturerDTO.cs" />
+    <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="DTO\RatingDTO.cs" />
+    <Compile Include="DTO\SaleListingDTOs\SaleListingDTO.cs" />
+    <Compile Include="DTO\VatValidationDTO.cs" />
+    <Compile Include="Enum\Enums.cs" />
+    <Compile Include="Extension\DatetimeExtensions.cs" />
+    <Compile Include="Extension\EnumExtension.cs" />
+    <Compile Include="Extension\Validators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\salvir.Common\salvir.Common.csproj">
-      <Project>{31900e7a-2fba-4044-b41c-2e861b8f2b24}</Project>
-      <Name>salvir.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\salvir.Model\salvir.Model.csproj">
-      <Project>{c244f6f3-25fe-4f1e-97c1-276f4cc4da66}</Project>
-      <Name>salvir.Model</Name>
-    </ProjectReference>
+    <Compile Include="RequestWrappers\CompanyUpdateRequest.cs" />
+    <Compile Include="RequestWrappers\ImageUploadRequest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

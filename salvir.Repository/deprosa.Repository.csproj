@@ -7,7 +7,7 @@
     <ProjectGuid>{30E341C1-9AEE-46CC-9405-7B78C45DD237}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>salvir.Repository</RootNamespace>
+    <RootNamespace>deprosa.Repository</RootNamespace>
     <AssemblyName>salvir.Repository</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -74,17 +74,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\salvir.Common\salvir.Common.csproj">
+    <ProjectReference Include="..\salvir.Common\deprosa.Common.csproj">
       <Project>{31900e7a-2fba-4044-b41c-2e861b8f2b24}</Project>
-      <Name>salvir.Common</Name>
+      <Name>deprosa.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\salvir.Interface\salvir.Interface.csproj">
+    <ProjectReference Include="..\salvir.Interface\deprosa.Interface.csproj">
       <Project>{bd925ce6-2517-4585-8452-70cb36f03c42}</Project>
-      <Name>salvir.Interface</Name>
+      <Name>deprosa.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\salvir.Model\salvir.Model.csproj">
+    <ProjectReference Include="..\salvir.Model\deprosa.Model.csproj">
       <Project>{c244f6f3-25fe-4f1e-97c1-276f4cc4da66}</Project>
-      <Name>salvir.Model</Name>
+      <Name>deprosa.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

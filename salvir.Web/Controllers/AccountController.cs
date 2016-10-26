@@ -7,6 +7,7 @@ using deprosa.Web.Model;
 using deprosa.WebsiteService;
 using System.Web.Mvc;
 using deprosa.ViewModel;
+using deprosa.Web.Controllers;
 
 namespace Web.Controllers
 {
@@ -105,7 +106,7 @@ namespace Web.Controllers
         public ActionResult Logout()
         {
             CurrentUser.SetCurrentUserToNull();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         //Validate if email is already used
