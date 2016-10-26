@@ -25,7 +25,7 @@ namespace deprosa.Repository
 
         public void UpdateProductType(ProductType updatedProduct)
         {
-            Edit(updatedProduct);
+            Update(updatedProduct);
             Save();
         }
 

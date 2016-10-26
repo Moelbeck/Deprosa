@@ -39,7 +39,7 @@ namespace deprosa.Repository
        public Advertiser UpdateAdvertiser(Advertiser updatedAdvertiser)
        {
             updatedAdvertiser.Updated = DateTime.Now;
-            Edit(updatedAdvertiser);;
+            Update(updatedAdvertiser);;
            return GetSingle(e => e.ID == updatedAdvertiser.ID);
        }
 

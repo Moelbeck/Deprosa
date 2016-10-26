@@ -2,6 +2,7 @@
 using deprosa.Interfaces;
 using deprosa.Model;
 using deprosa.Repository;
+using deprosa.Repository.Abstract;
 using deprosa.Repository.DatabaseContext;
 using deprosa.ViewModel;
 using System;
@@ -15,25 +16,24 @@ namespace deprosa.WebService
     public class RatingWebService : IRatingWebService
     {
 
-        private readonly IRatingRepository _ratingRepository;
+        private readonly GenericRepository<Rating> _ratingRepository;
 
         public RatingWebService()
         {
-            _ratingRepository = new RatingRepository(new BzaleDatabaseContext());
+            BzaleDatabaseContext context = new BzaleDatabaseContext();
+            _ratingRepository = new GenericRepository<Rating>(context);
         }
         public bool CreateRating(RatingDTO viewmodel)
         {
             try
             {
                 Rating newrating = Mapper.Map<RatingDTO, Rating>(viewmodel);
-                _ratingRepository.AddRating(newrating);
+                _ratingRepository.Add(newrating);
                 return true;
 
             }
             catch (Exception ex)
             {
-
-                throw;
                 return false;
             }
         }
@@ -42,7 +42,7 @@ namespace deprosa.WebService
         {
             try
             {
-                var allratings = _ratingRepository.GetRatingsForCompany(companyID);
+                var allratings = _ratingRepository.Get(e=>e.Company.ID == companyID);
                 var mostpositive = allratings.Aggregate((i1, i2) => i1.Votes >= i2.Votes ? i1 : i2);
                 RatingDTO viewmodel = Mapper.Map<Rating, RatingDTO>(mostpositive);
                 return viewmodel;
@@ -58,7 +58,7 @@ namespace deprosa.WebService
         {
             try
             {
-                var allratings = _ratingRepository.GetRatingsForCompany(companyID).ToList();
+                var allratings = _ratingRepository.Get(e => e.Company.ID == companyID);
                 return allratings.Select(e => Mapper.Map<Rating, RatingDTO>(e)).ToList();
             }
             catch (Exception ex)
@@ -72,7 +72,7 @@ namespace deprosa.WebService
         {
             try
             {
-                _ratingRepository.RemoveRating(id);
+                _ratingRepository.Delete(id);
                 return true;
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace deprosa.WebService
             try
             {
                 Rating updatedrating = Mapper.Map<RatingDTO, Rating>(viewmodel);
-                _ratingRepository.UpdateRating(updatedrating);
+                _ratingRepository.Update(updatedrating);
                 return true;
             }
             catch (Exception ex)

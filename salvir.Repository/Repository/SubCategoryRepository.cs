@@ -31,7 +31,7 @@ namespace deprosa.WebService
 
         public void UpdateSubCategory(SubCategory category)
         {
-            Edit(category);
+            Update(category);
             Save();
         }
     }

@@ -2,6 +2,7 @@
 using deprosa.Interfaces;
 using deprosa.Model;
 using deprosa.Repository;
+using deprosa.Repository.Abstract;
 using deprosa.Repository.DatabaseContext;
 using deprosa.ViewModel;
 using System;
@@ -13,11 +14,11 @@ namespace deprosa.WebService
     public class ManufacturerWebService : IManufacturerService
 
     {
-        private IManufacturerRepository _manufacturerRepository;
+        private GenericRepository<Manufacturer> _manufacturerRepository;
         public ManufacturerWebService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
-            _manufacturerRepository = new ManufacturerRepository(context);
+            _manufacturerRepository = new GenericRepository<Manufacturer>(context);
         }
 
         public void CreateManufacturer(ManufacturerDTO viewmodel)
@@ -25,7 +26,7 @@ namespace deprosa.WebService
             try
             {
                 var manufacturer = Mapper.Map<ManufacturerDTO, Manufacturer>(viewmodel);
-                _manufacturerRepository.AddNewManufacturer(manufacturer);
+                _manufacturerRepository.Add(manufacturer);
             }
             catch (Exception ex)
             {
@@ -35,13 +36,13 @@ namespace deprosa.WebService
 
         public List<ManufacturerDTO> GetManufacturersInCategory(int categoryid)
         {
-            var manufacturers = _manufacturerRepository.GetManufacturersForCategory(categoryid, 1, int.MaxValue).ToList();
+            var manufacturers = _manufacturerRepository.Get(e=>e.ProductTypes.All(a => a.Category.ID == categoryid) && e.Deleted == null);
             return manufacturers.Select(Mapper.Map<Manufacturer, ManufacturerDTO>).ToList();
         }
 
         public ManufacturerDTO GetManuFacturer(int id)
         {
-            var manufacturer = _manufacturerRepository.GetManufacturer(id);
+            var manufacturer = _manufacturerRepository.GetSingle(e=>e.ID == id);
             return Mapper.Map<Manufacturer, ManufacturerDTO>(manufacturer);
         }
 

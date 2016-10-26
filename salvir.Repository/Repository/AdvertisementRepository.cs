@@ -31,7 +31,7 @@ namespace deprosa.Repository
 
         public void UpdateAdvertisement(Advertisement updatedAdvertisement)
         {
-            Edit(updatedAdvertisement);
+            Update(updatedAdvertisement);
             Save();
         }
 
@@ -39,7 +39,7 @@ namespace deprosa.Repository
         {
             var ad = GetSingle(e => e.ID == adid);
             ad.Image = img;
-            Edit(ad);
+            Update(ad);
             Save();
         }
     }

@@ -23,7 +23,7 @@ namespace deprosa.Repository
 
         public SaleListing UpdateSaleListing(SaleListing updatedSaleListing)
         {
-            Edit(updatedSaleListing);
+            Update(updatedSaleListing);
             Save();
             return GetSingle(e => e.ID == updatedSaleListing.ID);
         }
@@ -65,7 +65,7 @@ namespace deprosa.Repository
             var SaleListing = GetSaleListing(SaleListingid);
             
                 SaleListing.Images.Add(newimage);
-                Edit(SaleListing);
+                Update(SaleListing);
                 Save();
         }
 
@@ -74,7 +74,7 @@ namespace deprosa.Repository
             var SaleListing = GetSaleListing(SaleListingid);
 
                 SaleListing.Images.Remove(newimage);
-                Edit(SaleListing);
+                Update(SaleListing);
                 Save();
         }
 
@@ -82,7 +82,7 @@ namespace deprosa.Repository
         {
             var sale = GetSaleListing(salelisting.ID); //To be sure that we have the correct sale.
             sale.Subscription = sub;
-            Edit(sale);
+            Update(sale);
             Save();
         }
 

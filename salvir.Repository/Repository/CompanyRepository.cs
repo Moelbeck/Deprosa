@@ -39,7 +39,7 @@ namespace deprosa.Repository
 
         public Company UpdateCompany(Company updatedCompany)
         {
-            Edit(updatedCompany);
+            Update(updatedCompany);
             Save();
             return updatedCompany;
         }

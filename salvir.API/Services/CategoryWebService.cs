@@ -2,6 +2,7 @@
 using deprosa.Interfaces;
 using deprosa.Model;
 using deprosa.Repository;
+using deprosa.Repository.Abstract;
 using deprosa.Repository.DatabaseContext;
 using deprosa.ViewModel;
 using System;
@@ -14,23 +15,27 @@ namespace deprosa.WebService
     // NOTE: In order to launch WCF Test Client for testing this service, please select CategoryService.svc or CategoryService.svc.cs at the Solution Explorer and start debugging.
     public class CategoryWebService : ICategoryWebService
     {
-        private readonly IMainCategoryRepository _categoryRepository;
-        private readonly ISubCategoryRepository _subcategoryRepository;
+        //private readonly IMainCategoryRepository _categoryRepository;
+        //private readonly ISubCategoryRepository _subcategoryRepository;
+        private readonly GenericRepository<MainCategory> _maincategory;
+        private readonly GenericRepository<SubCategory> _subcategory;
         private IProductTypeRepository _productRepository;
 
         public CategoryWebService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
-            _categoryRepository = new MainCategoryRepository(context);
-            _subcategoryRepository = new SubCategoryRepository(context);
+            //_categoryRepository = new MainCategoryRepository(context);
+            //_subcategoryRepository = new SubCategoryRepository(context);
             _productRepository = new ProductTypeRepository(context);
+            _maincategory = new GenericRepository<MainCategory>(context);
+            _subcategory = new GenericRepository<SubCategory>(context);
         }
 
         public List<CategoryDTO> GetMainCategories()
         {
             try
             {
-                var allcategories = _categoryRepository.GetMainCategories().ToList();
+                var allcategories = _maincategory.Get(e=>e.Deleted == null).ToList();
                 return allcategories.Select(Mapper.Map<MainCategory, CategoryDTO>).ToList();
             }
             catch (Exception ex)
@@ -44,7 +49,7 @@ namespace deprosa.WebService
         {
             try
             {
-                var subcategories = _subcategoryRepository.GetSubCategoriesByMainID(id).ToList();
+                var subcategories = _subcategory.Get(e=>e.MainCategory.ID == id && e.Deleted == null).ToList();
                 return subcategories.Select(Mapper.Map<SubCategory, CategoryDTO>).ToList();
             }
             catch (Exception ex)
@@ -58,8 +63,8 @@ namespace deprosa.WebService
             try
             {
 
-                var area = _categoryRepository.GetMainCategory(id);
-                return Mapper.Map<MainCategory, CategoryDTO>(area);
+                var main = _maincategory.GetSingle(e=>e.ID == id && e.Deleted == null);
+                return Mapper.Map<MainCategory, CategoryDTO>(main);
 
             }
             catch (Exception ex)
@@ -74,7 +79,7 @@ namespace deprosa.WebService
             try
             {
                 List<MainCategory> categories = !string.IsNullOrWhiteSpace(searchstring) ? 
-                    _categoryRepository.GetMainCategories().Where(e => e.Name.ToLower().Contains(searchstring.ToLower()) || e.Description.ToLower().Contains(searchstring.ToLower())).ToList()
+                    _maincategory.Get(e => e.Name.ToLower().Contains(searchstring.ToLower()) || e.Description.ToLower().Contains(searchstring.ToLower())).ToList()
                     : new List<MainCategory>();
                 List<CategoryDTO> allsearchedproducts = new List<CategoryDTO>();
                 allsearchedproducts.AddRange(categories.Select(Mapper.Map<MainCategory, CategoryDTO>));
@@ -93,7 +98,7 @@ namespace deprosa.WebService
             try
             {
                 MainCategory newcategory = Mapper.Map<CategoryDTO, MainCategory>(viewmodel);
-                _categoryRepository.AddMainCategory(newcategory);
+                _maincategory.Add(newcategory);
 
             }
             catch (Exception ex)
@@ -107,9 +112,10 @@ namespace deprosa.WebService
             try
             {
                 SubCategory newcategory = Mapper.Map<CategoryDTO, SubCategory>(viewmodel);
-                var main = _categoryRepository.GetMainCategory(mainid);
+                var main = _maincategory.GetSingle(e=>e.ID == mainid);
                 newcategory.MainCategory = main;
-                _categoryRepository.UpdateMainCategory(main);
+                _subcategory.Add(newcategory);
+                _maincategory.Update(main);
             }
             catch (Exception ex)
             {

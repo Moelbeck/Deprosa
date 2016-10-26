@@ -21,7 +21,7 @@ namespace deprosa.Repository
         }
         public Rating UpdateRating(Rating rating)
         {
-            Edit(rating);
+            Update(rating);
             Save();
             return GetSingle(e => e.ID == rating.ID);
         }

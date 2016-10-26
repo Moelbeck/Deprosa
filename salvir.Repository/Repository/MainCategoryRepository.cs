@@ -35,7 +35,7 @@ namespace deprosa.Repository
 
         public void UpdateMainCategory(MainCategory category)
         {
-            Edit(category);
+            Update(category);
             Save();
         }
         public void RemoveMainCategory(int id)

@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace deprosa.Repository.Abstract
 {
-    public abstract class GenericRepository<T>  where T : Entity 
+    public class GenericRepository<T>  where T : Entity 
     {
         private BzaleDatabaseContext _entities;
         public GenericRepository(BzaleDatabaseContext context)
@@ -15,50 +15,50 @@ namespace deprosa.Repository.Abstract
             _entities = context;
         }
 
-        protected IQueryable<T> Get(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> Get(Expression<Func<T, bool>> predicate)
         {
             IQueryable<T> query = _entities.Set<T>().Where(predicate).AsNoTracking();
             return query;
         }
-        protected T GetSingle(Expression<Func<T, bool>> predicate)
+        public T GetSingle(Expression<Func<T, bool>> predicate)
         {
             return _entities.Set<T>().Where(predicate).AsNoTracking().FirstOrDefault(); 
         }
 
-        protected virtual T Add(T entity)
+        public virtual T Add(T entity)
         {
             entity.Created = DateTime.Now;
+            _entities.SaveChanges();
             return _entities.Set<T>().Add(entity);
         }
 
-        protected virtual void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             entity.Deleted = DateTime.Now;
-            _entities.Set<T>().Remove(entity);
+            //_entities.Set<T>().Remove(entity);
+            _entities.SaveChanges();
+
         }
         public virtual void Delete(int entityid)
         {
             var entity = GetSingle(e => e.ID == entityid);
             entity.Deleted = DateTime.Now;
-            _entities.Set<T>().Remove(entity);
+            //_entities.Set<T>().Remove(entity);
+            _entities.SaveChanges();
         }
 
-        protected virtual void Edit(T entity)
+        public virtual void Update(T entity)
         {
             entity.Updated = DateTime.Now;
             entity.Deleted = null;
             _entities.Set<T>().Attach(entity);
             _entities.Entry(entity).State = EntityState.Modified;
+            _entities.SaveChanges();
         }
 
         protected virtual void Save()
         {
             _entities.SaveChanges();
-        }
-
-        protected virtual void SaveAsync()
-        {
-            _entities.SaveChangesAsync();
         }
     }
 }

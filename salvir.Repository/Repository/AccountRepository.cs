@@ -42,7 +42,7 @@ namespace deprosa.Repository
 
         public Account UpdateAccount(Account updatedAccount)
         {
-            Edit(updatedAccount);
+            Update(updatedAccount);
             Save();
             return GetSingle(e => e.ID == updatedAccount.ID);
         }

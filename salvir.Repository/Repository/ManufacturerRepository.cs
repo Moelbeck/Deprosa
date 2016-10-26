@@ -47,7 +47,7 @@ namespace deprosa.Repository
 
         public Manufacturer UpdateManufacturer(Manufacturer updated)
         {
-            Edit(updated);
+            Update(updated);
             Save();
             return GetSingle(e => e.ID == updated.ID);
         }

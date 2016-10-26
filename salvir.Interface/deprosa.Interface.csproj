@@ -40,21 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IAccountRepository.cs" />
-    <Compile Include="Interfaces\IAccountWebService.cs" />
-    <Compile Include="Interfaces\IAdvertiserRepository.cs" />
-    <Compile Include="Interfaces\ICategoryRepository.cs" />
-    <Compile Include="Interfaces\ICategoryWebService.cs" />
-    <Compile Include="Interfaces\ICompanyRepository.cs" />
-    <Compile Include="Interfaces\IManufacturerRepository.cs" />
-    <Compile Include="Interfaces\IManufacturerService.cs" />
-    <Compile Include="Interfaces\IProductRepository.cs" />
-    <Compile Include="Interfaces\IProductWebService.cs" />
-    <Compile Include="Interfaces\IRatingRepository.cs" />
-    <Compile Include="Interfaces\IRatingWebService.cs" />
-    <Compile Include="Interfaces\ISaleListingRepository.cs" />
-    <Compile Include="Interfaces\ISaleListingWebService.cs" />
-    <Compile Include="Interfaces\ISubCategoryRepository.cs" />
+    <Compile Include="Repositories\IAccountRepository.cs" />
+    <Compile Include="Services\IAccountWebService.cs" />
+    <Compile Include="Repositories\IAdvertiserRepository.cs" />
+    <Compile Include="Repositories\ICategoryRepository.cs" />
+    <Compile Include="Services\ICategoryWebService.cs" />
+    <Compile Include="Repositories\ICompanyRepository.cs" />
+    <Compile Include="Repositories\IManufacturerRepository.cs" />
+    <Compile Include="Services\IManufacturerService.cs" />
+    <Compile Include="Repositories\IProductRepository.cs" />
+    <Compile Include="Services\IProductWebService.cs" />
+    <Compile Include="Repositories\IRatingRepository.cs" />
+    <Compile Include="Services\IRatingWebService.cs" />
+    <Compile Include="Repositories\ISaleListingRepository.cs" />
+    <Compile Include="Services\ISaleListingWebService.cs" />
+    <Compile Include="Repositories\ISubCategoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
