@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using biz2biz.Service.Automapper;
+using deprosa.API;
+using deprosa.WebApi.Authenticator;
 using Microsoft.Owin;
-using salvir.API;
-using salvir.WebApi.Authenticator;
 
 [assembly: OwinStartup(typeof(Startup))]
-namespace salvir.API
+namespace deprosa.API
 {
     using System.Web.Http;
     using Microsoft.Owin;

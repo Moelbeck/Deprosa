@@ -1,4 +1,5 @@
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\bin\Debug\salvir.Common.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\bin\Debug\salvir.Common.pdb
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Debug\salvir.Common.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Debug\salvir.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\bin\Debug\deprosa.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\bin\Debug\deprosa.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Debug\deprosa.Common.csprojResolveAssemblyReference.cache
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Debug\deprosa.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Debug\deprosa.Common.pdb

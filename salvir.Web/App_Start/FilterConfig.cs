@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace salvir.Web
+namespace deprosa.Web
 {
     public class FilterConfig
     {

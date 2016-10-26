@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace salvir.WebApi.Services
+namespace deprosa.WebApi.Services
 {
     public class ProductTypeWebService : IProductWebService
     {

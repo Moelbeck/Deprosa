@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model salvir.Web.Model.ViewModel.FrontPageViewModel
+@model deprosaWeb.Model.ViewModel.FrontPageViewModel
 
     @section SearchPartial {
         @Html.Partial("_SearchPartial")
@@ -10,7 +10,7 @@
     @section Styles{
 
     }
-
+@Html.Partial("Partial/_MenuPartial")
     @*Carousele*@
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">

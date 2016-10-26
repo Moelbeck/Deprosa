@@ -1,9 +1,9 @@
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\salvir.Interface.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\salvir.Interface.pdb
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\salvir.Common.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\salvir.Model.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\salvir.Common.pdb
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\salvir.Model.pdb
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\obj\Debug\deprosa.Interface.csprojResolveAssemblyReference.cache
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\obj\Debug\salvir.Interface.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\obj\Debug\salvir.Interface.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\deprosa.Interface.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\deprosa.Interface.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\deprosa.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\deprosa.Model.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\deprosa.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\bin\Debug\deprosa.Model.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\obj\Debug\deprosa.Interface.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Interface\obj\Debug\deprosa.Interface.pdb

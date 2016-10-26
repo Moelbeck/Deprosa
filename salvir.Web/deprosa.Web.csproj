@@ -14,7 +14,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>deprosa.Web</RootNamespace>
-    <AssemblyName>salvir.Web</AssemblyName>
+    <AssemblyName>deprosa.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -161,6 +161,7 @@
     <Compile Include="Model\Session\CurrentSalelistingCreate.cs" />
     <Compile Include="Model\Session\CurrentUser.cs" />
     <Compile Include="Model\ViewModel\FrontPageViewModel.cs" />
+    <Compile Include="Model\ViewModel\MenuViewModel.cs" />
     <Compile Include="Model\ViewModel\SaleListingCreateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Services\AccountService.cs" />
@@ -244,6 +245,7 @@
     <Content Include="Views\Shared\Partial\Salelisting\_Weight.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Partial\_MenuPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

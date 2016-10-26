@@ -2,7 +2,7 @@
 using deprosa.ViewModel;
 using deprosa.WebService;
 using System.Web.Http;
-using salvir.API.Authenticator;
+using deprosa.API.Authenticator;
 
 namespace WebService.Api.Controllers
 {

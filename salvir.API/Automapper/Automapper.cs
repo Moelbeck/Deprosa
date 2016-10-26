@@ -158,6 +158,7 @@ namespace biz2biz.Service.Automapper
                                 .ForMember(e => e.ID, o => o.MapFrom(x => x.ID))
 
                     .ForMember(e => e.Name, o => o.MapFrom(x => x.Name))
+                    .ForMember(e => e.ParentId, o => o.MapFrom(x => 0))
                     .ForMember(e => e.Description, o => o.MapFrom(x => x.Description))
                     .ForMember(e => e.Image, o => o.MapFrom(s => new ImageDTO { ID = s.Image.ID, ImageURL = s.Image.ImageURL }))
                 .ForAllOtherMembers(e => e.Ignore());
@@ -170,7 +171,7 @@ namespace biz2biz.Service.Automapper
 
                 m.CreateMap<SubCategory, CategoryDTO>()
                 .ForMember(e => e.ID, o => o.MapFrom(x => x.ID))
-
+                .ForMember(e => e.ParentId, o => o.MapFrom(x => x.MainCategory.ID))
                 .ForMember(e => e.Name, o => o.MapFrom(x => x.Name))
                 .ForMember(e => e.Description, o => o.MapFrom(x => x.Description))
                 .ForAllOtherMembers(e => e.Ignore());

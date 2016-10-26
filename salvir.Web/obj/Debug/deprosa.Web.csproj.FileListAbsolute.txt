@@ -11,9 +11,6 @@ C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\roslyn\System.Reflection.Metadata.
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\roslyn\vbc.exe
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\roslyn\VBCSCompiler.exe
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\salvir.Web.dll.config
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\salvir.Web.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\salvir.Web.pdb
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Antlr3.Runtime.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Microsoft.AI.DependencyCollector.dll
@@ -25,7 +22,6 @@ C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Microsoft.ApplicationInsights.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Newtonsoft.Json.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\salvir.Common.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\System.Web.Helpers.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\System.Web.Mvc.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\System.Web.Optimization.dll
@@ -34,7 +30,6 @@ C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\System.Web.WebPages.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\System.Web.WebPages.Razor.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\WebGrease.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\salvir.Common.pdb
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Microsoft.AI.Web.xml
@@ -51,5 +46,10 @@ C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\System.Web.WebPages.Razor.xml
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Antlr3.Runtime.pdb
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\Newtonsoft.Json.xml
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\obj\Debug\deprosa.Web.csprojResolveAssemblyReference.cache
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\obj\Debug\salvir.Web.dll
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\obj\Debug\salvir.Web.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Web.dll.config
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Web.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Web.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\obj\Debug\deprosa.Web.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\obj\Debug\deprosa.Web.pdb

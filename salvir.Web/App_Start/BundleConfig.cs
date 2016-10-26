@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace salvir.Web
+namespace deprosa.Web
 {
     public class BundleConfig
     {

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Security;
 
-namespace salvir.WebApi.Authenticator
+namespace deprosa.WebApi.Authenticator
 {
     public class AuthenticationMessageHandler : DelegatingHandler
     {

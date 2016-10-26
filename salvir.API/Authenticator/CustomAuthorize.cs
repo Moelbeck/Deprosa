@@ -10,7 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Security;
 
-namespace salvir.API.Authenticator
+namespace deprosa.API.Authenticator
 {
     public class EnsureLoggedInAuthorize : AuthorizeAttribute
     {

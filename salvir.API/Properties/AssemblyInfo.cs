@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyTitle("salvir.API")]
+[assembly: AssemblyTitle("deprosa.API")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("salvir.API")]
+[assembly: AssemblyProduct("deprosa.API")]
 [assembly: AssemblyCopyright("Copyright © 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
