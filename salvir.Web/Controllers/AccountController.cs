@@ -3,8 +3,8 @@
 using System.Threading.Tasks;
 
 
-using bzale.Web.Model;
-using bzale.WebsiteService;
+using deprosa.Web.Model;
+using deprosa.WebsiteService;
 using System.Web.Mvc;
 using depross.ViewModel;
 

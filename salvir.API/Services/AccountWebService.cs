@@ -133,7 +133,7 @@ namespace depross.WebService
                 current.Company = company;
                     current.CompanyID = company.ID;
                var acc = _accountRepository.UpdateAccount(current);
-                var viewmodel = Mapper.Map<Company, CompanyDTO>(acc.Company);
+                var viewmodel = Mapper.Map<Company, CompanyDTO>(company);
 
                 return viewmodel;
             }
@@ -157,6 +157,12 @@ namespace depross.WebService
                 return false;
             }
         }
+
+        internal AccountDTO GetAccount(string username)
+        {
+            var acc = _accountRepository.GetAccount(username);
+            return Mapper.Map<Account, AccountDTO>(acc);
+        }
         public bool UpdatePassword(AccountUpdatePasswordViewModel accountviewmodel)
         {
             try
@@ -175,7 +181,6 @@ namespace depross.WebService
             }
             catch (Exception ex)
             {
-
                 return false;
             }
         }

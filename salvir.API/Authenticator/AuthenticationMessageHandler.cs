@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Security;
 
 namespace salvir.WebApi.Authenticator
 {
@@ -32,17 +33,8 @@ namespace salvir.WebApi.Authenticator
         Encoding.Default.GetString(Convert.FromBase64String(encodedUserPass));
                     var parts = userPass.Split(":".ToCharArray());
                     var username = parts[0];
-                    var password = parts[1];
-
-                    if (!AuthenticateUser(username, password))
-                    {
-                        // Authentication failed                     
-                        response =
-        request.CreateResponse(System.Net.HttpStatusCode.Unauthorized);
-                        response.Headers.Add("WWW-Authenticate", "Basic");
-
-                        return response;
-                    }
+                    var id = parts[1];
+                    AuthenticateUser(username);
                 }
 
                 response = await base.SendAsync(request, cancellationToken);
@@ -62,33 +54,42 @@ namespace salvir.WebApi.Authenticator
             }
         }
 
-        private bool AuthenticateUser(string username, string password)
+        private void AuthenticateUser(string username, string password)
         {
             AccountWebService _accountService = new AccountWebService();
-
-            // Use a simplified authentication check where username must be equal to password 
-            //if (!string.IsNullOrEmpty(password) && password!= "password")
-            //{
-            //    AccountLoginDTO account = new AccountLoginDTO {UserName = username, Password = password};
-            //    var user = _accountService.Login(account);
-            //    if (user != null)
-            //    {
-            //        // User is valid. Create a principal for the user 
-            //        IIdentity identity = new GenericIdentity(user.Email);
-            //        return true;
-            //    }
-            //}
-            //else
-            //{
+            if (!string.IsNullOrWhiteSpace(username)) { 
             if (_accountService.IsEmailInDatabase(username))
             {
                 IIdentity identity = new GenericIdentity(username);
                 IPrincipal principal = new GenericPrincipal(identity, new string[] {});
                 Thread.CurrentPrincipal = principal;
-                return true;
             }
-            //}
-            return false;
+            }
         }
+        private void AuthenticateUser(string username)
+        {
+            var cookieuser =FormsAuthentication.GetAuthCookie(username, false);
+            
+            AccountWebService _accountService = new AccountWebService();
+            if (!string.IsNullOrWhiteSpace(username))
+            {
+                IPrincipal principal;
+                var account = _accountService.GetAccount(username);
+                if (account != null)
+                {
+                    IIdentity identity = new GenericIdentity(username);
+                    if (account.Company != null)
+                    {
+                        principal = new GenericPrincipal(identity, new string[] { "Seller" });
+                    }
+                    else
+                    {
+                        principal = new GenericPrincipal(identity, new string[] { "Basic" });
+                    }
+                    Thread.CurrentPrincipal = principal;
+                }
+            }
+        }
+
     }
 }

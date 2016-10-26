@@ -1,10 +1,10 @@
-﻿using bzale.Service;
-using depross.Common;
+﻿using depross.Common;
 using depross.ViewModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using deprosa.Service;
 
-namespace bzale.WebsiteService
+namespace deprosa.WebsiteService
 {
     /// <summary>
     /// This service class have connection to item repository

@@ -6,9 +6,9 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using bzale.Web.Model;
+using deprosa.Web.Model;
 
-namespace bzale.WebsiteService
+namespace deprosa.WebsiteService
 {
     public class HttpBaseClient
     {
@@ -49,12 +49,13 @@ namespace bzale.WebsiteService
                     RequestUri = new Uri(uri),
                     Content = new StringContent(jsonstring, Encoding.UTF8, "application/json"),
                 };
-                request.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", CurrentUser.Email, "password"))));
+                request.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", CurrentUser.Email, CurrentUser.ID))));
 
                 switch (method)
                 {
                     case eHttpMethodType.GET:
                         request.Method = HttpMethod.Get;
+                        request.Content = null;
                         response = client.SendAsync(request).Result;
                         break;
                     case eHttpMethodType.POST:

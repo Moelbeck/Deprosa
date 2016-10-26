@@ -1,10 +1,10 @@
 ﻿using System;
-using bzale.Web.Model;
 using System.Web.Mvc;
 using System.Web;
 using System.Web.Routing;
+using deprosa.Web.Model;
 
-namespace bzale.Filter
+namespace deprosa.Filter
 {
 
 

@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProSale</title>
 
-    <!--[if lt IE 9]>
-        <script src="~/lib/html5shiv/dist/html5shiv.min.js"></script>
-    <![endif]-->
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -41,14 +38,14 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")
                     <li>@Html.ActionLink("About", "About", "Home")
                 </ul>
-                @Html.Partial("_LoginPartial")                
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderSection("SearchPartial",false)
+        @RenderSection("SearchPartial", false)
 
-        @*Categories*@ 
+        @*Categories*@
 
         @RenderBody()
         <hr />

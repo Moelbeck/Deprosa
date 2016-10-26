@@ -1,9 +1,9 @@
-﻿using bzale.Service;
-using depross.ViewModel;
+﻿using depross.ViewModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using deprosa.Service;
 
-namespace bzale.WebsiteService
+namespace deprosa.WebsiteService
 {
     public class ManufacturerService
     {

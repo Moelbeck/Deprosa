@@ -48,6 +48,7 @@ namespace depross.Repository.Abstract
             entity.Updated = DateTime.Now;
             entity.Deleted = null;
             _entities.Set<T>().Attach(entity);
+            _entities.Entry(entity).State = EntityState.Modified;
         }
 
         protected virtual void Save()

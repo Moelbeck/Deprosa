@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace bzale.Service
+namespace deprosa.Service
 {
     public class Konstanter
     {

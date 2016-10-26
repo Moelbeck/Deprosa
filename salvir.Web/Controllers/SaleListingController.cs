@@ -1,17 +1,17 @@
-﻿using bzale.Filter;
-using bzale.Web.Model;
-using bzale.WebsiteService;
-using depross.Common;
+﻿using depross.Common;
 using depross.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using deprosa.Filter;
+using deprosa.Web.Model;
+using deprosa.WebsiteService;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace bzale.Web.Controllers
+namespace deprosa.Web.Controllers
 {
     [EnsureCanSellAuthorize]
     public class SaleListingController : Controller

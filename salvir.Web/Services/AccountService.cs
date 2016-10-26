@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using bzale.Service;
+using deprosa.Service;
 using depross.ViewModel;
 using depross.Common;
 
-namespace bzale.WebsiteService
+namespace deprosa.WebsiteService
 {
     /// <summary>
     /// AccountService is handling login, creation etc for accounts

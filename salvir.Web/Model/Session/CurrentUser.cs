@@ -2,7 +2,7 @@
 using System;
 using System.Web;
 
-namespace bzale.Web.Model
+namespace deprosa.Web.Model
 {
     public static class CurrentUser 
     {

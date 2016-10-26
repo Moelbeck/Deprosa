@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace bzale.Web.Model
+namespace deprosa.Web.Model
 {
     public class SaleListingCreateViewModel
     {

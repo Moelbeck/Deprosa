@@ -1,10 +1,10 @@
-﻿using bzale.Web.Model;
+﻿using deprosa.Web.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace bzale.Web.Model
+namespace deprosa.Web.Model
 {
     public static class CurrentSalelistingCreate
     {

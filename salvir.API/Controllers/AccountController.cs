@@ -2,6 +2,7 @@
 using depross.ViewModel;
 using depross.WebService;
 using System.Web.Http;
+using salvir.API.Authenticator;
 
 namespace WebService.Api.Controllers
 {
@@ -90,16 +91,16 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Add company to Account - Post
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpPost, Route("{currentUserId}/company/add")]
         public IHttpActionResult AddCompanyToAccount(int currentuserId, [FromBody]CompanyDTO newcompany)
         {
             if (ModelState.IsValid)
             {
-                var com = _accountService.AddCompanyToAccount(currentuserId, newcompany);
-                if (com != null)
+                var company = _accountService.AddCompanyToAccount(currentuserId, newcompany);
+                if (company != null)
                 {
-                    return Ok(com);
+                    return Ok(company);
                 }
                 else
                 {

@@ -1,7 +1,4 @@
 ﻿using System;
-using bzale.WebsiteService;
-using bzale.Web.Model;
-using bzale.Filter;
 using System.Web.Mvc;
 using depross.Common;
 using depross.ViewModel;
@@ -9,10 +6,13 @@ using Common.Extension;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using deprosa.Filter;
+using deprosa.Web.Model;
+using deprosa.WebsiteService;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace bzale.Web.Controllers
+namespace deprosa.Web.Controllers
 {
     [EnsureLoggedInAuthorize]
     public class ManagementController : Controller
