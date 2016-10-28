@@ -160,7 +160,7 @@
     <Compile Include="Data\Konstanter\Konstanter.cs" />
     <Compile Include="Model\Session\CurrentSalelistingCreate.cs" />
     <Compile Include="Model\Session\CurrentUser.cs" />
-    <Compile Include="Model\ViewModel\FrontPageViewModel.cs" />
+    <Compile Include="Model\ViewModel\HighlightViewModel.cs" />
     <Compile Include="Model\ViewModel\MenuViewModel.cs" />
     <Compile Include="Model\ViewModel\SaleListingCreateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

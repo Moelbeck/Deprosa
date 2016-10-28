@@ -31,12 +31,12 @@ namespace deprosa.WebService
             _subcategory = new GenericRepository<SubCategory>(context);
         }
 
-        public List<CategoryDTO> GetMainCategories()
+        public List<MainCategoryDTO> GetMainCategories()
         {
             try
             {
                 var allcategories = _maincategory.Get(e=>e.Deleted == null).ToList();
-                return allcategories.Select(Mapper.Map<MainCategory, CategoryDTO>).ToList();
+                return allcategories.Select(Mapper.Map<MainCategory, MainCategoryDTO>).ToList();
             }
             catch (Exception ex)
             {
@@ -45,12 +45,12 @@ namespace deprosa.WebService
             }
         }
 
-        public List<CategoryDTO> GetSubCategoriesForMain(int id)
+        public List<SubCategoryDTO> GetSubCategoriesForMain(int id)
         {
             try
             {
                 var subcategories = _subcategory.Get(e=>e.MainCategory.ID == id && e.Deleted == null).ToList();
-                return subcategories.Select(Mapper.Map<SubCategory, CategoryDTO>).ToList();
+                return subcategories.Select(Mapper.Map<SubCategory, SubCategoryDTO>).ToList();
             }
             catch (Exception ex)
             {
@@ -58,13 +58,13 @@ namespace deprosa.WebService
                 throw;
             }
         }
-        public CategoryDTO GetMainCategory(int id)
+        public MainCategoryDTO GetMainCategory(int id)
         {
             try
             {
 
                 var main = _maincategory.GetSingle(e=>e.ID == id && e.Deleted == null);
-                return Mapper.Map<MainCategory, CategoryDTO>(main);
+                return Mapper.Map<MainCategory, MainCategoryDTO>(main);
 
             }
             catch (Exception ex)
@@ -74,15 +74,15 @@ namespace deprosa.WebService
             }
         }
 
-        public List<CategoryDTO> GetMainCategoriesBySearchString(string searchstring)
+        public List<MainCategoryDTO> GetMainCategoriesBySearchString(string searchstring)
         {
             try
             {
                 List<MainCategory> categories = !string.IsNullOrWhiteSpace(searchstring) ? 
                     _maincategory.Get(e => e.Name.ToLower().Contains(searchstring.ToLower()) || e.Description.ToLower().Contains(searchstring.ToLower())).ToList()
                     : new List<MainCategory>();
-                List<CategoryDTO> allsearchedproducts = new List<CategoryDTO>();
-                allsearchedproducts.AddRange(categories.Select(Mapper.Map<MainCategory, CategoryDTO>));
+                List<MainCategoryDTO> allsearchedproducts = new List<MainCategoryDTO>();
+                allsearchedproducts.AddRange(categories.Select(Mapper.Map<MainCategory, MainCategoryDTO>));
                 //_log.LogSearch(userid, searchstring);
                 return allsearchedproducts;
             }
@@ -93,11 +93,11 @@ namespace deprosa.WebService
             }
         }
 
-        public void CreateMainCategory(CategoryDTO viewmodel)
+        public void CreateMainCategory(MainCategoryDTO viewmodel)
         {
             try
             {
-                MainCategory newcategory = Mapper.Map<CategoryDTO, MainCategory>(viewmodel);
+                MainCategory newcategory = Mapper.Map<MainCategoryDTO, MainCategory>(viewmodel);
                 _maincategory.Add(newcategory);
 
             }
@@ -107,11 +107,11 @@ namespace deprosa.WebService
                 throw;
             }
         }
-        public void CreateSubCategory(int mainid, CategoryDTO viewmodel)
+        public void CreateSubCategory(int mainid, SubCategoryDTO viewmodel)
         {
             try
             {
-                SubCategory newcategory = Mapper.Map<CategoryDTO, SubCategory>(viewmodel);
+                SubCategory newcategory = Mapper.Map<SubCategoryDTO, SubCategory>(viewmodel);
                 var main = _maincategory.GetSingle(e=>e.ID == mainid);
                 newcategory.MainCategory = main;
                 _subcategory.Add(newcategory);

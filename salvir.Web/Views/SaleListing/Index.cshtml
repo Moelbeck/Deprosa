@@ -1,8 +1,9 @@
-﻿@model dynamic
+﻿@model deprosaWeb.Model.ViewModel.HighlightViewModel
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
-}
+    ViewBag.Title = "Annoncer for";
+    Layout = "../Shared/_Layout.cshtml";}
 
-<h2>title</h2>
+<h2>Annoncer for @Model.MenuViewModel.SelectedMainCategory.Name</h2>
+@Html.Partial("Partial/_MenuPartial", Model.MenuViewModel)
+

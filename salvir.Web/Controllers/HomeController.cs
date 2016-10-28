@@ -19,7 +19,7 @@ namespace deprosa.Web.Controllers
         [OutputCache(Duration = 10, VaryByParam = "none")]
         public async Task<ActionResult> Index()
         {
-            FrontPageViewModel viewModel = new FrontPageViewModel();
+            HighlightViewModel viewModel = new HighlightViewModel();
             viewModel.MenuViewModel = new MenuViewModel();
             viewModel.MenuViewModel.MainCategories = await _categoryService.GetAllMainCategories();
             return View(viewModel);

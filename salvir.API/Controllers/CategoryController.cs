@@ -14,8 +14,8 @@ namespace WebService.Api.Controllers
     [RoutePrefix("api/Category")]
     public class CategoryController : ApiController
     {
-        private CategoryWebService _categoryService;
-        private ProductTypeWebService _productService;
+        private readonly CategoryWebService _categoryService;
+        private readonly ProductTypeWebService _productService;
         public CategoryController()
         {
             _categoryService = new CategoryWebService();

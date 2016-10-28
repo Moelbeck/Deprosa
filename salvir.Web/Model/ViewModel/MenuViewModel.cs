@@ -8,7 +8,12 @@ namespace deprosa.Web.Model.ViewModel
 {
     public class MenuViewModel
     {
-        public List<CategoryDTO> MainCategories { get; set; }
-        public List<CategoryDTO> SubCategories { get; set; }
+        public List<MainCategoryDTO> MainCategories { get; set; }
+
+        public MainCategoryDTO SelectedMainCategory { get; set; }
+
+        public List<SubCategoryDTO> SubCategories { get; set; }
+
+        public SubCategoryDTO SelectedSubCategory { get; set; }
     }
 }

@@ -166,6 +166,7 @@
     <Compile Include="Services\CategoryWebService.cs" />
     <Compile Include="Services\Internal Services\CreateAndUpdateService.cs" />
     <Compile Include="Services\Internal Services\ImageService.cs" />
+    <Compile Include="Services\Internal Services\LogService.cs" />
     <Compile Include="Services\Internal Services\PasswordValidationService.cs" />
     <Compile Include="Services\Internal Services\SubscriptionService.cs" />
     <Compile Include="Services\ManufacturerWebService.cs" />

@@ -7,22 +7,22 @@ namespace deprosa.Interfaces
     {
 
         #region Categories
-        List<CategoryDTO> GetMainCategories();
- 
-        CategoryDTO GetMainCategory(int id);
+        List<MainCategoryDTO> GetMainCategories();
 
-        List<CategoryDTO> GetSubCategoriesForMain(int id);
+        MainCategoryDTO GetMainCategory(int id);
+
+        List<SubCategoryDTO> GetSubCategoriesForMain(int id);
 
  
-        List<CategoryDTO> GetMainCategoriesBySearchString(string searchstring);
+        List<MainCategoryDTO> GetMainCategoriesBySearchString(string searchstring);
         #endregion
 
         #region Manufacturer
 
         #endregion
 
-        void CreateMainCategory(CategoryDTO viewmodel);
-        void CreateSubCategory(int mainid,CategoryDTO viewmodel);
+        void CreateMainCategory(MainCategoryDTO viewmodel);
+        void CreateSubCategory(int mainid, SubCategoryDTO viewmodel);
 
     }
 }

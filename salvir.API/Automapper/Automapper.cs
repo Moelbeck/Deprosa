@@ -154,31 +154,31 @@ namespace biz2biz.Service.Automapper
                 #endregion
 
                 #region Category Mapping
-                m.CreateMap<MainCategory, CategoryDTO>()
+                m.CreateMap<MainCategory, MainCategoryDTO>()
                                 .ForMember(e => e.ID, o => o.MapFrom(x => x.ID))
-
                     .ForMember(e => e.Name, o => o.MapFrom(x => x.Name))
-                    .ForMember(e => e.ParentId, o => o.MapFrom(x => 0))
                     .ForMember(e => e.Description, o => o.MapFrom(x => x.Description))
                     .ForMember(e => e.Image, o => o.MapFrom(s => new ImageDTO { ID = s.Image.ID, ImageURL = s.Image.ImageURL }))
                 .ForAllOtherMembers(e => e.Ignore());
 
-                m.CreateMap<CategoryDTO, MainCategory>()
+                m.CreateMap<MainCategoryDTO, MainCategory>()
                 .ForMember(e => e.ID, o => o.MapFrom(x => x.ID))
                 .ForMember(e => e.Name, o => o.MapFrom(x => x.Name))
                 .ForMember(e => e.Description, o => o.MapFrom(x => x.Description))
                 .ForAllOtherMembers(e => e.Ignore());
 
-                m.CreateMap<SubCategory, CategoryDTO>()
+                m.CreateMap<SubCategory, SubCategoryDTO>()
                 .ForMember(e => e.ID, o => o.MapFrom(x => x.ID))
-                .ForMember(e => e.ParentId, o => o.MapFrom(x => x.MainCategory.ID))
+                .ForMember(e => e.MainCategory, o => o.MapFrom(x => new MainCategory { ID = x.MainCategory.ID, Name = x.MainCategory.Name, Description = x.MainCategory.Description}))
                 .ForMember(e => e.Name, o => o.MapFrom(x => x.Name))
                 .ForMember(e => e.Description, o => o.MapFrom(x => x.Description))
                 .ForAllOtherMembers(e => e.Ignore());
 
-                m.CreateMap<CategoryDTO, SubCategory>()
+                m.CreateMap<SubCategoryDTO, SubCategory>()
                                 .ForMember(e => e.ID, o => o.MapFrom(x => x.ID))
                                 .ForMember(e => e.Name, o => o.MapFrom(x => x.Name))
+                .ForMember(e => e.MainCategory, o => o.MapFrom(x => new MainCategoryDTO { ID = x.MainCategory.ID, Name = x.MainCategory.Name, Description = x.MainCategory.Description }))
+
                 .ForMember(e => e.Description, o => o.MapFrom(x => x.Description))
             .ForAllOtherMembers(e => e.Ignore());
                 #endregion

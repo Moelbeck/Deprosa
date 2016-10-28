@@ -12,10 +12,10 @@ namespace deprosa.Web.Model
     {
         [Display(Name = "Kategorier:")]
 
-        public List<CategoryDTO> MainCategories { get; set; }
+        public List<MainCategoryDTO> MainCategories { get; set; }
     
         [Display(Name="Valgte kategori")]
-        public CategoryDTO SelectedMainCategory { get; set; }
+        public MainCategoryDTO SelectedMainCategory { get; set; }
         public SelectList MainCategoriesSelectList
         {
             get
@@ -25,10 +25,10 @@ namespace deprosa.Web.Model
         }
 
         [Display(Name = "Under kategorier:")]
-        public List<CategoryDTO> SubCategories { get; set; }
+        public List<SubCategoryDTO> SubCategories { get; set; }
 
         [Display(Name = "Valgte under kategori")]
-        public CategoryDTO SelectedSubCategory { get; set; }
+        public SubCategoryDTO SelectedSubCategory { get; set; }
         public SelectList SubCategoriesSelectList
         {
             get

@@ -1,19 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model deprosaWeb.Model.ViewModel.FrontPageViewModel
+@model deprosaWeb.Model.ViewModel.HighlightViewModel
 
     @section SearchPartial {
         @Html.Partial("_SearchPartial")
     }
 
-    @section Styles{
 
-    }
-@*@Html.Partial("Partial/_MenuPartial")*@
-    @*Carousele*@
+@Html.Partial("Partial/_MenuPartial",Model.MenuViewModel)
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -52,7 +49,3 @@
         </a>
     </div>
     <hr />
-
-    @*Selected for you*@
-
-    @*Recently browsed*@

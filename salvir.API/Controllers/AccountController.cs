@@ -133,7 +133,6 @@ namespace WebService.Api.Controllers
         [HttpGet, Route("{id}/accountinfo")]
         public IHttpActionResult GetAccountInformation(int id)
         {
-
             var info = _accountService.GetAccountInformation(id);
             if (info != null)
             {
@@ -143,7 +142,24 @@ namespace WebService.Api.Controllers
             {
                 return NotFound();
             }
+        }
 
+        /// <summary>
+        /// Get company information - Get
+        /// </summary>
+        [Authorize]
+        [HttpGet, Route("{vat}/companyinfo")]
+        public IHttpActionResult GetCompanyInformation(string vat)
+        {
+            var info = _accountService.GetCompanyInformation(vat);
+            if (info != null)
+            {
+                return Ok(info);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -212,23 +228,6 @@ namespace WebService.Api.Controllers
             return BadRequest(ModelState);
         }
 
-        /// <summary>
-        /// Get company information - Get
-        /// </summary>
-        [Authorize]
-        [HttpGet, Route("{vat}/companyinfo")]
-        public IHttpActionResult GetCompanyInformation(string vat)
-        {
-            var info = _accountService.GetCompanyInformation(vat);
-            if (info != null)
-            {
-                return Ok(info);
-            }
-            else
-            {
-                return NotFound();
-            }
-        }
 
         /// <summary>
         /// Checks if company email is in DB - Get

@@ -2,7 +2,7 @@
 
 namespace deprosa.ViewModel
 {
-    public class CategoryDTO
+    public class MainCategoryDTO
     {
         public int ID { get; set; }
         [Display(Name = "Navn")]
@@ -13,7 +13,5 @@ namespace deprosa.ViewModel
         public string Description { get; set; }
 
         public ImageDTO Image { get; set; }
-
-        public int ParentId { get; set; }
     }
 }

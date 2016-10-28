@@ -21,29 +21,29 @@ namespace deprosa.WebsiteService
 
         }
         #region GET
-        public async Task<List<CategoryDTO>> GetAllMainCategories()
+        public async Task<List<MainCategoryDTO>> GetAllMainCategories()
         {
             string uri = string.Format("allmain");
-            var categories = await client.GetResponseObject<CategoryDTO, List<CategoryDTO>>(uri, eHttpMethodType.GET, null);
+            var categories = await client.GetResponseObject<MainCategoryDTO, List<MainCategoryDTO>>(uri, eHttpMethodType.GET, null);
             return categories;
         }
-        public async Task<CategoryDTO> GetCategory(int id)
+        public async Task<MainCategoryDTO> GetMainCategory(int id)
         {
             string uri = string.Format("{0}", id);
-            var categories = await client.GetResponseObject<CategoryDTO, CategoryDTO>(uri, eHttpMethodType.GET, null);
+            var categories = await client.GetResponseObject<MainCategoryDTO, MainCategoryDTO>(uri, eHttpMethodType.GET, null);
             return categories;
         }
-        public async Task<List<CategoryDTO>> GetSubCategoriesForMain(int mainid)
+        public async Task<List<SubCategoryDTO>> GetSubCategoriesForMain(int mainid)
         {
             string uri = string.Format("{0}/sub", mainid);
-            var categories = await client.GetResponseObject<CategoryDTO, List<CategoryDTO>>(uri, eHttpMethodType.GET, null);
+            var categories = await client.GetResponseObject<SubCategoryDTO, List<SubCategoryDTO>>(uri, eHttpMethodType.GET, null);
             return categories;
         }
 
-        public async Task<List<CategoryDTO>> GetCategoriesBySearchString(string searchstring)
+        public async Task<List<MainCategoryDTO>> GetMainCategoriesBySearchString(string searchstring)
         {
             string uri = string.Format("bysearch/{0}", searchstring);
-            var categories = await client.GetResponseObject<CategoryDTO, List<CategoryDTO>>(uri, eHttpMethodType.GET, null);
+            var categories = await client.GetResponseObject<MainCategoryDTO, List<MainCategoryDTO>>(uri, eHttpMethodType.GET, null);
             return categories;
         }
         public async Task<List<ProductTypeDTO>> GetProductTypesForCategory(int id)

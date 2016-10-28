@@ -7,7 +7,7 @@ using deprosa.Web.Model.ViewModel;
 
 namespace deprosaWeb.Model.ViewModel
 {
-    public class FrontPageViewModel
+    public class HighlightViewModel
     {
         public MenuViewModel MenuViewModel { get; set; }
 

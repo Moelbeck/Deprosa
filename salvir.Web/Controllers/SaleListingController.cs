@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using deprosa.Filter;
 using deprosa.Web.Model;
+using deprosa.Web.Model.ViewModel;
 using deprosa.WebsiteService;
+using deprosaWeb.Model.ViewModel;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,17 +20,21 @@ namespace deprosa.Web.Controllers
     {
         // GET: /<controller>/
         private SaleListingService _salelistingService;
-        private CategoryService _categoryService;
+        private readonly CategoryService _categoryService;
         public SaleListingController()
         {
             _salelistingService = new SaleListingService();
             _categoryService = new CategoryService();
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index(int selected)
         {
+            HighlightViewModel viewModel = new HighlightViewModel();
+            viewModel.MenuViewModel = new MenuViewModel();
+            viewModel.MenuViewModel.SubCategories = await _categoryService.GetSubCategoriesForMain(selected);
+            viewModel.MenuViewModel.SelectedMainCategory = viewModel.MenuViewModel.SubCategories.First(e=>e.MainCategory.ID == selected).MainCategory;
 
-            return View();
+            return View(viewModel);
         }
 
 
@@ -51,11 +57,10 @@ namespace deprosa.Web.Controllers
             {
                 CurrentSalelistingCreate.SaleListingViewModel.SelectedMainCategory
                     = CurrentSalelistingCreate.SaleListingViewModel.MainCategories.FirstOrDefault(e => e.ID == categoryid);
-                List<CategoryDTO> subcategories = await _categoryService.GetSubCategoriesForMain(categoryid);
+                List<SubCategoryDTO> subcategories = await _categoryService.GetSubCategoriesForMain(categoryid);
                 CurrentSalelistingCreate.SaleListingViewModel.SubCategories = subcategories;
             }
             return PartialView("CreateSalelisting", CurrentSalelistingCreate.SaleListingViewModel);
-
         }
 
         public async Task<ActionResult> SetSelectedSubCategory(int categoryid)
