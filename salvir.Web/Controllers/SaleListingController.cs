@@ -15,7 +15,6 @@ using deprosaWeb.Model.ViewModel;
 
 namespace deprosa.Web.Controllers
 {
-    [EnsureCanSellAuthorize]
     public class SaleListingController : Controller
     {
         // GET: /<controller>/
@@ -37,14 +36,13 @@ namespace deprosa.Web.Controllers
             return View(viewModel);
         }
 
-
         #region Create Sale listing
 
         [HttpGet]
         [EnsureCanSellAuthorize]
-        public async Task<ActionResult> CreateSaleListing()
+        public async Task<ActionResult> CreateSaleListing(SaleListingCreateViewModel current)
         {
-            CurrentSalelistingCreate.SaleListingViewModel = null;
+            CurrentSalelistingCreate.SaleListingViewModel = current;
 
             CurrentSalelistingCreate.SaleListingViewModel.MainCategories = await _categoryService.GetAllMainCategories();
             return View(CurrentSalelistingCreate.SaleListingViewModel);
@@ -60,7 +58,7 @@ namespace deprosa.Web.Controllers
                 List<SubCategoryDTO> subcategories = await _categoryService.GetSubCategoriesForMain(categoryid);
                 CurrentSalelistingCreate.SaleListingViewModel.SubCategories = subcategories;
             }
-            return PartialView("CreateSalelisting", CurrentSalelistingCreate.SaleListingViewModel);
+            return View("CreateSaleListing", CurrentSalelistingCreate.SaleListingViewModel);
         }
 
         public async Task<ActionResult> SetSelectedSubCategory(int categoryid)
@@ -71,7 +69,7 @@ namespace deprosa.Web.Controllers
                     = CurrentSalelistingCreate.SaleListingViewModel.SubCategories.FirstOrDefault(e => e.ID == categoryid);
                 CurrentSalelistingCreate.SaleListingViewModel.ProductTypes = await _categoryService.GetProductTypesForCategory(categoryid);
             }
-            return PartialView("CreateSalelisting", CurrentSalelistingCreate.SaleListingViewModel);
+            return View("CreateSalelisting", CurrentSalelistingCreate.SaleListingViewModel);
 
         }
 
@@ -83,7 +81,7 @@ namespace deprosa.Web.Controllers
                     = CurrentSalelistingCreate.SaleListingViewModel.ProductTypes.FirstOrDefault(e => e.ID == producttypeid);
                 CurrentSalelistingCreate.SaleListingViewModel.SaleListing = new SaleListingDTO();
             }
-            return PartialView("CreateSalelisting", CurrentSalelistingCreate.SaleListingViewModel);
+            return View("CreateSalelisting", CurrentSalelistingCreate.SaleListingViewModel);
 
         }
 

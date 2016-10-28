@@ -15,6 +15,7 @@ C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\bin\Debug\deprosa.Interface.pdb
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\bin\Debug\deprosa.Model.pdb
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\deprosa.Repository.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\deprosa.Repository.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.migrateelements.resources
 C:\Work\Deprosa\salvir.Repository\bin\Debug\deprosa.Repository.dll.config
 C:\Work\Deprosa\salvir.Repository\bin\Debug\deprosa.Repository.dll
 C:\Work\Deprosa\salvir.Repository\bin\Debug\deprosa.Repository.pdb
@@ -31,6 +32,5 @@ C:\Work\Deprosa\salvir.Repository\bin\Debug\EntityFramework.SqlServer.xml
 C:\Work\Deprosa\salvir.Repository\obj\Debug\deprosa.Repository.csprojResolveAssemblyReference.cache
 C:\Work\Deprosa\salvir.Repository\obj\Debug\deprosa.Repository.dll
 C:\Work\Deprosa\salvir.Repository\obj\Debug\deprosa.Repository.pdb
-C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.migrateelements.resources
+C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.firstmigrate.resources
 C:\Work\Deprosa\salvir.Repository\obj\Debug\deprosa.Repository.csproj.GenerateResource.Cache
-C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.migrateelements.resources

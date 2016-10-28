@@ -29,7 +29,7 @@ namespace deprosa.Repository.DatabaseContext
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<SaleListing> SaleListings { get; set; }
-
+        public DbSet<BaseLog> Log { get; set; }
 
         private void InitializeDatabase()
         {

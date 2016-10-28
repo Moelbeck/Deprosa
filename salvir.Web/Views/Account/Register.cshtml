@@ -17,11 +17,11 @@
     @Html.DisplayNameFor(e => e.Email)
     @Html.TextBoxFor(e => e.Email, new { Class = "form-control" })
 
-    @Html.DisplayNameFor(e => e.ConfirmEmail)
-    @Html.TextBoxFor(e => e.ConfirmEmail, new { Class = "form-control" })
-
     @Html.DisplayNameFor(e => e.Password)
     @Html.PasswordFor(e => e.Password, new { Class = "form-control" })
+        
+    @Html.DisplayNameFor(e => e.ConfirmPassword)
+    @Html.PasswordFor(e => e.ConfirmPassword, new { Class = "form-control" })
 
     <input type="submit" title="" />
 

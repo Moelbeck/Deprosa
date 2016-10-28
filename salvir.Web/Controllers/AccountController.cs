@@ -79,7 +79,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.Email.Equals(model.ConfirmEmail, StringComparison.CurrentCultureIgnoreCase))
+                if (model.Password.Equals(model.ConfirmPassword, StringComparison.CurrentCultureIgnoreCase))
                 {
                     var account = await _accountservice.CreateAccount(model);
                     if (account != null)

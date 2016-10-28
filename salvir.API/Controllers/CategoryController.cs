@@ -26,7 +26,7 @@ namespace WebService.Api.Controllers
         /// Gets all categories - Get
         /// </summary>
         [HttpGet, Route("allmain")]
-        public IHttpActionResult GetAllCategories()
+        public IHttpActionResult GetAllMainCategories()
         {
 
             var categories = _categoryService.GetMainCategories();

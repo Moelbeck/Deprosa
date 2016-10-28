@@ -16,13 +16,15 @@ namespace deprosa.ViewModel
         [Display(Name = "Email")]
         public string Email { get; set; }
          
-        [Required]
+        //[Required]
         [Display(Name = "Bekræft email")]
         public string ConfirmEmail { get; set; }
          
         [Required]
-        [Display(Name = "Password")]
+        [Display(Name = "Password"),MinLength(6, ErrorMessage = "Password skal være mindst 6 karaktere lang")]
         public string Password { get; set; }
-
+        [Required]
+        [Display(Name = "Bekræft password")]
+        public string ConfirmPassword { get; set; }
     }
 }

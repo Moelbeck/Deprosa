@@ -1,0 +1,7 @@
+C:\Work\Deprosa\salvir.Model\bin\Release\deprosa.Model.dll
+C:\Work\Deprosa\salvir.Model\bin\Release\deprosa.Model.pdb
+C:\Work\Deprosa\salvir.Model\bin\Release\deprosa.Common.dll
+C:\Work\Deprosa\salvir.Model\bin\Release\deprosa.Common.pdb
+C:\Work\Deprosa\salvir.Model\obj\Release\deprosa.Model.csprojResolveAssemblyReference.cache
+C:\Work\Deprosa\salvir.Model\obj\Release\deprosa.Model.dll
+C:\Work\Deprosa\salvir.Model\obj\Release\deprosa.Model.pdb

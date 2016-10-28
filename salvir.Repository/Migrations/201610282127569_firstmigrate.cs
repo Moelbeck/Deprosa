@@ -3,7 +3,7 @@ namespace Repository.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class migrateelements : DbMigration
+    public partial class firstmigrate : DbMigration
     {
         public override void Up()
         {
@@ -280,6 +280,24 @@ namespace Repository.Migrations
                 .Index(t => t.Account_ID);
             
             CreateTable(
+                "dbo.BaseLogs",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        UserID = c.Int(nullable: false),
+                        Created = c.DateTime(nullable: false, precision: 7, storeType: "datetime2"),
+                        Updated = c.DateTime(precision: 7, storeType: "datetime2"),
+                        Deleted = c.DateTime(precision: 7, storeType: "datetime2"),
+                        Type = c.Int(),
+                        SaleListingID = c.Int(),
+                        LogType = c.Int(),
+                        SearchString = c.String(),
+                        CategoryId = c.Int(),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
                 "dbo.Ratings",
                 c => new
                     {
@@ -346,6 +364,7 @@ namespace Repository.Migrations
             DropIndex("dbo.Companies", new[] { "Image_ID" });
             DropIndex("dbo.Accounts", new[] { "CompanyID" });
             DropTable("dbo.Ratings");
+            DropTable("dbo.BaseLogs");
             DropTable("dbo.CategoryPreferences");
             DropTable("dbo.Advertisers");
             DropTable("dbo.Advertisements");

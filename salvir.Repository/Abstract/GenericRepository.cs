@@ -28,8 +28,9 @@ namespace deprosa.Repository.Abstract
         public virtual T Add(T entity)
         {
             entity.Created = DateTime.Now;
+            _entities.Set<T>().Add(entity);
             _entities.SaveChanges();
-            return _entities.Set<T>().Add(entity);
+            return entity;
         }
 
         public virtual void Delete(T entity)

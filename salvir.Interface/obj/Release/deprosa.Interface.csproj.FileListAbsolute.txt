@@ -1,0 +1,9 @@
+C:\Work\Deprosa\salvir.Interface\bin\Release\deprosa.Interface.dll
+C:\Work\Deprosa\salvir.Interface\bin\Release\deprosa.Interface.pdb
+C:\Work\Deprosa\salvir.Interface\bin\Release\deprosa.Common.dll
+C:\Work\Deprosa\salvir.Interface\bin\Release\deprosa.Model.dll
+C:\Work\Deprosa\salvir.Interface\bin\Release\deprosa.Common.pdb
+C:\Work\Deprosa\salvir.Interface\bin\Release\deprosa.Model.pdb
+C:\Work\Deprosa\salvir.Interface\obj\Release\deprosa.Interface.csprojResolveAssemblyReference.cache
+C:\Work\Deprosa\salvir.Interface\obj\Release\deprosa.Interface.dll
+C:\Work\Deprosa\salvir.Interface\obj\Release\deprosa.Interface.pdb
