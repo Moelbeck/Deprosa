@@ -10,6 +10,7 @@ using deprosa.service;
 using deprosa.Service;
 using deprosa.ViewModel;
 using System;
+using System.Data.Entity;
 using System.Linq;
 
 namespace deprosa.WebService
@@ -40,7 +41,7 @@ namespace deprosa.WebService
             {
                 if (!string.IsNullOrWhiteSpace(user.UserName))
                 {
-                    Account account = _accountRepository.GetSingle(e => e.Email.ToLower() == user.UserName.ToLower());
+                    Account account = _accountRepository.Get(e => e.Email.ToLower() == user.UserName.ToLower()).Include(i=>i.Company).Single();
                     if (PasswordValidationService.GetInstance().ValidatePassword(user.Password, account.Password, account.Salt))
                     {
                         //_log.LogLoginLogout(account.ID, eLoginType.Login);

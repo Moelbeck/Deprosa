@@ -13,5 +13,7 @@ namespace deprosa.Interfaces
         List<ProductTypeDTO> GetProductTypesForSubCategory(int categoryid);
         ProductTypeDTO GetProdyctType(int typeid);
         List<ProductType> GetAllProductsTypesByString(string searchstring);
+
+        List<ProductTypeDTO> GetAllProductTypes();
     }
 }

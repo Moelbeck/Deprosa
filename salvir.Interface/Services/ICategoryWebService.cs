@@ -13,9 +13,7 @@ namespace deprosa.Interfaces
 
         List<SubCategoryDTO> GetSubCategoriesForMain(int id);
 
- 
-        List<MainCategoryDTO> GetMainCategoriesBySearchString(string searchstring);
-        #endregion
+         #endregion
 
         #region Manufacturer
 

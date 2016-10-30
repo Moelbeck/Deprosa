@@ -7,6 +7,7 @@ using deprosa.Repository.DatabaseContext;
 using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -39,6 +40,12 @@ namespace deprosa.WebApi.Services
             || e.Category.Name.ToLower().Contains(searchstring.ToLower())
             || e.Category.Description.ToLower().Contains(searchstring.ToLower())).OrderBy(e => e.ID).ToList();
             return Products.GroupBy(x => x.ID).Select(y => y.First()).ToList();
+        }
+
+        public List<ProductTypeDTO> GetAllProductTypes()
+        {
+            var producttypes = _productRepository.Get(e =>e.Deleted == null).Include(e=>e.Category).Include(e=>e.Category.MainCategory).Select(Mapper.Map<ProductType,ProductTypeDTO>).ToList();
+            return producttypes;
         }
     }
 }

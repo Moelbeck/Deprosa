@@ -23,6 +23,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <ApplicationInsightsResourceId>/subscriptions/6e8c4e5c-f83b-4261-b1c1-ec1e47375887/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/deprosa.API</ApplicationInsightsResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -137,6 +138,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Service References\Application Insights\ConnectedService.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -156,7 +158,6 @@
     <Compile Include="Automapper\Automapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\FrontPageController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SaleListingController.cs" />
@@ -194,6 +195,9 @@
       <Project>{30e341c1-9aee-46cc-9405-7b78c45dd237}</Project>
       <Name>deprosa.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

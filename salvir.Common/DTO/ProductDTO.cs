@@ -14,6 +14,8 @@ namespace deprosa.ViewModel
         public string Name { get; set; }
  
         public int SubCategoryID { get; set; }
+        
+        public SubCategoryDTO SubCategory { get; set; }
 
         public eSalelistingTypes Types { get; set; }
 

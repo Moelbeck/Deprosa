@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using deprosa.WebApi.Services;
+using deprosa.Common;
 
 namespace WebService.Api.Controllers
 {
@@ -65,24 +66,52 @@ namespace WebService.Api.Controllers
             return NotFound();
         }
 
+        [HttpGet, Route("categorystructure")]
+        public IHttpActionResult GetCategoryStructure()
+        {
+            try
+            {
+                var allproducttypes = _productService.GetAllProductTypes();
+                var categorystructure = new CategoryStructureRequest();
+                foreach (var type in allproducttypes)
+                {
+                    if(!categorystructure.MainCategories.Any(e=>e.ID == type.SubCategory.MainCategory.ID))
+                    {
+                        categorystructure.MainCategories.Add(type.SubCategory.MainCategory);
+                    }
+                    if(!categorystructure.SubCategories.Any(e => e.ID == type.SubCategory.ID))
+                    {
+                        categorystructure.SubCategories.Add(type.SubCategory);
+                    }
+                }
+                categorystructure.SubCategories = categorystructure.SubCategories.Distinct().ToList();
+                categorystructure.MainCategories = categorystructure.MainCategories.Distinct().ToList();
+                categorystructure.ProductTypes = allproducttypes;
+                return Ok(categorystructure);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
+        }
         /// <summary>
         /// Gets main categories by search string
         /// </summary>
-        [HttpGet, Route("bysearch/{searchString}")]       
-        public IHttpActionResult GetMainCategoriesBySearchString(string searchString)
-        {
-            if (ModelState.IsValid)
-            {
-                var bysearch = _categoryService.GetMainCategoriesBySearchString(searchString);
-                if (bysearch != null)
-                {
-                    return Ok(bysearch);
-                }
+        //[HttpGet, Route("bysearch/{searchString}")]       
+        //public IHttpActionResult GetMainCategoriesBySearchString(string searchString)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var bysearch = _categoryService.GetMainCategoriesBySearchString(searchString);
+        //        if (bysearch != null)
+        //        {
+        //            return Ok(bysearch);
+        //        }
 
-                return NotFound();
-            }
-            return BadRequest(ModelState);
-        }
+        //        return NotFound();
+        //    }
+        //    return BadRequest(ModelState);
+        //}
 
         ///// <summary>
         ///// Creates main category - Post

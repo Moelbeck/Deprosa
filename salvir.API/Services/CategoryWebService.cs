@@ -24,8 +24,6 @@ namespace deprosa.WebService
         public CategoryWebService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
-            //_categoryRepository = new MainCategoryRepository(context);
-            //_subcategoryRepository = new SubCategoryRepository(context);
             _productRepository = new ProductTypeRepository(context);
             _maincategory = new GenericRepository<MainCategory>(context);
             _subcategory = new GenericRepository<SubCategory>(context);
@@ -66,25 +64,6 @@ namespace deprosa.WebService
                 var main = _maincategory.GetSingle(e=>e.ID == id && e.Deleted == null);
                 return Mapper.Map<MainCategory, MainCategoryDTO>(main);
 
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-        }
-
-        public List<MainCategoryDTO> GetMainCategoriesBySearchString(string searchstring)
-        {
-            try
-            {
-                List<MainCategory> categories = !string.IsNullOrWhiteSpace(searchstring) ? 
-                    _maincategory.Get(e => e.Name.ToLower().Contains(searchstring.ToLower()) || e.Description.ToLower().Contains(searchstring.ToLower())).ToList()
-                    : new List<MainCategory>();
-                List<MainCategoryDTO> allsearchedproducts = new List<MainCategoryDTO>();
-                allsearchedproducts.AddRange(categories.Select(Mapper.Map<MainCategory, MainCategoryDTO>));
-                //_log.LogSearch(userid, searchstring);
-                return allsearchedproducts;
             }
             catch (Exception ex)
             {

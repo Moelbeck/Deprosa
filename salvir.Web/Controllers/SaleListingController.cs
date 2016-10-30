@@ -43,31 +43,33 @@ namespace deprosa.Web.Controllers
         public async Task<ActionResult> CreateSaleListing(SaleListingCreateViewModel current)
         {
             CurrentSalelistingCreate.SaleListingViewModel = current;
-
-            CurrentSalelistingCreate.SaleListingViewModel.MainCategories = await _categoryService.GetAllMainCategories();
+            if(CurrentSalelistingCreate.SaleListingViewModel.MainCategories == null)
+            {
+                CategoryStructureRequest request = await _categoryService.GetCategoryStructure();
+                CurrentSalelistingCreate.SaleListingViewModel.MainCategories = request.MainCategories;
+                CurrentSalelistingCreate.SaleListingViewModel.SubCategories = request.SubCategories;
+                CurrentSalelistingCreate.SaleListingViewModel.ProductTypes = request.ProductTypes;
+            }
             return View(CurrentSalelistingCreate.SaleListingViewModel);
         }
 
 
-        public async Task<ActionResult> SetSelectedMainCategory(int categoryid)
+        public ActionResult SetSelectedMainCategory(int categoryid)
         {
             if (categoryid > 0)
             {
                 CurrentSalelistingCreate.SaleListingViewModel.SelectedMainCategory
                     = CurrentSalelistingCreate.SaleListingViewModel.MainCategories.FirstOrDefault(e => e.ID == categoryid);
-                List<SubCategoryDTO> subcategories = await _categoryService.GetSubCategoriesForMain(categoryid);
-                CurrentSalelistingCreate.SaleListingViewModel.SubCategories = subcategories;
             }
             return View("CreateSaleListing", CurrentSalelistingCreate.SaleListingViewModel);
         }
 
-        public async Task<ActionResult> SetSelectedSubCategory(int categoryid)
+        public ActionResult SetSelectedSubCategory(int categoryid)
         {
             if (categoryid > 0)
             {
                 CurrentSalelistingCreate.SaleListingViewModel.SelectedSubCategory
                     = CurrentSalelistingCreate.SaleListingViewModel.SubCategories.FirstOrDefault(e => e.ID == categoryid);
-                CurrentSalelistingCreate.SaleListingViewModel.ProductTypes = await _categoryService.GetProductTypesForCategory(categoryid);
             }
             return View("CreateSalelisting", CurrentSalelistingCreate.SaleListingViewModel);
 
@@ -82,7 +84,6 @@ namespace deprosa.Web.Controllers
                 CurrentSalelistingCreate.SaleListingViewModel.SaleListing = new SaleListingDTO();
             }
             return View("CreateSalelisting", CurrentSalelistingCreate.SaleListingViewModel);
-
         }
 
         #endregion

@@ -9,12 +9,11 @@
         <section>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    @if (Model.SelectedMainCategory == null)
-                    {
+                    
                         @Html.DisplayNameFor(e => e.MainCategories)
                         @Html.DropDownListFor(e => e.SelectedMainCategory, Model.MainCategoriesSelectList, "Vælg",
                       new { @onchange = "SelectMainCategory(this.value)" });
-                    }
+                    
                     @if (Model.SelectedMainCategory != null)
                     {
                         <div class="form-group">

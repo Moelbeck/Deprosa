@@ -269,12 +269,17 @@ namespace biz2biz.Service.Automapper
                     .ForMember(e => e.ID, o => o.MapFrom(s => s.ID))
                     .ForMember(e => e.Name, o => o.MapFrom(s => s.Name))
                     .ForMember(e => e.SubCategoryID, o => o.MapFrom(s => s.Category.ID))
+                    .ForMember(e => e.SubCategory, o => o.MapFrom(s => new SubCategoryDTO { ID = s.Category.ID, Name = s.Category.Name,
+                        MainCategory = new MainCategoryDTO { ID = s.Category.MainCategory.ID, Name = s.Category.MainCategory.Name}
+                    }))
+                    .ForMember(e => e.Types, o => o.MapFrom(s => s.Types))
                     .ForMember(e => e.Types, o => o.MapFrom(s => s.Types))
                                     .ForAllOtherMembers(e => e.Ignore());
 
                 m.CreateMap<ProductTypeDTO, ProductType>()
                     .ForMember(e => e.ID, o => o.MapFrom(s => s.ID))
                     .ForMember(e => e.Category, o => o.MapFrom(s => new SubCategory { ID = s.SubCategoryID}))
+
                     .ForMember(e => e.Types, o => o.MapFrom(s => s.Types))
 
                     .ForMember(e => e.Name, o => o.MapFrom(s => s.Name))

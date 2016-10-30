@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using deprosa.Service;
-
+using deprosa.Common;
 
 namespace deprosa.WebsiteService
 {
@@ -40,12 +40,14 @@ namespace deprosa.WebsiteService
             return categories;
         }
 
-        public async Task<List<MainCategoryDTO>> GetMainCategoriesBySearchString(string searchstring)
+        public async Task<CategoryStructureRequest> GetCategoryStructure()
         {
-            string uri = string.Format("bysearch/{0}", searchstring);
-            var categories = await client.GetResponseObject<MainCategoryDTO, List<MainCategoryDTO>>(uri, eHttpMethodType.GET, null);
+            string uri = string.Format("categorystructure");
+            var categories = await client.GetResponseObject<CategoryStructureRequest, CategoryStructureRequest>(uri, eHttpMethodType.GET, null);
             return categories;
         }
+
+
         public async Task<List<ProductTypeDTO>> GetProductTypesForCategory(int id)
         {
             string uri = string.Format("sub/{0}/producttypes", id);

@@ -13,6 +13,7 @@ namespace deprosa.Repository.DatabaseContext
         public BzaleDatabaseContext()
             : base("ConnectionString")
         {
+            Configuration.LazyLoadingEnabled = false;
             InitializeDatabase();
         }
 
