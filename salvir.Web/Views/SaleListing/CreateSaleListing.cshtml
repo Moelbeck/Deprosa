@@ -8,88 +8,129 @@
     <div class="col-md-8">
         <section>
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    
+                @using (Html.BeginForm("Create", "Salelisting", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="col-md-offset-2 col-md-10">
+
                         @Html.DisplayNameFor(e => e.MainCategories)
                         @Html.DropDownListFor(e => e.SelectedMainCategory, Model.MainCategoriesSelectList, "Vælg",
-                      new { @onchange = "SelectMainCategory(this.value)" });
-                    
-                    @if (Model.SelectedMainCategory != null)
-                    {
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                @Html.DisplayNameFor(e => e.SelectedMainCategory)
-                            </div>
-                        </div>
-                        @Html.DisplayNameFor(e => e.SubCategories)
-                        @Html.DropDownListFor(e => e.SelectedSubCategory, Model.SubCategoriesSelectList, "Vælg",
-                      new { @onchange = "SelectSubCategory(this.value)" });
-                    }
-                    @if (Model.SelectedSubCategory != null)
-                    {
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                @Html.DisplayNameFor(e => e.SelectedSubCategory)
-                            </div>
-                        </div>
-                        @Html.DisplayNameFor(e => e.ProductTypes)
-                        @Html.DropDownListFor(e => e.SelectedProductType, Model.ProductTypesSelectList, "Vælg",
-                      new { @onchange = "SelectProductType(this.value)" });
-                    }
+       new { @onchange = "SelectMainCategory(this.value)" });
 
-                    @if (Model.SelectedProductType != null)
-                    {
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
+                        @if (Model.SelectedMainCategory != null)
                         {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_dimension.cshtml", Model)
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    @Html.DisplayNameFor(e => e.SelectedMainCategory)
+                                </div>
+                            </div>
+                            @Html.DisplayNameFor(e => e.SubCategories)
+                            @Html.DropDownListFor(e => e.SelectedSubCategory, Model.SubCategoriesSelectList, "Vælg",
+           new { @onchange = "SelectSubCategory(this.value)" });
                         }
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.RAM))
+                        @if (Model.SelectedSubCategory != null)
                         {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_ram.cshtml", Model)
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    @Html.DisplayNameFor(e => e.SelectedSubCategory)
+                                </div>
+                            </div>
+                            @Html.DisplayNameFor(e => e.ProductTypes)
+                            @Html.DropDownListFor(e => e.SelectedProductType, Model.ProductTypesSelectList, "Vælg",
+           new { @onchange = "SelectProductType(this.value)" });
                         }
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
-                        {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_dimension.cshtml", Model)
-                        }
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Harddisk))
-                        {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_harddisk.cshtml", Model)
-                        }
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Length))
-                        {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_length.cshtml", Model)
-                        }
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Processor))
-                        {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_processor.cshtml", Model)
-                        }
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Screen))
-                        {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_screen.cshtml", Model)
-                        }
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Thickness))
-                        {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_thickness.cshtml", Model)
-                        }
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
-                        {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_dimension.cshtml", Model)
-                        }
-                        if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Weight))
-                        {
-                            @Html.Partial("~/Views/Shared/Partial/Salelisting/_weight.cshtml", Model)
-                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.PrivateCar))
-                            {
-                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_privatecar.cshtml", Model)
-                            }
-                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.CompanyCar))
-                            {
-                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_companycar.cshtml", Model)
 
+                        @if (Model.SelectedProductType != null)
+                        {
+                            <div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        @Html.DisplayNameFor(e => e.SaleListing.Title)
+                                    </div>
+                                    <div class="col-md-offset-2 col-md-10">
+                                        @Html.TextBoxFor(e => e.SaleListing.Title)
+                                    </div>
+                                </div>
+                            </div>
+
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_dimension.cshtml", Model)
                             }
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.RAM))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_ram.cshtml", Model)
+                            }
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_dimension.cshtml", Model)
+                            }
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Harddisk))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_harddisk.cshtml", Model)
+                            }
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Length))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_length.cshtml", Model)
+                            }
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Processor))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_processor.cshtml", Model)
+                            }
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Screen))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_screen.cshtml", Model)
+                            }
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Thickness))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_thickness.cshtml", Model)
+                            }
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_dimension.cshtml", Model)
+                            }
+                            if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Weight))
+                            {
+                                @Html.Partial("~/Views/Shared/Partial/Salelisting/_weight.cshtml", Model)
+                                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.PrivateCar))
+                                {
+                                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_privatecar.cshtml", Model)
+                                }
+                                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.CompanyCar))
+                                {
+                                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_companycar.cshtml", Model)
+
+                                }
+                            }
+                            <div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        @Html.DisplayNameFor(e => e.SaleListing.Description)
+                                    </div>
+                                    <div class="col-md-offset-2 col-md-10">
+                                        @Html.TextBoxFor(e => e.SaleListing.Description)
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        @Html.DisplayNameFor(e => e.SaleListing.Price)
+                                    </div>
+                                    <div class="col-md-offset-2 col-md-10">
+                                        @Html.TextBoxFor(e => e.SaleListing.Price)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" class="btn btn-default">Opret</button>
+                                </div>
+                            </div>
                         }
-                    }
-                </div>
+                    </div>
+                }
             </div>
         </section>
     </div>

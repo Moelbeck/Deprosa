@@ -1,4 +1,5 @@
-﻿using deprosa.Web.Model;
+﻿using deprosa.ViewModel;
+using deprosa.Web.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace deprosa.Web.Model
 {
-    public static class CurrentSalelistingCreate
+    public static class CurrentSalelisting
     {
         public static SaleListingCreateViewModel SaleListingViewModel
         {
@@ -24,6 +25,12 @@ namespace deprosa.Web.Model
             {
                 HttpContext.Current.Session["salelistingcreateviewmodel"] = value;
             }
+        }
+        public static void SetSalelistingToNew()
+        {
+            SaleListingViewModel.CurrentSubCategories = SaleListingViewModel.SubCategories;
+            SaleListingViewModel.CurrentProductTypes = SaleListingViewModel.ProductTypes;
+            SaleListingViewModel.SaleListing = new SaleListingDTO();
         }
     }
 }

@@ -10,8 +10,8 @@ namespace deprosa.Web.Model
 {
     public class SaleListingCreateViewModel
     {
-        [Display(Name = "Kategorier:")]
 
+        [Display(Name = "Kategorier:")]
         public List<MainCategoryDTO> MainCategories { get; set; }
     
         [Display(Name="Valgte kategori")]
@@ -20,12 +20,14 @@ namespace deprosa.Web.Model
         {
             get
             {
-                return new SelectList(MainCategories, "ID", "Name");
+                var selectedmainid = SelectedMainCategory != null ? SelectedMainCategory.ID : 0;
+                return new SelectList(MainCategories, "ID", "Name",MainCategories.First(e=>e.ID == selectedmainid));
             }
         }
 
-        [Display(Name = "Under kategorier:")]
         public List<SubCategoryDTO> SubCategories { get; set; }
+        [Display(Name = "Under kategorier:")]
+        public List<SubCategoryDTO> CurrentSubCategories { get; set; }
 
         [Display(Name = "Valgte under kategori")]
         public SubCategoryDTO SelectedSubCategory { get; set; }
@@ -33,12 +35,13 @@ namespace deprosa.Web.Model
         {
             get
             {
-                return new SelectList(SubCategories, "ID", "Name");
+                return new SelectList(CurrentSubCategories, "ID", "Name");
             }
         }
 
-        [Display(Name = "Type:")]
         public List<ProductTypeDTO> ProductTypes { get; set; }
+        [Display(Name = "Type:")]
+        public List<ProductTypeDTO> CurrentProductTypes { get; set; }
 
         [Display(Name = "Valgte type")]
         public ProductTypeDTO SelectedProductType { get; set; }
@@ -46,7 +49,7 @@ namespace deprosa.Web.Model
         {
             get
             {
-                return new SelectList(ProductTypes, "ID", "Name");
+                return new SelectList(CurrentProductTypes, "ID", "Name");
             }
         }
 
