@@ -55,6 +55,10 @@
     <Compile Include="Migrations\201610282127569_firstmigrate.Designer.cs">
       <DependentUpon>201610282127569_firstmigrate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611011107160_conditionOnSalelistings.cs" />
+    <Compile Include="Migrations\201611011107160_conditionOnSalelistings.Designer.cs">
+      <DependentUpon>201611011107160_conditionOnSalelistings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -90,6 +94,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610282127569_firstmigrate.resx">
       <DependentUpon>201610282127569_firstmigrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611011107160_conditionOnSalelistings.resx">
+      <DependentUpon>201611011107160_conditionOnSalelistings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

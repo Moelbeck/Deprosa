@@ -5,19 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Deprosa</title>
 
+    @Styles.Render("~/Styles/base")
 
-    <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+
+    @Scripts.Render("~/Scripts/jquery")
+    @Scripts.Render("~/Scripts/jquery-ui")
+    @Scripts.Render("~/Scripts/jqueryUploader")
+    @Scripts.Render("~/Scripts/jqueryUploaderIframe")
+    @Scripts.Render("~/Scripts/bootstrap")
     @RenderSection("Styles", required: false)
 </head>
 <body>

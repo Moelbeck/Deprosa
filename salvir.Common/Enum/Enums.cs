@@ -157,4 +157,18 @@ namespace deprosa.Common
         /// Slovakia 
         SK,
     }
+
+    public enum eCondition
+    {
+        [Display(Name = "Ukendt")]
+        None = 0,
+        [Display(Name = "Ny")]
+        New = 1,
+        [Display(Name = "Som ny")]
+        AsNew = 2,
+        [Display(Name = "Brugt")]
+        Used = 4,
+        [Display(Name = "Fungere ikke")]
+        NotFunctioning = 8
+    }
 }

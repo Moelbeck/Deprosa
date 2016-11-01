@@ -15,13 +15,13 @@ namespace deprosa.Web.Model
         public List<MainCategoryDTO> MainCategories { get; set; }
     
         [Display(Name="Valgte kategori")]
-        public MainCategoryDTO SelectedMainCategory { get; set; }
+        public int SelectedMainCategoryId { get; set; }
         public SelectList MainCategoriesSelectList
         {
             get
             {
-                var selectedmainid = SelectedMainCategory != null ? SelectedMainCategory.ID : 0;
-                return new SelectList(MainCategories, "ID", "Name",MainCategories.First(e=>e.ID == selectedmainid));
+                var selectedmainid = SelectedMainCategoryId != null ? SelectedMainCategoryId : MainCategories.First().ID;
+                return new SelectList(MainCategories, "ID", "Name",selectedmainid);
             }
         }
 
@@ -30,7 +30,7 @@ namespace deprosa.Web.Model
         public List<SubCategoryDTO> CurrentSubCategories { get; set; }
 
         [Display(Name = "Valgte under kategori")]
-        public SubCategoryDTO SelectedSubCategory { get; set; }
+        public int SelectedSubCategoryId { get; set; }
         public SelectList SubCategoriesSelectList
         {
             get
@@ -45,6 +45,7 @@ namespace deprosa.Web.Model
 
         [Display(Name = "Valgte type")]
         public ProductTypeDTO SelectedProductType { get; set; }
+        public int SelectedProductTypeId { get; set; }
         public SelectList ProductTypesSelectList
         {
             get

@@ -28,7 +28,7 @@ namespace deprosa.Model
         public DateTime ExpirationDate { get; set; }
         
         public virtual Subscription Subscription { get; set; }
-
+        public eCondition Condition { get; set; }
         #endregion
 
         #region Dimensions
