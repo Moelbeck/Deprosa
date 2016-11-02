@@ -322,11 +322,12 @@ namespace deprosa.WebService
 
         private Account GetAcc(int id)
         {
-            return _accountRepository.GetSingle(e => e.ID == id && e.Deleted == null);
+            Account account = _accountRepository.Get(e => e.ID == id && e.Deleted == null).Single();
+            return account;
         }
         private Account GetAcc(string email)
         {
-            return _accountRepository.GetSingle(e => e.Email.ToLower() == email.ToLower() && e.Deleted == null);
+            return _accountRepository.Get(e => e.Email.Equals(email,StringComparison.CurrentCultureIgnoreCase) && e.Deleted == null).Single();
         }
     }
 }

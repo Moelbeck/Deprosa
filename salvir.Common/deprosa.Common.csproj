@@ -47,6 +47,7 @@
     <Compile Include="DTO\AccountDTOs\AccountUpdateDTO.cs" />
     <Compile Include="DTO\AccountDTOs\AccountUpdatePasswordDTO.cs" />
     <Compile Include="DTO\MainCategoryDTO.cs" />
+    <Compile Include="DTO\SaleListingDTOs\SaleListingCreateDTO.cs" />
     <Compile Include="DTO\SubCategoryDTO.cs" />
     <Compile Include="DTO\CommentDTO.cs" />
     <Compile Include="DTO\CompanyDTO.cs" />

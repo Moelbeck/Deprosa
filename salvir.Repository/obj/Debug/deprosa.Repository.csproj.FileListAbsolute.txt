@@ -35,3 +35,4 @@ C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.firstmigrate.r
 C:\Work\Deprosa\salvir.Repository\obj\Debug\deprosa.Repository.csproj.GenerateResource.Cache
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.firstmigrate.resources
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.conditionOnSalelistings.resources
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.imageNameAdded.resources

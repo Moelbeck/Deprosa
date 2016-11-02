@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using deprosa.API.Authenticator;
 
 namespace WebService.Api.Controllers
 {
@@ -25,9 +26,9 @@ namespace WebService.Api.Controllers
         /// Create new sale listing - Post
         /// </summary>
         #region Salelisting
-        [Authorize]
+        [EnsureCanSellAuthorize]
         [HttpPost,Route("create")]
-        public IHttpActionResult CreateNewSaleListing([FromBody]SaleListingDTO model)
+        public IHttpActionResult CreateNewSaleListing([FromBody]SaleListingCreateDTO model)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +62,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         ///Delete sale listing - Delete 
         /// </summary>
-        [Authorize]
+        [EnsureCanSellAuthorize]
         [HttpDelete,Route("{saleID}/delete")]
         public IHttpActionResult DeleteSaleListingByID(int saleID)
         {
@@ -75,7 +76,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Update sale listing - Put
         /// </summary>
-        [Authorize]
+        [EnsureCanSellAuthorize]
         [HttpPut,Route("update")]
         public IHttpActionResult UpdateSaleListing([FromBody]SaleListingDTO viewmodel)
         {
@@ -149,7 +150,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Add image to sale listing - Post
         /// </summary>
-        [Authorize]
+        [EnsureCanSellAuthorize]
         [HttpPost,Route("addImage")]
         public IHttpActionResult AddImageSaleListing([FromBody]ImageUploadRequest viewmodel)
         {
@@ -167,7 +168,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Remove image from sale listing - Delete
         /// </summary>
-        [Authorize]
+        [EnsureCanSellAuthorize]
         [HttpDelete,Route("{salelistingid}/removeimage/{id}")]
         public IHttpActionResult RemoveImageSaleListing(int salelistingid, int imageid)
         {
@@ -225,7 +226,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Add or update a subscription for a sale listing - Post
         /// </summary>
-        [Authorize]
+        [EnsureCanSellAuthorize]
         [HttpPost,Route("subscription/{sub}")]
         public IHttpActionResult AddOrUpdateSubscription(eSubscription sub, [FromBody] SaleListingDTO salelistingviewmodel)
         {
@@ -246,7 +247,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Add a comment to a sale listing- Post
         /// </summary>
-        [Authorize]
+        [EnsureCanSellAuthorize]
         [HttpPost,Route("{salelistingid}/addcomment")]
         public IHttpActionResult AddComment(int salelistingid, [FromBody]CommentDTO commentviewmodel)
         {
@@ -264,7 +265,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Add answer for a comment - Post
         /// </summary>
-        [Authorize]
+        [EnsureCanSellAuthorize]
         [HttpPost,Route("{salelistingid}/comments/{commentid}/AddAnswer")]
         public IHttpActionResult AddAnswerForComment(int salelistingid, int commentid, [FromBody] CommentDTO answerviewmodel)
         {
@@ -282,7 +283,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Deletes a comment - Delete
         /// </summary>
-        [Authorize]
+        [EnsureCanSellAuthorize]
         [HttpDelete,Route("removeComment/{id}")]
         public IHttpActionResult RemoveComment(int id, [FromBody]SaleListingDTO saleviewmodel)
         {

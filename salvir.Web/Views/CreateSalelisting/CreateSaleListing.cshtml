@@ -3,7 +3,7 @@
 }
 <h2>@ViewData["Title"].</h2>
 <h3>@ViewData["Message"]</h3>
-@using System.Web.UI.WebControls
+
 @model deprosa.Web.Model.SaleListingCreateViewModel
 <div class="row" id="updatethis">
     <div class="col-md-8">
@@ -69,10 +69,6 @@
                 {
                     @Html.Partial("~/Views/Shared/Partial/Salelisting/_ram.cshtml", Model)
                 }
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
-                {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_dimension.cshtml", Model)
-                }
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Harddisk))
                 {
                     @Html.Partial("~/Views/Shared/Partial/Salelisting/_harddisk.cshtml", Model)
@@ -92,10 +88,6 @@
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Thickness))
                 {
                     @Html.Partial("~/Views/Shared/Partial/Salelisting/_thickness.cshtml", Model)
-                }
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
-                {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_dimension.cshtml", Model)
                 }
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Weight))
                 {
@@ -120,58 +112,61 @@
                         </div>
                     </div>
                 </div>
-                            <div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        @Html.DisplayNameFor(e => e.SaleListing.Description)
-                                    </div>
-                                    <div class="col-md-offset-2 col-md-10">
-                                        @Html.TextAreaFor(e => e.SaleListing.Description)
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        @Html.DisplayNameFor(e => e.SaleListing.Price)
-                                    </div>
-                                    <div class="col-md-offset-2 col-md-10">
-                                        @Html.TextBoxFor(e => e.SaleListing.Price)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <button type="submit" ac class="btn btn-default">Opret</button>
-                                </div>
-                            </div>
+                <div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.DisplayNameFor(e => e.SaleListing.Description)
+                        </div>
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.TextAreaFor(e => e.SaleListing.Description)
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.DisplayNameFor(e => e.SaleListing.Price)
+                        </div>
+                        <div class="col-md-offset-2 col-md-10">
+                            @Html.TextBoxFor(e => e.SaleListing.Price)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" ac class="btn btn-default">Opret</button>
+                    </div>
+                </div>
             }
         </div>
     }
-    @using (Html.BeginForm("UploadImages", "CreateSalelisting", FormMethod.Post))
-    {
-        <div class="span7">
-            <div class="well">
-                <i class="icon-plus"></i><span>&nbsp;&nbsp;Add files...</span>
-                <input type="file" id="fileupload" name="fileupload" accept="image/*" multiple="multiple">
-                <button id="btnUploadAll" class="btn btn-success pull-right" type="button">
-                    Upload All
-                </button>
-                <div class="clearfix">
-                </div>
-                <div class="progress">
-                    <div class="bar" id="overallbar" style="width: 0%">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="span7">
-            <div class="well hide" id="filelistholder">
-            </div>
-        </div>
-        <div class="span7">
-        </div>
-    }
+@if (Model.SelectedProductTypeId > 0)
+{
+    using (Html.BeginForm("UploadImages", "CreateSalelisting", FormMethod.Post))
+     {
+         <div class="span7">
+             <div class="well">
+                 <i class="icon-plus"></i><span>&nbsp;&nbsp;Add files...</span>
+                 <input type="file" id="fileupload" name="fileupload" accept="image/*" multiple="multiple">
+                 <button id="btnUploadAll" class="btn btn-success pull-right" type="button">
+                     Upload All
+                 </button>
+                 <div class="clearfix">
+                 </div>
+                 <div class="progress">
+                     <div class="bar" id="overallbar" style="width: 0%">
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <div class="span7">
+             <div class="well hide" id="filelistholder">
+             </div>
+         </div>
+         <div class="span7">
+         </div>
+     }
+}
             </div>
         </section>
     </div>

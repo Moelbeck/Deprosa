@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using deprosa.Repository.DatabaseContext;
 using deprosa.Repository.Abstract;
@@ -21,7 +22,7 @@ namespace deprosa.Repository
 
        public Advertiser GetAdvertiser(string name)
        {
-           return GetSingle(e => e.Name.ToLower() == name.ToLower() && e.Deleted == null);
+           return GetSingle(e => e.Name.Equals(name,StringComparison.CurrentCultureIgnoreCase) && e.Deleted == null);
 
        }
 

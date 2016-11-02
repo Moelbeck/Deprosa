@@ -8,11 +8,9 @@ namespace deprosa.Model
     /// </summary>
     public class Image : Entity
     {
-
+        public string Name { get; set; }
         public string ImageURL { get; set; }
-
         public byte[] ImageData { get; set; }
-
         public eImageType Type { get; set; }
        
     }

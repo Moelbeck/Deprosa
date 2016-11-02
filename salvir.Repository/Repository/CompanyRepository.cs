@@ -46,7 +46,7 @@ namespace deprosa.Repository
 
         public bool IsEmailInDatabase(string email)
         {
-            return GetSingle(e => e.Email.ToLower().Trim() == email.ToLower().Trim())!=null;
+            return GetSingle(e => e.Email.Equals(email,StringComparison.CurrentCultureIgnoreCase))!=null;
         }
     }
 }

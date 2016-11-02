@@ -171,8 +171,8 @@ namespace Repository.Migrations
                     new ProductType { Name = "Andre computere", Types = (eSalelistingTypes.Processor | eSalelistingTypes.RAM | eSalelistingTypes.Harddisk | eSalelistingTypes.Screen), Category = computerSub },
                 #endregion
                 #region Computerdele typer
-                    new ProductType { Name = "HHD", Types = (eSalelistingTypes.Harddisk | eSalelistingTypes.Screen), Category = computerdeleSub },
-                    new ProductType { Name = "SSD", Types = (eSalelistingTypes.Harddisk | eSalelistingTypes.Screen), Category = computerdeleSub },
+                    new ProductType { Name = "HHD", Types = (eSalelistingTypes.Harddisk), Category = computerdeleSub },
+                    new ProductType { Name = "SSD", Types = (eSalelistingTypes.Harddisk), Category = computerdeleSub },
                     new ProductType { Name = "Grafikkort", Types = (eSalelistingTypes.RAM), Category = computerdeleSub },
                     new ProductType { Name = "Mus", Types = (eSalelistingTypes.None), Category = computerdeleSub },
                     new ProductType { Name = "Tastatur", Types = (eSalelistingTypes.None), Category = computerdeleSub },

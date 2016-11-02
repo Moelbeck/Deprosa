@@ -30,7 +30,7 @@ namespace deprosa.Web.Model
         {
             SaleListingViewModel.CurrentSubCategories = SaleListingViewModel.SubCategories;
             SaleListingViewModel.CurrentProductTypes = SaleListingViewModel.ProductTypes;
-            SaleListingViewModel.SaleListing = new SaleListingDTO();
+            SaleListingViewModel.SaleListing = new SaleListingCreateDTO();
         }
     }
 }

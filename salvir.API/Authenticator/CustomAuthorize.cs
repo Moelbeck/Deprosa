@@ -18,9 +18,7 @@ namespace deprosa.API.Authenticator
         {
             if (Thread.CurrentPrincipal.Identity.IsAuthenticated)
             {
-                //actionContext.Response = new HttpResponseMessage(HttpStatusCode.Accepted);
-                //FormsAuthentication.SetAuthCookie(Thread.CurrentPrincipal.Identity.Name,false);
-                //actionContext.RequestContext.Principal = Thread.CurrentPrincipal;
+
             }
             else
             {
@@ -34,7 +32,13 @@ namespace deprosa.API.Authenticator
     {
         protected override void HandleUnauthorizedRequest(HttpActionContext actionContext)
         {
-
+            if (Thread.CurrentPrincipal.Identity.IsAuthenticated && Thread.CurrentPrincipal.IsInRole("Seller"))
+            {
+            }
+            else
+            {
+                actionContext.Response = new HttpResponseMessage(HttpStatusCode.Forbidden);
+            }
         }
     }
 }

@@ -44,14 +44,14 @@ namespace deprosa.WebService
         }
 
 
-        public bool CreateNewSaleListing(SaleListingDTO model)
+        public bool CreateNewSaleListing(SaleListingCreateDTO model)
         {
             try
             {
                 Account acc = _accountRepository.GetSingle(e=>e.ID == model.CreatedBy.ID);
                 if (acc.Company !=null && !string.IsNullOrEmpty(acc.Company.VAT))
                 {
-                    var sale = Mapper.Map<SaleListingDTO, SaleListing>(model);
+                    var sale = Mapper.Map<SaleListingCreateDTO, SaleListing>(model);
                     var product = _productRepository.GetSingle(e=> e.ID == model.ProductType.ID);
                     var salelisting = _createAndUpdateService.CreateSaleListingObject(sale, acc, product);
                     salelisting = _saleListingRepository.Add(salelisting);

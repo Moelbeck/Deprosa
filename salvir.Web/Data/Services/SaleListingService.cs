@@ -71,10 +71,10 @@ namespace deprosa.WebsiteService
 
         #endregion
         #region POST
-        public async Task<SaleListingDTO> CreateNewSaleListing(SaleListingDTO viewmodel)
+        public async Task<SaleListingDTO> CreateNewSaleListing(SaleListingCreateDTO viewmodel)
         {
             string uri = string.Format("create");
-            var salelistings = await client.GetResponseObject<SaleListingDTO, SaleListingDTO>(uri, eHttpMethodType.POST, viewmodel);
+            var salelistings = await client.GetResponseObject<SaleListingCreateDTO, SaleListingDTO>(uri, eHttpMethodType.POST, viewmodel);
             return salelistings;
         }
 

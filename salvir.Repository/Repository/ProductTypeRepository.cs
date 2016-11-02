@@ -31,7 +31,7 @@ namespace deprosa.Repository
 
         public bool IsProductInDatabase(ProductType newproduct)
         {
-            return GetSingle(e => e.Name.ToLower() == newproduct.Name.ToLower())!=null;
+            return GetSingle(e => e.Name.Equals(newproduct.Name, StringComparison.CurrentCultureIgnoreCase)) != null;
         }
 
 

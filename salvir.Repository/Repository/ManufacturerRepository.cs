@@ -23,7 +23,7 @@ namespace deprosa.Repository
 
         public Manufacturer GetManufacturer(string name)
         {
-            return GetSingle(e => e.Name.ToLower() == name.ToLower() && e.Deleted == null);
+            return GetSingle(e => e.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase) && e.Deleted == null);
         }
 
         public IQueryable<Manufacturer> GetAllManufacturers(int page, int size)
@@ -52,9 +52,9 @@ namespace deprosa.Repository
             return GetSingle(e => e.ID == updated.ID);
         }
 
-        public bool IsManufacturerInDatabase(Manufacturer m)
+        public bool IsManufacturerInDatabase(Manufacturer manu)
         {
-            return GetSingle(e => e.Name.ToLower() == m.Name.ToLower())!=null;
+            return GetSingle(e => e.Name.Equals(manu.Name, StringComparison.CurrentCultureIgnoreCase))!=null;
         }
         #endregion
         

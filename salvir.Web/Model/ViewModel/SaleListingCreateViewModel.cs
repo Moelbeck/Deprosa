@@ -54,6 +54,6 @@ namespace deprosa.Web.Model
             }
         }
 
-        public SaleListingDTO SaleListing { get; set; }
+        public SaleListingCreateDTO SaleListing { get; set; }
     }
 }

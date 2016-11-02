@@ -18,58 +18,34 @@ namespace deprosa.WebApi.Authenticator
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage
             request, CancellationToken cancellationToken)
         {
-            try
+            HttpResponseMessage response;
+
+            if (request.Headers.Authorization != null &&
+                request.Headers.Authorization.Scheme == "Basic")
             {
-
-
-                HttpResponseMessage response;
-
-                if (request.Headers.Authorization != null &&
-                    request.Headers.Authorization.Scheme == "Basic")
-                {
-                    // Extract the username and password from the HTTP Authorization header 
-                    var encodedUserPass = request.Headers.Authorization.Parameter.Trim();
-                    var userPass =
-        Encoding.Default.GetString(Convert.FromBase64String(encodedUserPass));
-                    var parts = userPass.Split(":".ToCharArray());
-                    var username = parts[0];
-                    var id = parts[1];
-                    AuthenticateUser(username);
-                }
-
-                response = await base.SendAsync(request, cancellationToken);
-
-                // Add the required authentication type to the response 
-                if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                {
-                    response.Headers.Add("WWW-Authenticate", "Basic");
-                }
-
-                return response;
+                // Extract the username and password from the HTTP Authorization header 
+                var encodedUserPass = request.Headers.Authorization.Parameter.Trim();
+                var userPass =
+    Encoding.Default.GetString(Convert.FromBase64String(encodedUserPass));
+                var parts = userPass.Split(":".ToCharArray());
+                var username = parts[0];
+                var id = parts[1];
+                AuthenticateUser(username);
             }
-            catch (Exception ex)
+
+            response = await base.SendAsync(request, cancellationToken);
+
+            // Add the required authentication type to the response 
+            if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
-
-                throw;
+                response.Headers.Add("WWW-Authenticate", "Basic");
             }
+
+            return response;
         }
 
-        private void AuthenticateUser(string username, string password)
-        {
-            AccountWebService _accountService = new AccountWebService();
-            if (!string.IsNullOrWhiteSpace(username)) { 
-            if (_accountService.IsEmailInDatabase(username))
-            {
-                IIdentity identity = new GenericIdentity(username);
-                IPrincipal principal = new GenericPrincipal(identity, new string[] {});
-                Thread.CurrentPrincipal = principal;
-            }
-            }
-        }
         private void AuthenticateUser(string username)
         {
-            var cookieuser =FormsAuthentication.GetAuthCookie(username, false);
-            
             AccountWebService _accountService = new AccountWebService();
             if (!string.IsNullOrWhiteSpace(username))
             {
@@ -78,7 +54,7 @@ namespace deprosa.WebApi.Authenticator
                 if (account != null)
                 {
                     IIdentity identity = new GenericIdentity(username);
-                    if (account.Company != null)
+                    if (account.CompanyID >0)
                     {
                         principal = new GenericPrincipal(identity, new string[] { "Seller" });
                     }
