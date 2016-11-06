@@ -90,10 +90,16 @@ namespace deprosa.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(SaleListingCreateViewModel model)
         {
-            var salelisting = model.SaleListing;
-            salelisting.Images = CurrentSalelisting.SaleListingViewModel.SaleListing.Images;
-            await _salelistingService.CreateNewSaleListing(salelisting);
+            model.SaleListing.ProductType = CurrentSalelisting.SaleListingViewModel.SelectedProductType;
+            ModelState.Remove("SaleListing.ProductType");
+            if (ModelState.IsValid)
+            {
+                var salelisting = model.SaleListing;
+                salelisting.Images = CurrentSalelisting.SaleListingViewModel.SaleListing.Images;
+                await _salelistingService.CreateNewSaleListing(salelisting);
+            }
             return View("CreateSalelisting", CurrentSalelisting.SaleListingViewModel);
+
         }
         [HttpPost]
         public HttpResponseMessage UploadImages()

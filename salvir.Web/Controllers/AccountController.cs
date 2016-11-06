@@ -44,9 +44,6 @@ namespace Web.Controllers
                 var account =  await _accountservice.Login(model);
                 if (account != null)
                 {
-                    ApplicationIdentity appId = new ApplicationIdentity(account.Email);
-
-
                     CurrentUser.InstantiateCurrentUser(account);
                     return RedirectToAction("Index", "Home");
                 }

@@ -25,6 +25,8 @@ namespace deprosa.ViewModel
 
         [Display(Name = "Fabrikant")]
         public virtual ManufacturerDTO Manufacturer { get; set; }
+
+        [Required]
         [Display(Name = "Produkt type")]
         public virtual ProductTypeDTO ProductType { get; set; }
 

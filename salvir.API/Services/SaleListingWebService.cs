@@ -10,6 +10,7 @@ using deprosa.Service;
 using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace deprosa.WebService
@@ -44,17 +45,19 @@ namespace deprosa.WebService
         }
 
 
-        public bool CreateNewSaleListing(SaleListingCreateDTO model)
+        public bool CreateNewSaleListing(SaleListingCreateDTO model, string username)
         {
             try
             {
-                Account acc = _accountRepository.GetSingle(e=>e.ID == model.CreatedBy.ID);
+                Account acc = _accountRepository.Get(e=>e.Email.Equals(username,StringComparison.CurrentCultureIgnoreCase) && e.Deleted == null).Include(e=>e.Company).Single();
                 if (acc.Company !=null && !string.IsNullOrEmpty(acc.Company.VAT))
                 {
                     var sale = Mapper.Map<SaleListingCreateDTO, SaleListing>(model);
+                    sale.CreatedBy = acc;
+                    sale.Owner = acc.Company;
                     var product = _productRepository.GetSingle(e=> e.ID == model.ProductType.ID);
                     var salelisting = _createAndUpdateService.CreateSaleListingObject(sale, acc, product);
-                    salelisting = _saleListingRepository.Add(salelisting);
+                    _saleListingRepository.Add(salelisting);
                     return true;
                 }
                 return false;

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using deprosa.API.Authenticator;
 
@@ -32,7 +33,8 @@ namespace WebService.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_salelistingService.CreateNewSaleListing(model))
+                var accountname = Thread.CurrentPrincipal.Identity.Name;
+                if (_salelistingService.CreateNewSaleListing(model, accountname))
                 {
                     return Ok();
                 }

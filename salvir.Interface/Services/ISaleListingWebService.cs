@@ -8,7 +8,7 @@ namespace deprosa.Interfaces
     public interface ISaleListingWebService
     {
  
-        bool CreateNewSaleListing(SaleListingCreateDTO model);
+        bool CreateNewSaleListing(SaleListingCreateDTO model, string username);
 
  
         SaleListingDTO GetSaleListingByID(int id);
