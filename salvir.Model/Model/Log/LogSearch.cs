@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace deprosa.Model.Log
 {
-    public class LogUserSearch: BaseLog
+    public class LogSearch: BaseLog
     {
         public string SearchString { get; set; }
     }

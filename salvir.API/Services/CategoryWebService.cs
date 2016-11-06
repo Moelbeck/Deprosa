@@ -7,6 +7,7 @@ using deprosa.Repository.DatabaseContext;
 using deprosa.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace deprosa.WebService
@@ -47,7 +48,7 @@ namespace deprosa.WebService
         {
             try
             {
-                var subcategories = _subcategory.Get(e=>e.MainCategory.ID == id && e.Deleted == null).ToList();
+                var subcategories = _subcategory.Get(e=>e.MainCategory.ID == id && e.Deleted == null).Include(e=> e.MainCategory).ToList();
                 return subcategories.Select(Mapper.Map<SubCategory, SubCategoryDTO>).ToList();
             }
             catch (Exception ex)

@@ -36,3 +36,5 @@ C:\Work\Deprosa\salvir.Repository\obj\Debug\deprosa.Repository.csproj.GenerateRe
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.firstmigrate.resources
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.conditionOnSalelistings.resources
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.imageNameAdded.resources
+C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.conditionOnSalelistings.resources
+C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.imageNameAdded.resources

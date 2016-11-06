@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace deprosa.Model.Log
 {
-    public class LogUserLogin : BaseLog
+    public class LogLogin : BaseLog
     {
 
         public eLoginType Type { get; set; }

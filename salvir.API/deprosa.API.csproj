@@ -175,8 +175,8 @@
     <Compile Include="Services\RatingWebService.cs" />
     <Compile Include="Services\SaleListingWebService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="VATChecker\checkVatService.cs" />
-    <Compile Include="VATChecker\VisVatCheck.cs" />
+    <Compile Include="Services\VATChecker\checkVatService.cs" />
+    <Compile Include="Services\VATChecker\VisVatCheck.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\salvir.Common\deprosa.Common.csproj">

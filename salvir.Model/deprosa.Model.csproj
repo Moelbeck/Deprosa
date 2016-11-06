@@ -53,10 +53,10 @@
     <Compile Include="Model\CommentAnswer.cs" />
     <Compile Include="Model\Company.cs" />
     <Compile Include="Model\Image.cs" />
-    <Compile Include="Model\Log\LogUserCategory.cs" />
-    <Compile Include="Model\Log\LogUserLogin.cs" />
-    <Compile Include="Model\Log\LogUserSaleListing.cs" />
-    <Compile Include="Model\Log\LogUserSearch.cs" />
+    <Compile Include="Model\Log\LogCategory.cs" />
+    <Compile Include="Model\Log\LogLogin.cs" />
+    <Compile Include="Model\Log\LogSaleListing.cs" />
+    <Compile Include="Model\Log\LogSearch.cs" />
     <Compile Include="Model\MainCategory.cs" />
     <Compile Include="Model\Manufacturer.cs" />
     <Compile Include="Model\ProductType.cs" />

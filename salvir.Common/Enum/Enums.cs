@@ -66,11 +66,9 @@ namespace deprosa.Common
     public enum eLogSaleListingType
     {
         None =0,
-        Created =1,
-        Update =2,
-        Deleted=4,
-        Search=8,
-        Comment = 16
+        Update =1,
+        Deleted=2,
+        Search=4,
     }
 
     public enum eLoginType

@@ -1,6 +1,7 @@
 ﻿
 using deprosa.Model;
 using deprosa.Model.Base;
+using deprosa.Model.Log;
 using Repository.Migrations;
 using System.Data.Entity;
 //using Repository.Migrations;
@@ -30,7 +31,10 @@ namespace deprosa.Repository.DatabaseContext
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<SaleListing> SaleListings { get; set; }
-        public DbSet<BaseLog> Log { get; set; }
+        public DbSet<LogCategory> CategoryLog { get; set; }
+        public DbSet<LogLogin> LoginLog { get; set; }
+        public DbSet<LogSaleListing> SalelistingLog { get; set; }
+        public DbSet<LogSearch> SearchLog { get; set; }
 
         private void InitializeDatabase()
         {
