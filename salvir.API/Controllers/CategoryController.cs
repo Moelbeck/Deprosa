@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using deprosa.WebApi.Services;
 using deprosa.Common;
+using deprosa.service;
 
 namespace WebService.Api.Controllers
 {
@@ -17,10 +19,12 @@ namespace WebService.Api.Controllers
     {
         private readonly CategoryWebService _categoryService;
         private readonly ProductTypeWebService _productService;
+        private readonly LogService _log;
         public CategoryController()
         {
             _categoryService = new CategoryWebService();
             _productService = new ProductTypeWebService();
+            _log = new LogService();
         }
 
         /// <summary>
@@ -47,6 +51,11 @@ namespace WebService.Api.Controllers
             var category = _categoryService.GetMainCategory(id);
             if (category != null)
             {
+                int userid;
+                if (int.TryParse(Thread.CurrentPrincipal.Identity.Name, out userid) && userid > 0)
+                {
+                    _log.LogCategory(userid,id,0);
+                }
                 return Ok(category);
             }
             return NotFound();
@@ -94,46 +103,6 @@ namespace WebService.Api.Controllers
                 return BadRequest();
             }
         }
-        /// <summary>
-        /// Gets main categories by search string
-        /// </summary>
-        //[HttpGet, Route("bysearch/{searchString}")]       
-        //public IHttpActionResult GetMainCategoriesBySearchString(string searchString)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var bysearch = _categoryService.GetMainCategoriesBySearchString(searchString);
-        //        if (bysearch != null)
-        //        {
-        //            return Ok(bysearch);
-        //        }
-
-        //        return NotFound();
-        //    }
-        //    return BadRequest(ModelState);
-        //}
-
-        ///// <summary>
-        ///// Creates main category - Post
-        ///// </summary>
-        //[Authorize]
-        //[HttpPost, Route("create")]
-        //public IHttpActionResult CreateMainCategory([FromBody]CategoryDTO viewmodel)
-        //{
-        //    _categoryService.CreateMainCategory(viewmodel);
-        //    return Ok(true);
-        //}
-
-        ///// <summary>
-        ///// Creates sub categories - Post
-        ///// </summary>
-        //[Authorize]
-        //[HttpPost, Route("{main}/createsub")]
-        //public IHttpActionResult CreateSubCategory(int main, [FromBody]CategoryDTO viewmodel)
-        //{
-        //    _categoryService.CreateSubCategory(main, viewmodel);
-        //    return Ok(true);
-        //}
 
         #region ProductTypes
         /// <summary>

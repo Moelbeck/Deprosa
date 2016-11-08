@@ -3,6 +3,7 @@ using deprosa.ViewModel;
 using deprosa.WebService;
 using System.Web.Http;
 using deprosa.API.Authenticator;
+using deprosa.service;
 
 namespace WebService.Api.Controllers
 {
@@ -11,10 +12,11 @@ namespace WebService.Api.Controllers
     public class AccountController : ApiController
     {
         private AccountWebService _accountService;
-
+        private LogService _log;
         public AccountController()
         {
             _accountService = new AccountWebService();
+            _log = new LogService();
         }
         /// <summary>
         /// Login for an existing account - Post
@@ -27,6 +29,7 @@ namespace WebService.Api.Controllers
                 var login = _accountService.Login(accountlogin);
                 if (login != null)
                 {
+                    _log.LogLogin(login.ID, eLoginType.Login);
                     return Ok(login);
                 }
                 else
@@ -41,9 +44,9 @@ namespace WebService.Api.Controllers
         /// Logout, mostly for logging reasons - Post
         /// </summary>
         [HttpPost, Route("logout")]
-        public IHttpActionResult Logout(string email)
+        public IHttpActionResult Logout(int userid)
         {
-            _accountService.Logout(email);
+            _log.LogLogin(userid, eLoginType.Logout);
             return Ok();
         }
 
@@ -58,6 +61,7 @@ namespace WebService.Api.Controllers
                 var acc = _accountService.CreateNewAccount(newaccount);
                 if (acc != null)
                 {
+                    _log.LogLogin(acc.ID, eLoginType.Created);
                     return Ok(acc);
                 }
                 else
@@ -100,6 +104,7 @@ namespace WebService.Api.Controllers
                 var company = _accountService.AddCompanyToAccount(currentuserId, newcompany);
                 if (company != null)
                 {
+                    _log.LogLogin(currentuserId, eLoginType.Updated);
                     return Ok(company);
                 }
                 else
@@ -174,6 +179,7 @@ namespace WebService.Api.Controllers
                 var updated = _accountService.UpdateAccountInformation(viewmodel);
                 if (updated != null)
                 {
+                    _log.LogLogin(updated.ID, eLoginType.Updated);
                     return Ok(updated);
                 }
                 else
@@ -196,6 +202,7 @@ namespace WebService.Api.Controllers
                 var updated = _accountService.UpdateCompanyInformation(viewmodel.AccountID, viewmodel.Company);
                 if (updated != null)
                 {
+                    _log.LogLogin(viewmodel.AccountID, eLoginType.Updated);
                     return Ok(updated);
                 }
                 else
@@ -258,6 +265,7 @@ namespace WebService.Api.Controllers
             {
                 if (_accountService.UpdatePassword(accountviewmodel))
                 {
+                    _log.LogLogin(accountviewmodel.ID, eLoginType.Updated);
                     return Ok(true);
                 }
                 return NotFound();
@@ -276,6 +284,7 @@ namespace WebService.Api.Controllers
             {
                 if (_accountService.DeleteAccount(id))
                 {
+                    _log.LogLogin(id, eLoginType.Deleted);
                     return Ok(true);
                 }
                 return NotFound();

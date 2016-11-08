@@ -21,22 +21,18 @@ namespace deprosa.WebService
     {
     
 
-        private GenericRepository<SaleListing> _saleListingRepository;
-        private GenericRepository<MainCategory> _mainCategoryRepository;
-        private GenericRepository<ProductType> _productRepository;
-        private GenericRepository<Manufacturer> _manufacturerRepository;
-        private GenericRepository<Account> _accountRepository;
-        private SubscriptionService _subscriptionService;
-        private GenericRepository<Subscription> _subscriptionRepository;
-        private ImageService _imageService;
-        private CreateAndUpdateService _createAndUpdateService;
+        private readonly GenericRepository<SaleListing> _saleListingRepository;
+        private readonly GenericRepository<ProductType> _productRepository;
+        private readonly GenericRepository<Account> _accountRepository;
+        private readonly SubscriptionService _subscriptionService;
+        private readonly GenericRepository<Subscription> _subscriptionRepository;
+        private readonly ImageService _imageService;
+        private readonly CreateAndUpdateService _createAndUpdateService;
         public SaleListingWebService( )
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
             _saleListingRepository = new GenericRepository<SaleListing>(context);
-            _mainCategoryRepository = new GenericRepository<MainCategory>(context);
             _productRepository = new GenericRepository<ProductType>(context);
-            _manufacturerRepository = new GenericRepository<Manufacturer>(context);
             _accountRepository = new GenericRepository<Account>(context);
             _subscriptionService = new SubscriptionService();
             _subscriptionRepository = new GenericRepository<Subscription>(context);
@@ -45,11 +41,11 @@ namespace deprosa.WebService
         }
 
 
-        public bool CreateNewSaleListing(SaleListingCreateDTO model, string username)
+        public bool CreateNewSaleListing(SaleListingCreateDTO model, int userid)
         {
             try
             {
-                Account acc = _accountRepository.Get(e=>e.Email.Equals(username,StringComparison.CurrentCultureIgnoreCase) && e.Deleted == null).Include(e=>e.Company).Single();
+                Account acc = _accountRepository.Get(e=>e.ID == userid && e.Deleted == null).Include(e=>e.Company).Single();
                 if (acc.Company !=null && !string.IsNullOrEmpty(acc.Company.VAT))
                 {
                     var sale = Mapper.Map<SaleListingCreateDTO, SaleListing>(model);
@@ -73,7 +69,6 @@ namespace deprosa.WebService
             {
                 _saleListingRepository.Delete(saleID);
                 return true;
-
             }
             catch (Exception ex)
             {
@@ -104,52 +99,67 @@ namespace deprosa.WebService
                 var salelisting = GetSale(id);
                 SaleListingDTO viewmodelmodel = Mapper.Map<SaleListing, SaleListingDTO>(salelisting);
                 return viewmodelmodel;
-
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }
 
-        public List<SaleListingDTO> GetSaleListingsForCompany(int companyID, string sort, bool isAsc, int page, int size)
+        public List<SaleListingDTO> GetPopular(List<int> logged, int categoryid, bool issub)
+        {
+            var salelistings =_saleListingRepository.Get(e => logged.Contains(e.ID) && e.Deleted == null && !e.IsSold).ToList();
+            if (!salelistings.Any())
+            {
+                if (issub)
+                {
+                    salelistings = _saleListingRepository.Get(e => !e.IsSold && e.ProductType.Category.ID == categoryid)
+                        .OrderByDescending(o => o.Created)
+                        .Take(5)
+                        .ToList();
+                }
+                else
+                {
+                    salelistings = _saleListingRepository.Get(e => !e.IsSold && e.ProductType.Category.MainCategory.ID == categoryid)
+                        .OrderByDescending(o => o.Created)
+                        .Take(5)
+                        .ToList();
+                }
+            }
+            return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
+        }
+        public List<SaleListingDTO> GetForCompany(int companyID, string sort, bool isAsc, int page, int size)
         {
             try
             {
                 var salelistingsQuery = _saleListingRepository.Get(e=>e.CreatedBy.CompanyID == companyID && e.Deleted == null);
                 var salelistings = Filter(salelistingsQuery, sort, isAsc, page, size).ToList();
                 return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
-        public List<SaleListingDTO> GetSaleListingsForCategory(int id, string sort, bool isAsc, int page, int size)
+        public List<SaleListingDTO> GetForSubCategory(int id, string sort, bool isAsc, int page, int size)
         {
             try
             {
-                var salelistingsQuery = _saleListingRepository.Get(e=>e.ProductType.Category.ID == id && e.Deleted == null);
+                var salelistingsQuery = _saleListingRepository.Get(e=>e.ProductType.Category.ID == id && e.Deleted == null && !e.IsSold);
                 var salelistings = Filter(salelistingsQuery, sort, isAsc, page, size).ToList();
-
                 return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
-
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }
 
-        public List<SaleListingDTO> GetSaleListingsBySearchString(string search, string sort, bool isAsc, int page, int size)
+        public List<SaleListingDTO> GetBySearchString(string search, string sort, bool isAsc, int page, int size)
         {
 
-            var salelistingsQuery = _saleListingRepository.Get(e=>e.Description.Contains(search) || e.Title.Contains(search));
+            var salelistingsQuery = _saleListingRepository.Get(e=>e.Description.Contains(search) || e.Title.Contains(search) && !e.IsSold && e.Deleted == null);
             var salelistings = Filter(salelistingsQuery, sort, isAsc, page, size).ToList();
             return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
         }
@@ -161,7 +171,6 @@ namespace deprosa.WebService
             {
                 if (_imageService.ValidateExtension(img.FileName))
                 {
-                    //string imgurl = _imageService.SaveImageToFolder(img);
                     Image image = new Image { Type = img.ImageType, ImageData = img.Content };
                     SaleListing salelisting = GetSale(viewmodel.ID);
                     salelisting.Images.Add(image);
@@ -172,7 +181,6 @@ namespace deprosa.WebService
             }
             catch (Exception ex)
             {
-
                 return false;
             }
         }
@@ -185,9 +193,7 @@ namespace deprosa.WebService
                 if (image != null)
                 {
                     salelisting.Images.Remove(image);
-                    //_imageService.RemoveImageFromFolder(image.ImageURL);
                     _saleListingRepository.Update(salelisting);
-                    //_log.LogSaleListing(salelisting.Owner.ID, salelisting.ID, eLogSaleListingType.Update);
                     return true;
                 }
                 return false;
@@ -195,7 +201,6 @@ namespace deprosa.WebService
             catch (Exception ex)
             {
                 return false;
-
             }
         }
 
@@ -204,13 +209,10 @@ namespace deprosa.WebService
             try
             {
                 var images = GetSale(salelistingid)?.Images;
-
                 return images.Select(Mapper.Map<Image, ImageDTO>).ToList();
-
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }
@@ -219,16 +221,13 @@ namespace deprosa.WebService
         {
             try
             {
-
                 var images = GetSale(salelistingid)?.Images;
                 Image mainimage = null;
                 if (images.Any()) { mainimage = images[0]; }
                 return Mapper.Map<Image, ImageDTO>(mainimage);
-
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }
@@ -264,12 +263,10 @@ namespace deprosa.WebService
                 SaleListingComment(comment);
                 salelisting.Comments.Add(comment);
                 _saleListingRepository.Update(salelisting);
-                //_log.LogSaleListing(salelisting.Owner.ID, salelisting.ID, eLogSaleListingType.Comment);
                 return true;
             }
             catch (Exception ex)
             {
-
                 return false;
             }
         }
@@ -277,20 +274,15 @@ namespace deprosa.WebService
         {
             try
             {
-
                 SaleListing salelisting = GetSale(salelistingID);
                 Comment comment = salelisting.Comments.Single(e => e.ID == commentID);
-               
-                CommentAnswer answer = Mapper.Map<CommentDTO, CommentAnswer>(answerviewmodel);
-
+               CommentAnswer answer = Mapper.Map<CommentDTO, CommentAnswer>(answerviewmodel);
                 comment.Answers.Add(answer);
                 _saleListingRepository.Update(salelisting);
-                //_log.LogSaleListing(salelisting.Owner.ID, salelisting.ID, eLogSaleListingType.Comment);
                 return true;
             }
             catch (Exception ex)
             {
-
                 return false;
             }
         }
@@ -299,7 +291,6 @@ namespace deprosa.WebService
         {
             try
             {
-
                 SaleListing salelisting = GetSale(saleviewmodel.ID);
 
                 var comment = salelisting.Comments.FirstOrDefault(e => e.ID == id);
@@ -307,15 +298,12 @@ namespace deprosa.WebService
                 {
                     salelisting.Comments.Remove(comment);
                     _saleListingRepository.Update(salelisting);
-                    //_log.LogSaleListing(salelisting.Owner.ID, salelisting.ID, eLogSaleListingType.Comment);
                     return true;
-
                 }
                 return false;
             }
             catch (Exception ex)
             {
-
                 return false;
             }
         }
@@ -324,17 +312,14 @@ namespace deprosa.WebService
         {
             try
             {
-
                 SaleListing salelisting = GetSale(salelistingID);
                 var comments = salelisting.Comments;
                 List<CommentDTO> viewmodels = comments.Select(e => Mapper.Map<Comment, CommentDTO>(e)).ToList();
 
                 return viewmodels;
-
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }

@@ -56,10 +56,10 @@ namespace deprosa.WebsiteService
         #endregion
 
         #region POST
-        public async Task<bool> Logout(AccountDTO account)
+        public async Task<bool> Logout(int id)
         {
-            string uri = string.Format("logout");
-            var isloggedout = await client.GetResponseObject<AccountDTO, bool>(uri, eHttpMethodType.POST, account);
+            string uri = string.Format("logout?userid={0}",id);
+            var isloggedout = await client.GetResponseObject<AccountDTO, bool>(uri, eHttpMethodType.POST, null);
             return isloggedout;
         }
         public async Task<AccountDTO> CreateAccount(AccountCreateDTO model)

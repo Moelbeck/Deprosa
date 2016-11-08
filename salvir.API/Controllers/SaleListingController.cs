@@ -9,39 +9,24 @@ using System.Net.Http;
 using System.Threading;
 using System.Web.Http;
 using deprosa.API.Authenticator;
+using deprosa.Common.RequestWrappers;
+using deprosa.service;
 
 namespace WebService.Api.Controllers
 {
     [RoutePrefix("api/SaleListing")]
     public class SaleListingController : ApiController
     {
-        private SaleListingWebService _salelistingService;
-
+        private readonly SaleListingWebService _salelistingService;
+        private readonly CategoryWebService _categoryService;
+        private LogService _log;
         public SaleListingController()
-
         {
             _salelistingService = new SaleListingWebService();
+            _log = new LogService();
+            _categoryService = new CategoryWebService();
         }
-        // GET: api/values
-        /// <summary>
-        /// Create new sale listing - Post
-        /// </summary>
         #region Salelisting
-        [EnsureCanSellAuthorize]
-        [HttpPost,Route("create")]
-        public IHttpActionResult CreateNewSaleListing([FromBody]SaleListingCreateDTO model)
-        {
-            if (ModelState.IsValid)
-            {
-                var accountname = Thread.CurrentPrincipal.Identity.Name;
-                if (_salelistingService.CreateNewSaleListing(model, accountname))
-                {
-                    return Ok();
-                }
-                return BadRequest("Annonce blev ikke lavet");
-            }
-            return BadRequest(ModelState);
-        }
 
         /// <summary>
         /// Get sale listing by id - Get
@@ -54,6 +39,14 @@ namespace WebService.Api.Controllers
                 var salelisting = _salelistingService.GetSaleListingByID(id);
                 if (salelisting != null)
                 {
+                    var accountname = Thread.CurrentPrincipal.Identity.Name;
+                    int userid;
+                    if (int.TryParse(accountname, out userid) && userid > 0)
+                    {
+                        int mainid = salelisting.ProductType.SubCategory.MainCategory.ID;
+                        int subid = salelisting.ProductType.SubCategoryID;
+                        _log.LogSaleListing(userid,eLogSaleListingType.Search,mainid,subid,id);
+                    }
                     return Ok(salelisting);
                 }
                 return NotFound();
@@ -61,6 +54,158 @@ namespace WebService.Api.Controllers
             return BadRequest(ModelState);
         }
 
+        [HttpGet,Route("popularsub/{subid}")]
+        public IHttpActionResult GetPopularForSub(int subid)
+        {
+            if (ModelState.IsValid)
+            {
+                var popularlogged = _log.GetPopularSalelistingsForSub(subid);
+                var popularsale = _salelistingService.GetPopular(popularlogged,subid,true);
+                return Ok(popularsale);
+            }
+            return BadRequest(ModelState);
+        }
+        [HttpGet, Route("popularmain/{mainid}")]
+        public IHttpActionResult GetPopularForMain(int mainid)
+        {
+            if (ModelState.IsValid)
+            {
+                var popularlogged = _log.GetPopularSalelistingsForMain(mainid);
+                var popularsale = _salelistingService.GetPopular(popularlogged,mainid,false);
+                return Ok(popularsale);
+            }
+            return BadRequest(ModelState);
+        }
+        [HttpGet, Route("popularuser/{userid}")]
+        public IHttpActionResult GetPopularForUser(int userid)
+        {
+            if (ModelState.IsValid)
+            {
+                var popularlogged = _log.GetPopularSalelistingsForUser(userid);
+                var popularsale = _salelistingService.GetPopular(popularlogged,0,false);
+                return Ok(popularsale);
+            }
+            return BadRequest(ModelState);
+        }
+
+        [HttpGet, Route("gethighlighted/{categoryid}/{isSub}")]
+        public IHttpActionResult GeHighlightSalelistingRequest(int categoryid, bool isSub)
+        {
+            if (ModelState.IsValid)
+            {
+                HighlightSalelistingRequest request = new HighlightSalelistingRequest();
+                List<int> popularlogged = new List<int>();
+                popularlogged = !isSub
+                    ? _log.GetPopularSalelistingsForMain(categoryid)
+                    : _log.GetPopularSalelistingsForSub(categoryid);
+                var popularsale = _salelistingService.GetPopular(popularlogged,categoryid,isSub);
+                request.HighlightedSalelistings = popularsale;
+                request.SubCategories = !isSub
+                    ? _categoryService.GetSubCategoriesForMain(categoryid)
+                    : new List<SubCategoryDTO>();
+                var accountname = Thread.CurrentPrincipal.Identity.Name;
+                int userid;
+                if (int.TryParse(accountname, out userid) && userid > 0)
+                {
+                    int mainid = !isSub ? categoryid : 0;
+                    int subid =  isSub ? categoryid : 0;
+                    _log.LogCategory(userid, mainid, subid);
+                }
+                return Ok(request);
+            }
+            return BadRequest(ModelState);
+        }
+
+        /// <summary>
+        /// Get sale listings for company - Get
+        /// </summary>
+        [HttpGet, Route("company/{companyID}")]
+        public IHttpActionResult GetSaleListingsForCompany(int companyID, string sort, bool isAsc, int page, int size)
+        {
+            if (ModelState.IsValid)
+            {
+                var salelisting = _salelistingService.GetForCompany(companyID, sort, isAsc, page, size);
+                if (salelisting != null)
+                {
+                    return Ok(salelisting);
+                }
+                return NotFound();
+            }
+            return BadRequest(ModelState);
+        }
+
+        /// <summary>
+        /// Get sale listings for category - Get
+        /// </summary>
+        [HttpGet, Route("category/{categoryID}")]
+        public IHttpActionResult GetSaleListingsForCategory(int categoryID, string sort, bool isAsc, int page, int size)
+        {
+            if (ModelState.IsValid)
+            {
+                var salelisting = _salelistingService.GetForSubCategory(categoryID, sort, isAsc, page, size);
+                if (salelisting != null)
+                {
+                    int userid;
+                    if (int.TryParse(Thread.CurrentPrincipal.Identity.Name, out userid) && userid > 0)
+                    {
+                        _log.LogCategory(userid, 0, categoryID);
+                    }
+                    return Ok(salelisting);
+                }
+                return NotFound();
+            }
+            return BadRequest(ModelState);
+        }
+
+        /// <summary>
+        /// Get sale listing by search string - Get
+        /// </summary>
+        [HttpGet, Route("getBySearch/{search}")]
+        public IHttpActionResult GetSaleListingsBySearchString(string search, string sort, bool isAsc, int page, int size)
+        {
+            if (ModelState.IsValid)
+            {
+                var salelisting = _salelistingService.GetBySearchString(search, sort, isAsc, page, size);
+                if (salelisting != null)
+                {
+                    int userid;
+                    if (int.TryParse(Thread.CurrentPrincipal.Identity.Name, out userid) && userid > 0)
+                    {
+                        _log.LogSearch(userid, search);
+                    }
+                    return Ok(salelisting);
+                }
+                return NotFound();
+            }
+            return BadRequest(ModelState);
+        }
+
+        // GET: api/values
+        /// <summary>
+        /// Create new sale listing - Post
+        /// </summary>
+        [EnsureCanSellAuthorize]
+        [HttpPost, Route("create")]
+        public IHttpActionResult CreateNewSaleListing([FromBody]SaleListingCreateDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                var accountname = Thread.CurrentPrincipal.Identity.Name;
+                int userid;
+                if (int.TryParse(accountname, out userid) && userid > 0)
+                {
+                    if (_salelistingService.CreateNewSaleListing(model, userid))
+                    {
+                        int mainid = model.ProductType.SubCategory.MainCategory.ID;
+                        int subid = model.ProductType.SubCategoryID;
+                        _log.LogSaleListing(userid, eLogSaleListingType.Created, mainid, subid, 0);
+                        return Ok();
+                    }
+                }
+                return BadRequest("Annonce blev ikke lavet");
+            }
+            return BadRequest(ModelState);
+        }
         /// <summary>
         ///Delete sale listing - Delete 
         /// </summary>
@@ -70,6 +215,12 @@ namespace WebService.Api.Controllers
         {
             if (_salelistingService.DeleteSaleListingByID(saleID))
             {
+                var accountname = Thread.CurrentPrincipal.Identity.Name;
+                int userid;
+                if (int.TryParse(accountname, out userid) && userid > 0)
+                {
+                    _log.LogSaleListing(userid, eLogSaleListingType.Deleted, 0, 0, saleID);
+                }
                 return Ok(true);
             }
             return BadRequest("Annonce blev ikke slettet");
@@ -86,6 +237,14 @@ namespace WebService.Api.Controllers
             {
                 if (_salelistingService.UpdateSaleListing(viewmodel))
                 {
+                    var accountname = Thread.CurrentPrincipal.Identity.Name;
+                    int userid;
+                    if (int.TryParse(accountname, out userid) && userid > 0)
+                    {
+                        int mainid = viewmodel.ProductType.SubCategory.MainCategory.ID;
+                        int subid = viewmodel.ProductType.SubCategoryID;
+                        _log.LogSaleListing(userid, eLogSaleListingType.Update, mainid, subid, viewmodel.ID);
+                    }
                     return Ok(true);
                 }
                 return BadRequest("Annonce blev ikke opdateret");
@@ -93,59 +252,6 @@ namespace WebService.Api.Controllers
             return BadRequest(ModelState);
         }
 
-        /// <summary>
-        /// Get sale listings for company - Get
-        /// </summary>
-        [HttpGet,Route("company/{companyID}")]
-        public IHttpActionResult GetSaleListingsForCompany(int companyID, string sort, bool isAsc, int page, int size)
-        {
-            if (ModelState.IsValid)
-            {
-                var salelisting = _salelistingService.GetSaleListingsForCompany(companyID, sort,isAsc,page,size);
-                if (salelisting != null)
-                {
-                    return Ok(salelisting);
-                }
-                return NotFound();
-            }
-            return BadRequest(ModelState);
-        }
-
-        /// <summary>
-        /// Get sale listings for category - Get
-        /// </summary>
-        [HttpGet,Route("category/{categoryID}")]
-        public IHttpActionResult GetSaleListingsForCategory(int categoryID, string sort, bool isAsc, int page, int size)
-        {
-            if (ModelState.IsValid)
-            {
-                var salelisting = _salelistingService.GetSaleListingsForCategory(categoryID, sort, isAsc, page, size);
-                if (salelisting != null)
-                {
-                    return Ok(salelisting);
-                }
-                return NotFound();
-            }
-            return BadRequest(ModelState);
-        }
-
-        /// <summary>
-        /// Get sale listing by search string - Get
-        /// </summary>
-        [HttpGet,Route("getBySearch/{search}")]
-        public IHttpActionResult GetSaleListingsBySearchString(string search, string sort, bool isAsc, int page, int size)
-        {
-            if (ModelState.IsValid)
-            {
-                var salelisting = _salelistingService.GetSaleListingsBySearchString(search, sort, isAsc, page, size);
-                if (salelisting != null)
-                {
-                    return Ok(salelisting);
-                }
-                return NotFound();
-            }
-            return BadRequest(ModelState);
-        }
         #endregion
         #region Images
 

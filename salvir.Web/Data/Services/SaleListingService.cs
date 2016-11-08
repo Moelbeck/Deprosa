@@ -2,6 +2,7 @@
 using deprosa.ViewModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using deprosa.Common.RequestWrappers;
 using deprosa.Service;
 
 namespace deprosa.WebsiteService
@@ -44,6 +45,30 @@ namespace deprosa.WebsiteService
             return salelisting;
         }
 
+        public async Task<List<SaleListingDTO>> GetPopularForSub(int subid)
+        {
+            string uri = string.Format("popularsub/{0}", subid);
+            var salelisting = await client.GetResponseObject<List<SaleListingDTO>, List<SaleListingDTO>>(uri, eHttpMethodType.GET, null);
+            return salelisting;
+        }
+        public async Task<List<SaleListingDTO>> GetPopularForMain(int main)
+        {
+            string uri = string.Format("popularmain/{0}",main);
+            var salelisting = await client.GetResponseObject<List<SaleListingDTO>, List<SaleListingDTO>>(uri, eHttpMethodType.GET, null);
+            return salelisting;
+        }
+        public async Task<List<SaleListingDTO>> GetPopularForUser(int userid)
+        {
+            string uri = string.Format("popularuser/{0}", userid);
+            var salelisting = await client.GetResponseObject<List<SaleListingDTO>, List<SaleListingDTO>>(uri, eHttpMethodType.GET, null);
+            return salelisting;
+        }
+        public async Task<HighlightSalelistingRequest> GeHighlightSalelistingRequest(int categoryid, bool isSub)
+        {
+            string uri = string.Format("gethighlighted/{0}/{1}",categoryid, isSub);
+            var salelisting = await client.GetResponseObject < HighlightSalelistingRequest, HighlightSalelistingRequest>(uri, eHttpMethodType.GET, null);
+            return salelisting;
+        }
         public async Task<List<SaleListingDTO>> GetSaleListingsBySearch(string search, int page)
         {
             string uri = string.Format("getBySearch/{0}?page={1}&size={2}", search, page, Konstanter.PAGE_SIZE);

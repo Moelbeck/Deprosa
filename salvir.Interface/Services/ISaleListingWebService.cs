@@ -8,19 +8,19 @@ namespace deprosa.Interfaces
     public interface ISaleListingWebService
     {
  
-        bool CreateNewSaleListing(SaleListingCreateDTO model, string username);
+        bool CreateNewSaleListing(SaleListingCreateDTO model, int userid);
 
  
         SaleListingDTO GetSaleListingByID(int id);
 
  
-        List<SaleListingDTO> GetSaleListingsForCompany(int companyID, string sort, bool isAsc, int page, int size);
+        List<SaleListingDTO> GetForCompany(int companyID, string sort, bool isAsc, int page, int size);
 
  
-        List<SaleListingDTO> GetSaleListingsForCategory(int viewmodel, string sort, bool isAsc, int page, int size);
+        List<SaleListingDTO> GetForSubCategory(int viewmodel, string sort, bool isAsc, int page, int size);
+        List<SaleListingDTO> GetPopular(List<int> logged, int categoryid, bool issub);
 
- 
-        List<SaleListingDTO> GetSaleListingsBySearchString(string search, string sort, bool isAsc, int page, int size);
+        List<SaleListingDTO> GetBySearchString(string search, string sort, bool isAsc, int page, int size);
 
         List<ImageDTO> GetImagesForSaleListing(int salelistingid);
         ImageDTO GetImageForSaleListing(int salelistingid);

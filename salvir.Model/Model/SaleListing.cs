@@ -29,6 +29,8 @@ namespace deprosa.Model
         
         public virtual Subscription Subscription { get; set; }
         public eCondition Condition { get; set; }
+
+        public bool IsSold { get; set; }
         #endregion
 
         #region Dimensions

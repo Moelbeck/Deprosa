@@ -28,9 +28,9 @@ namespace deprosa.WebApi.Authenticator
                 var userPass =
     Encoding.Default.GetString(Convert.FromBase64String(encodedUserPass));
                 var parts = userPass.Split(":".ToCharArray());
-                var username = parts[0];
-                var id = parts[1];
-                AuthenticateUser(username);
+                var id = parts[0];
+                var username = parts[1];
+                AuthenticateUser(id);
             }
 
             response = await base.SendAsync(request, cancellationToken);
@@ -44,25 +44,29 @@ namespace deprosa.WebApi.Authenticator
             return response;
         }
 
-        private void AuthenticateUser(string username)
+        private void AuthenticateUser(string id)
         {
-            AccountWebService _accountService = new AccountWebService();
-            if (!string.IsNullOrWhiteSpace(username))
+            AccountWebService accountService = new AccountWebService();
+            if (!string.IsNullOrWhiteSpace(id))
             {
-                IPrincipal principal;
-                var account = _accountService.GetAccount(username);
-                if (account != null)
+                int currentid;
+                if (int.TryParse(id, out currentid) && currentid>0)
                 {
-                    IIdentity identity = new GenericIdentity(username);
-                    if (account.CompanyID >0)
+                    var account = accountService.GetAccount(currentid);
+                    if (account != null)
                     {
-                        principal = new GenericPrincipal(identity, new string[] { "Seller" });
+                        IIdentity identity = new GenericIdentity(id);
+                        IPrincipal principal;
+                        if (account.CompanyID > 0)
+                        {
+                            principal = new GenericPrincipal(identity, new string[] {"Seller"});
+                        }
+                        else
+                        {
+                            principal = new GenericPrincipal(identity, new string[] {"Basic"});
+                        }
+                        Thread.CurrentPrincipal = principal;
                     }
-                    else
-                    {
-                        principal = new GenericPrincipal(identity, new string[] { "Basic" });
-                    }
-                    Thread.CurrentPrincipal = principal;
                 }
             }
         }

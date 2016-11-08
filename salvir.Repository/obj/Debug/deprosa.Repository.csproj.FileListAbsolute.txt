@@ -38,3 +38,5 @@ C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.imageNameAdded.resources
 C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.conditionOnSalelistings.resources
 C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.imageNameAdded.resources
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.LoggingToDB2.resources
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.checkifsalelistingissold.resources

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using deprosa.service;
 
 namespace deprosa.WebService
 {
@@ -20,12 +21,10 @@ namespace deprosa.WebService
         //private readonly ISubCategoryRepository _subcategoryRepository;
         private readonly GenericRepository<MainCategory> _maincategory;
         private readonly GenericRepository<SubCategory> _subcategory;
-        private IProductTypeRepository _productRepository;
 
         public CategoryWebService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
-            _productRepository = new ProductTypeRepository(context);
             _maincategory = new GenericRepository<MainCategory>(context);
             _subcategory = new GenericRepository<SubCategory>(context);
         }
@@ -39,7 +38,6 @@ namespace deprosa.WebService
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }
@@ -53,7 +51,6 @@ namespace deprosa.WebService
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }

@@ -9,9 +9,9 @@ namespace deprosaWeb.Model.ViewModel
 {
     public class HighlightViewModel
     {
-        public MenuViewModel MenuViewModel { get; set; }
+        public MenuViewModel MenuViewModel { get; set; } = new MenuViewModel();
 
-        public  List<SaleListingDTO> HighligthtedSaleListings { get; set; }
+        public  List<SaleListingDTO> HighligthtedSaleListings { get; set; } = new List<SaleListingDTO>();
         
     }
 }

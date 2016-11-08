@@ -63,19 +63,16 @@
     <Compile Include="Migrations\201611020930411_imageNameAdded.Designer.cs">
       <DependentUpon>201611020930411_imageNameAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611070712336_LoggingToDB2.cs" />
+    <Compile Include="Migrations\201611070712336_LoggingToDB2.Designer.cs">
+      <DependentUpon>201611070712336_LoggingToDB2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611071151399_checkifsalelistingissold.cs" />
+    <Compile Include="Migrations\201611071151399_checkifsalelistingissold.Designer.cs">
+      <DependentUpon>201611071151399_checkifsalelistingissold.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\AccountRepository.cs" />
-    <Compile Include="Repository\AdvertiserRepository.cs" />
-    <Compile Include="Repository\AdvertisementRepository.cs" />
-    <Compile Include="Repository\CompanyRepository.cs" />
-    <Compile Include="Repository\LogRepository.cs" />
-    <Compile Include="Repository\MainCategoryRepository.cs" />
-    <Compile Include="Repository\ManufacturerRepository.cs" />
-    <Compile Include="Repository\ProductTypeRepository.cs" />
-    <Compile Include="Repository\RatingRepository.cs" />
-    <Compile Include="Repository\SaleListingRepository.cs" />
-    <Compile Include="Repository\SubCategoryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -104,6 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611020930411_imageNameAdded.resx">
       <DependentUpon>201611020930411_imageNameAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611070712336_LoggingToDB2.resx">
+      <DependentUpon>201611070712336_LoggingToDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611071151399_checkifsalelistingissold.resx">
+      <DependentUpon>201611071151399_checkifsalelistingissold.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

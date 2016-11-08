@@ -31,10 +31,10 @@ namespace deprosa.Repository.DatabaseContext
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<SaleListing> SaleListings { get; set; }
-        public DbSet<LogCategory> CategoryLog { get; set; }
-        public DbSet<LogLogin> LoginLog { get; set; }
-        public DbSet<LogSaleListing> SalelistingLog { get; set; }
-        public DbSet<LogSearch> SearchLog { get; set; }
+        public DbSet<LogCategory> LogCategories { get; set; }
+        public DbSet<LogLogin> LogLogins { get; set; }
+        public DbSet<LogSaleListing> LogSaleListings{ get; set; }
+        public DbSet<LogSearch> LogSearches{ get; set; }
 
         private void InitializeDatabase()
         {

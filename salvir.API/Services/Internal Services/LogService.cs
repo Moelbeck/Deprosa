@@ -1,21 +1,22 @@
 ﻿using deprosa.Model.Base;
 using deprosa.Model.Log;
-using deprosa.Model.Model.Log;
 using deprosa.Repository.Abstract;
 using deprosa.Repository.DatabaseContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using deprosa.Common;
 
-namespace deprosa.API.Services.Internal_Services
+namespace deprosa.service
 {
     public class LogService
     {
-        public GenericRepository<LogCategory> _categorylogrepo;
-        public GenericRepository<LogLogin> _loginlogrepo;
-        public GenericRepository<LogSaleListing> _salelistinglogrepo;
-        public GenericRepository<LogSearch> _searchlogrepo;
+        private static int NoOfElements =5;
+        private readonly GenericRepository<LogCategory> _categorylogrepo;
+        private readonly GenericRepository<LogLogin> _loginlogrepo;
+        private readonly GenericRepository<LogSaleListing> _salelistinglogrepo;
+        private readonly GenericRepository<LogSearch> _searchlogrepo;
         public LogService()
         {
             var context = new BzaleDatabaseContext();
@@ -24,71 +25,104 @@ namespace deprosa.API.Services.Internal_Services
             _salelistinglogrepo = new GenericRepository<LogSaleListing>(context);
             _searchlogrepo = new GenericRepository<LogSearch>(context);
         }
-        public void LogLogin(LogLogin login)
+        public void LogLogin(int userid, eLoginType type)
         {
+            LogLogin login = new LogLogin { UserID = userid, Type = type};
             _loginlogrepo.Add(login);
         }
         /// <summary>
         /// Logs when a user looks at a salelisting, updating one or deleting it.
         /// </summary>
-        public void LogSaleListing(LogSaleListing salelisting)
+        public void LogSaleListing(int userid, eLogSaleListingType type, int mainid, int subid, int saleid)
         {
-            _salelistinglogrepo.Add(salelisting);
+            LogSaleListing saleListing = new LogSaleListing
+            {
+                UserID = userid,
+                LogType = type,
+                MainCategoryId = mainid,
+                SubCategoryId = subid,
+                SaleListingID = saleid
+            };
+            _salelistinglogrepo.Add(saleListing);
         }
         /// <summary>
         /// Logs when a user clicks on a category - both sub and main.
         /// </summary>
-        public void LogCategory(LogCategory category)
+        public void LogCategory(int userid, int mainid, int subid)
         {
+            LogCategory category = new LogCategory
+            {
+                UserID = userid, MainCateogryId = mainid, SubCategoryId = subid
+            };
             _categorylogrepo.Add(category);
         }
         /// <summary>
         /// Logs when a user searches for something.
         /// </summary>
-        public void LogSearch(LogSearch search)
+        public void LogSearch(int userid, string searchstring)
         {
+            LogSearch search = new LogSearch
+            {
+                UserID = userid, SearchString = searchstring
+            };
             _searchlogrepo.Add(search);
         }
 
-        public List<LogCategory> GetPopularMainCategories()
+        public List<int> GetPopularMainCategories()
         {
-            var mostpopularkeys = _categorylogrepo
+            return  _categorylogrepo
                 .Get(e=>e.MainCateogryId !=0 && e.SubCategoryId == 0)
                 .GroupBy(g=>g.MainCateogryId)
                 .OrderByDescending(gp=>gp.Count())
-                .Take(3)
+                .Take(NoOfElements)
                 .Select(e=>e.Key).ToList();
-            var mostpopularcategories = _categorylogrepo.Get(e => mostpopularkeys.Contains(e.MainCateogryId)).ToList();
-            return mostpopularcategories;
         }
-        public List<LogCategory> GetPopularSubCategories()
+        public List<int> GetPopularSubCategories()
         {
-            var mostpopularkeys = _categorylogrepo
+                return _categorylogrepo
                 .Get(e => e.MainCateogryId == 0 && e.SubCategoryId != 0)
-                .GroupBy(g => g.MainCateogryId)
+                .GroupBy(g => g.SubCategoryId)
+                .OrderByDescending(gp => gp.Count())
+                .Take(NoOfElements)
+                .Select(e => e.Key).ToList();
+        }
+        public List<int> GetPopularSubCategoriesForUser(int userid)
+        {
+            return _categorylogrepo
+                .Get(e => (e.MainCateogryId == 0 && e.SubCategoryId != 0) && e.UserID == userid)
+                .GroupBy(g => g.SubCategoryId)
+                .OrderByDescending(gp => gp.Count())
+                .Take(NoOfElements)
+                .Select(e => e.Key).ToList();
+        }
+
+        public List<int> GetPopularSalelistingsForMain(int main)
+        {
+                return _salelistinglogrepo
+                .Get(e => e.MainCategoryId == main && e.LogType == eLogSaleListingType.Search)
+                .GroupBy(g => g.SaleListingID)
+                .OrderByDescending(gp => gp.Count())
+                .Take(NoOfElements)
+                .Select(e => e.Key).ToList();
+        }
+
+        public List<int> GetPopularSalelistingsForSub(int sub)
+        {
+                return _salelistinglogrepo
+                .Get(e => e.SubCategoryId == sub && e.LogType == eLogSaleListingType.Search)
+                .GroupBy(g => g.SaleListingID)
                 .OrderByDescending(gp => gp.Count())
                 .Take(3)
                 .Select(e => e.Key).ToList();
-            var mostpopularcategories = _categorylogrepo.Get(e => mostpopularkeys.Contains(e.MainCateogryId)).ToList();
-            return mostpopularcategories;
         }
-        public List<LogCategory> GetPopularSubCategoriesForUser(int userid)
+        public List<int> GetPopularSalelistingsForUser(int userId)
         {
-            return null;
-        }
-
-        public List<LogSaleListing> GetPopularSalelistingsForMain(int main)
-        {
-            return null;
-        }
-
-        public List<LogSaleListing> GetPopularSalelistingsForSub(int sub)
-        {
-            return null;
-        }
-        public List<LogSaleListing> GetPopularSalelistingsForUser(int userId)
-        {
-            return null;
+                return _salelistinglogrepo
+                .Get(e => e.UserID == userId && e.LogType == eLogSaleListingType.Search)
+                .GroupBy(g => g.SaleListingID)
+                .OrderByDescending(gp => gp.Count())
+                .Take(3)
+                .Select(e => e.Key).ToList();
         }
     }
 }

@@ -30,10 +30,10 @@ namespace deprosa.Web.Controllers
         public async Task<ActionResult> Index(int selected)
         {
             HighlightViewModel viewModel = new HighlightViewModel();
-            viewModel.MenuViewModel = new MenuViewModel();
-            viewModel.MenuViewModel.SubCategories = await _categoryService.GetSubCategoriesForMain(selected);
+            var request = await _salelistingService.GeHighlightSalelistingRequest(selected, false);
+            viewModel.MenuViewModel.SubCategories = request.SubCategories;
+            viewModel.HighligthtedSaleListings = request.HighlightedSalelistings;
             viewModel.MenuViewModel.SelectedMainCategory = viewModel.MenuViewModel.SubCategories.First(e => e.MainCategory.ID == selected).MainCategory;
-
             return View(viewModel);
         }
     }

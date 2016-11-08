@@ -11,7 +11,6 @@ using deprosa.Web.Controllers;
 
 namespace Web.Controllers
 {
-    [Authorize]
     //[RequireHttps]
     public class AccountController : Controller
     {
@@ -24,7 +23,6 @@ namespace Web.Controllers
         //
         // GET: /Account/Login
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult Login(string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
@@ -34,7 +32,6 @@ namespace Web.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(AccountLoginDTO model, string returnUrl = null)
         {
@@ -61,7 +58,6 @@ namespace Web.Controllers
         //
         // GET: /Account/Register
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -70,7 +66,6 @@ namespace Web.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(AccountCreateDTO model)
         {
@@ -100,10 +95,11 @@ namespace Web.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult Logout()
         {
             CurrentUser.SetCurrentUserToNull();
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         //Validate if email is already used

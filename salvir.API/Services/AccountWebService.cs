@@ -12,6 +12,7 @@ using deprosa.ViewModel;
 using System;
 using System.Data.Entity;
 using System.Linq;
+using deprosa.Model.Log;
 
 namespace deprosa.WebService
 {
@@ -25,7 +26,6 @@ namespace deprosa.WebService
         readonly GenericRepository<Account> _accountRepository;
         readonly GenericRepository<Company> _companyRepository;
         readonly CreateAndUpdateService _createAndUpdateService;
-
         public AccountWebService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
@@ -41,10 +41,9 @@ namespace deprosa.WebService
             {
                 if (!string.IsNullOrWhiteSpace(user.UserName))
                 {
-                    Account account = _accountRepository.Get(e => e.Email.ToLower() == user.UserName.ToLower()).Include(i=>i.Company).Single();
+                    Account account = _accountRepository.Get(e => e.Email.Equals(user.UserName, StringComparison.CurrentCultureIgnoreCase)).Include(i=>i.Company).Single();
                     if (PasswordValidationService.GetInstance().ValidatePassword(user.Password, account.Password, account.Salt))
                     {
-                        //_log.LogLoginLogout(account.ID, eLoginType.Login);
                         accountViewModel = Mapper.Map<Account, AccountDTO>(account);
                         if (account.Company != null)
                         {
@@ -65,7 +64,8 @@ namespace deprosa.WebService
         {
             try
             {
-                //_log.LogLoginLogout(account.ID, eLoginType.Logout);
+                Account account = _accountRepository.Get(e => e.Email.Equals(usermail, StringComparison.CurrentCultureIgnoreCase)).Single();
+
             }
             catch (Exception ex)
             {
@@ -80,7 +80,6 @@ namespace deprosa.WebService
                 if (newaccount.Email.IsValidEmail() && !IsEmailInDatabase(newaccount.Email))
                 {
                     Account account = Mapper.Map<AccountCreateDTO, Account>(newaccount);
-
                     string salt = PasswordValidationService.GetInstance().GenerateSalt();
                     account.Password = PasswordValidationService.GetInstance().GenerateCryptedPassword(newaccount.Password, salt);
                     account.Salt = salt;
@@ -163,9 +162,9 @@ namespace deprosa.WebService
             }
         }
 
-        internal AccountDTO GetAccount(string username)
+        internal AccountDTO GetAccount(int userid)
         {
-            var acc = GetAcc(username);
+            var acc = GetAcc(userid);
             return Mapper.Map<Account, AccountDTO>(acc);
         }
 
@@ -262,20 +261,19 @@ namespace deprosa.WebService
 
         public bool IsVatInDatabase(string vat)
         {
-            return _companyRepository.Get(e => e.VAT == vat).Any();
+            return _companyRepository.Get(e => e.VAT.Equals(vat)).Any();
         }
 
         public CompanyDTO GetCompanyInformation(string vat)
         {
             try
             {
-                var company = _companyRepository.GetSingle(e=>e.VAT == vat && e.Deleted == null);
+                var company = _companyRepository.GetSingle(e=>e.VAT.Equals(vat) && e.Deleted == null);
                 CompanyDTO viewmodel = Mapper.Map<Company, CompanyDTO>(company);
                 return viewmodel;
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }
@@ -284,7 +282,7 @@ namespace deprosa.WebService
         {
             try
             {
-                return _companyRepository.Get(e=>e.Email.ToLower() == email.ToLower()).Any();
+                return _companyRepository.Get(e=>e.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase)).Any();
             }
             catch (Exception ex)
             {
@@ -302,7 +300,7 @@ namespace deprosa.WebService
                 if (!string.IsNullOrWhiteSpace(viewmodel.VAT))
                 {
                     Company updatedcompany = Mapper.Map<CompanyDTO, Company>(viewmodel);
-                    var currentcompany = _companyRepository.GetSingle(e=>e.VAT == viewmodel.VAT && e.Deleted == null);
+                    var currentcompany = _companyRepository.GetSingle(e=>e.VAT.Equals(viewmodel.VAT) && e.Deleted == null);
                     if (account.Company.VAT.Equals(currentcompany.VAT))
                     {
                         currentcompany = _createAndUpdateService.UpdateCompanyFields(currentcompany, updatedcompany);
@@ -322,8 +320,16 @@ namespace deprosa.WebService
 
         private Account GetAcc(int id)
         {
-            Account account = _accountRepository.Get(e => e.ID == id && e.Deleted == null).Single();
-            return account;
+            try
+            {
+                Account account = _accountRepository.Get(e => e.ID == id && e.Deleted == null).Single();
+                return account;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
         }
         private Account GetAcc(string email)
         {

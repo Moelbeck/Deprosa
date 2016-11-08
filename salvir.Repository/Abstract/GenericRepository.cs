@@ -17,7 +17,7 @@ namespace deprosa.Repository.Abstract
 
         public IQueryable<T> Get(Expression<Func<T, bool>> predicate)
         {
-            IQueryable<T> query = _entities.Set<T>().Where(predicate).AsNoTracking();
+            IQueryable<T> query = _entities.Set<T>().Where(predicate);
             return query;
         }
         public T GetSingle(Expression<Func<T, bool>> predicate)

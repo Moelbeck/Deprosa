@@ -49,7 +49,7 @@ namespace deprosa.WebsiteService
                     RequestUri = new Uri(uri),
                     Content = new StringContent(jsonstring, Encoding.UTF8, "application/json"),
                 };
-                request.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(string.Format("{0}:{1}", CurrentUser.Email, CurrentUser.ID))));
+                request.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(Encoding.ASCII.GetBytes($"{CurrentUser.ID}:{CurrentUser.Email}")));
 
                 switch (method)
                 {
