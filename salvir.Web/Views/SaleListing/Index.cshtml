@@ -7,3 +7,13 @@
 <h2>Annoncer for @Model.MenuViewModel.SelectedMainCategory.Name</h2>
 @Html.Partial("Partial/_MenuPartial", Model.MenuViewModel)
 
+<div class="body-content">
+    @foreach(var item in Model.HighligthtedSaleListings)
+    {
+        <div>
+           <text>@item.Title</text>
+        </div>
+    }
+
+</div>
+

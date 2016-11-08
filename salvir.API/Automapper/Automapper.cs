@@ -317,7 +317,7 @@ namespace biz2biz.Service.Automapper
                                     .ForMember(e => e.NoOfDoors, o => o.MapFrom(s => s.NoOfDoors))
                                     .ForMember(e => e.VatPayed, o => o.MapFrom(s => s.VatPayed))
                     .ForMember(e => e.Owner, o => o.MapFrom(s => new Company { ID = s.Owner.ID, Name = s.Owner.Name }))
-                .ForMember(e => e.ProductType, o => o.MapFrom(s => new ProductType { ID = s.ProductType.ID, Name = s.ProductType.Name }))
+                .ForMember(e => e.ProductTypeId, o => o.MapFrom(s => s.ProductType.ID))
                     .ForMember(e => e.CreatedBy, o => o.MapFrom(s => new Account { ID = s.CreatedBy.ID, FirstName = s.CreatedBy.FirstName, LastName = s.CreatedBy.LastName }))
                       .ForMember(e => e.Images, o => o.MapFrom(s => (s.Images.Select(b => new Image { ImageData = b.Content, Name = b.FileName}))))
                 .ForMember(e => e.Manufacturer, o => o.MapFrom(s => new Manufacturer { ID = s.Manufacturer.ID, Name = s.Manufacturer.Name }))

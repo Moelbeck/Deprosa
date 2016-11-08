@@ -46,13 +46,16 @@ namespace deprosa.WebService
             try
             {
                 Account acc = _accountRepository.Get(e=>e.ID == userid && e.Deleted == null).Include(e=>e.Company).Single();
+                ProductType producttype = _productRepository.Get(e=>e.ID == model.ProductType.ID && e.Deleted == null).Single();
                 if (acc.Company !=null && !string.IsNullOrEmpty(acc.Company.VAT))
                 {
                     var sale = Mapper.Map<SaleListingCreateDTO, SaleListing>(model);
                     sale.CreatedBy = acc;
                     sale.Owner = acc.Company;
-                    var product = _productRepository.GetSingle(e=> e.ID == model.ProductType.ID);
-                    var salelisting = _createAndUpdateService.CreateSaleListingObject(sale, acc, product);
+                    sale.AccountId = acc.ID;
+                    sale.ProductType = producttype;
+                    sale.ProductTypeId = producttype.ID;
+                    var salelisting = _createAndUpdateService.CreateSaleListingObject(sale);
                     _saleListingRepository.Add(salelisting);
                     return true;
                 }
@@ -113,14 +116,17 @@ namespace deprosa.WebService
             {
                 if (issub)
                 {
-                    salelistings = _saleListingRepository.Get(e => !e.IsSold && e.ProductType.Category.ID == categoryid)
-                        .OrderByDescending(o => o.Created)
+                    salelistings = _saleListingRepository.Get(e => 
+                    !e.IsSold && e.ProductType.Category.ID == categoryid).Include(e=>e.ProductType.Category)
+                       .OrderByDescending(o => o.Created)
                         .Take(5)
                         .ToList();
                 }
                 else
                 {
-                    salelistings = _saleListingRepository.Get(e => !e.IsSold && e.ProductType.Category.MainCategory.ID == categoryid)
+                    salelistings = _saleListingRepository.Get(e => !e.IsSold && 
+                    e.ProductType.Category.MainCategory.ID == categoryid)
+                    .Include(e => e.ProductType.Category.MainCategory)
                         .OrderByDescending(o => o.Created)
                         .Take(5)
                         .ToList();

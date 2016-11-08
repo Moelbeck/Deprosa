@@ -71,6 +71,14 @@
     <Compile Include="Migrations\201611071151399_checkifsalelistingissold.Designer.cs">
       <DependentUpon>201611071151399_checkifsalelistingissold.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611082003043_nochanges.cs" />
+    <Compile Include="Migrations\201611082003043_nochanges.Designer.cs">
+      <DependentUpon>201611082003043_nochanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611082112389_addedforeignkeysalelisting.cs" />
+    <Compile Include="Migrations\201611082112389_addedforeignkeysalelisting.Designer.cs">
+      <DependentUpon>201611082112389_addedforeignkeysalelisting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -107,6 +115,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611071151399_checkifsalelistingissold.resx">
       <DependentUpon>201611071151399_checkifsalelistingissold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611082003043_nochanges.resx">
+      <DependentUpon>201611082003043_nochanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611082112389_addedforeignkeysalelisting.resx">
+      <DependentUpon>201611082112389_addedforeignkeysalelisting.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

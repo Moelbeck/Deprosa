@@ -2,6 +2,7 @@
 using deprosa.Model.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace deprosa.Model
 {
@@ -14,11 +15,22 @@ namespace deprosa.Model
 
         public virtual List<Image> Images { get; set; }
 
+        [ForeignKey("Owner")]
+        public int? CompanyId { get; set; }
+
         public virtual Company Owner { get; set; }
+
+        [ForeignKey("CreatedBy")]
+        public int? AccountId { get; set; }
 
         public virtual Account CreatedBy { get; set; }
 
+        [ForeignKey("Manufacturer")]
+        public int? ManufacturerId { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
+
+        [ForeignKey("ProductType")]
+        public int? ProductTypeId { get; set; }
         public virtual ProductType ProductType { get; set; }
 
         public virtual List<Comment> Comments { get; set; }

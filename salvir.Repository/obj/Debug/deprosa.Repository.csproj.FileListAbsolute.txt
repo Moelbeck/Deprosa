@@ -40,3 +40,7 @@ C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.conditionOnSal
 C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.imageNameAdded.resources
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.LoggingToDB2.resources
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.checkifsalelistingissold.resources
+C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.LoggingToDB2.resources
+C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.checkifsalelistingissold.resources
+C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.nochanges.resources
+C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.addedforeignkeysalelisting.resources

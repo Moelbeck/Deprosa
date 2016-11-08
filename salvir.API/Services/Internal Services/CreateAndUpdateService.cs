@@ -28,12 +28,10 @@ namespace deprosa.service
             return copy;
         }
 
-        public SaleListing CreateSaleListingObject(SaleListing newsalelisting, Account owner, ProductType product)
+        public SaleListing CreateSaleListingObject(SaleListing newsalelisting)
         {
             SaleListing salelisting = newsalelisting;
             salelisting.ExpirationDate = DateTime.Now.AddDays(DAYSBEFOREEXPIRING);
-            salelisting.Owner = owner.Company;
-            salelisting.ProductType = product;
             salelisting.Subscription = new Subscription(); //might handled otherwise.
             salelisting.Comments = new List<Comment>();
             return salelisting;

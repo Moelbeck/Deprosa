@@ -52,7 +52,8 @@ namespace deprosa.service
         {
             LogCategory category = new LogCategory
             {
-                UserID = userid, MainCateogryId = mainid, SubCategoryId = subid
+                UserID = userid,
+                MainCategoryId = mainid, SubCategoryId = subid
             };
             _categorylogrepo.Add(category);
         }
@@ -71,8 +72,8 @@ namespace deprosa.service
         public List<int> GetPopularMainCategories()
         {
             return  _categorylogrepo
-                .Get(e=>e.MainCateogryId !=0 && e.SubCategoryId == 0)
-                .GroupBy(g=>g.MainCateogryId)
+                .Get(e=>e.MainCategoryId !=0 && e.SubCategoryId == 0)
+                .GroupBy(g=>g.MainCategoryId)
                 .OrderByDescending(gp=>gp.Count())
                 .Take(NoOfElements)
                 .Select(e=>e.Key).ToList();
@@ -80,7 +81,7 @@ namespace deprosa.service
         public List<int> GetPopularSubCategories()
         {
                 return _categorylogrepo
-                .Get(e => e.MainCateogryId == 0 && e.SubCategoryId != 0)
+                .Get(e => e.MainCategoryId == 0 && e.SubCategoryId != 0)
                 .GroupBy(g => g.SubCategoryId)
                 .OrderByDescending(gp => gp.Count())
                 .Take(NoOfElements)
@@ -89,7 +90,7 @@ namespace deprosa.service
         public List<int> GetPopularSubCategoriesForUser(int userid)
         {
             return _categorylogrepo
-                .Get(e => (e.MainCateogryId == 0 && e.SubCategoryId != 0) && e.UserID == userid)
+                .Get(e => (e.MainCategoryId == 0 && e.SubCategoryId != 0) && e.UserID == userid)
                 .GroupBy(g => g.SubCategoryId)
                 .OrderByDescending(gp => gp.Count())
                 .Take(NoOfElements)
