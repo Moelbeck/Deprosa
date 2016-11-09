@@ -20,11 +20,13 @@ namespace deprosa.Web.Controllers
         private AccountService _accountservice;
         private VatValidationService _vatvalidationservice;
         private CategoryService _categoryService;
+        private SaleListingService _saleListingService;
         public ManagementController()
         {
             _accountservice = new AccountService();
             _vatvalidationservice = new VatValidationService();
             _categoryService = new CategoryService();
+            _saleListingService = new SaleListingService();
         }
         public ActionResult Index()
         {
@@ -56,9 +58,14 @@ namespace deprosa.Web.Controllers
 
         [HttpGet]
 
-        public ActionResult CompanySaleListings()
+        public ActionResult CompanySaleListings(string sort, string search, int? page)
         {
-
+            int nextpage=0;
+            if (page != null)
+            {
+                nextpage = (int) page;
+            }
+            var salelistings = _saleListingService.GetSaleListingsForCompany(CurrentUser.VAT, search, sort, false, nextpage);
             return View();
         }
 

@@ -197,6 +197,8 @@ namespace deprosa.Web.Model
             }
         }
         #endregion
+
+
         public static void AddCompanyInformation(CompanyDTO company)
         {
             VAT = company.VAT;

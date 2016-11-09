@@ -97,6 +97,8 @@ namespace deprosa.Web.Controllers
                 var salelisting = model.SaleListing;
                 salelisting.Images = CurrentSalelisting.SaleListingViewModel.SaleListing.Images;
                 await _salelistingService.CreateNewSaleListing(salelisting);
+                return RedirectToAction("CompanySaleListings", "Management");
+
             }
             return View("CreateSalelisting", CurrentSalelisting.SaleListingViewModel);
 

@@ -1,19 +1,27 @@
 ﻿@model deprosaWeb.Model.ViewModel.HighlightViewModel
 
 @{
-    ViewBag.Title = "Annoncer for";
+    ViewBag.Title = @Model.MenuViewModel.SelectedMainCategory.Name;
     Layout = "../Shared/_Layout.cshtml";}
 
-<h2>Annoncer for @Model.MenuViewModel.SelectedMainCategory.Name</h2>
 @Html.Partial("Partial/_MenuPartial", Model.MenuViewModel)
 
 <div class="body-content">
-    @foreach(var item in Model.HighligthtedSaleListings)
-    {
-        <div>
-           <text>@item.Title</text>
-        </div>
-    }
-
+    <div>
+        @if (Model.HighligthtedSaleListings.Any())
+        {
+            <h4>Populærer annoncer for @Model.MenuViewModel.SelectedMainCategory.Name</h4>
+            foreach (var
+             item in
+             Model.HighligthtedSaleListings)
+            {
+                <div >
+                    <text> @item.Title </text>
+                    <text> @item.Price ,- </text>
+                    <text > @item.ProductType.Name</text >
+                </div>
+            }
+        }
+    </div>
 </div>
 

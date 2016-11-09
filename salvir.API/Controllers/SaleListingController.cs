@@ -120,11 +120,11 @@ namespace WebService.Api.Controllers
         /// Get sale listings for company - Get
         /// </summary>
         [HttpGet, Route("company/{companyID}")]
-        public IHttpActionResult GetSaleListingsForCompany(int companyID, string sort, bool isAsc, int page, int size)
+        public IHttpActionResult GetSaleListingsForCompany(string vat, string search, string sort, bool isAsc, int page, int size)
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetForCompany(companyID, sort, isAsc, page, size);
+                var salelisting = _salelistingService.GetForCompany(vat, search, sort, isAsc, page, size);
                 if (salelisting != null)
                 {
                     return Ok(salelisting);
@@ -138,11 +138,11 @@ namespace WebService.Api.Controllers
         /// Get sale listings for category - Get
         /// </summary>
         [HttpGet, Route("category/{categoryID}")]
-        public IHttpActionResult GetSaleListingsForCategory(int categoryID, string sort, bool isAsc, int page, int size)
+        public IHttpActionResult GetSaleListingsForCategory(int categoryID, string search, string sort, bool isAsc, int page, int size)
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetForSubCategory(categoryID, sort, isAsc, page, size);
+                var salelisting = _salelistingService.GetForSubCategory(categoryID, search, sort, isAsc, page, size);
                 if (salelisting != null)
                 {
                     int userid;

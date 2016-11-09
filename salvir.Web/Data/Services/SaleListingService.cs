@@ -31,16 +31,16 @@ namespace deprosa.WebsiteService
             var salelisting = await client.GetResponseObject<SaleListingDTO, SaleListingDTO>(uri, eHttpMethodType.GET, null);
             return salelisting;
         }
-        public async Task<List<SaleListingDTO>> GetSaleListingsForCompany(int companyID, int page)
+        public async Task<List<SaleListingDTO>> GetSaleListingsForCompany(string companyvat, string search, string sort, bool isAsc, int page)
         {
-            string uri = string.Format("company/{0}?page={1}&size={2}", companyID,page,Konstanter.PAGE_SIZE);
+            string uri = string.Format("company/{0}?search={1}&sort={2}&isAsc={3}&page={4}&size={5}", companyvat, search, sort, isAsc, page,Konstanter.PAGE_SIZE);
             var salelisting = await client.GetResponseObject<List<SaleListingDTO>, List< SaleListingDTO >> (uri, eHttpMethodType.GET, null);
             return salelisting;
         }
 
-        public async Task<List<SaleListingDTO>> GetSaleListingsForCategory(int categoryid, int page)
+        public async Task<List<SaleListingDTO>> GetSaleListingsForCategory(int categoryid, string search, string sort, bool isAsc, int page)
         {
-            string uri = string.Format("category/{0}?page={1}&size={2}", categoryid, page, Konstanter.PAGE_SIZE);
+            string uri = string.Format("category/{0}?search={1}&sort={2}&isAsc={3}&page={4}&size={5}", categoryid, search, sort, isAsc, page, Konstanter.PAGE_SIZE);
             var salelisting = await client.GetResponseObject<List<SaleListingDTO>, List<SaleListingDTO>>(uri, eHttpMethodType.GET, null);
             return salelisting;
         }

@@ -134,11 +134,19 @@ namespace deprosa.WebService
             }
             return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
         }
-        public List<SaleListingDTO> GetForCompany(int companyID, string sort, bool isAsc, int page, int size)
+        public List<SaleListingDTO> GetForCompany(string vat, string search, string sort, bool isAsc, int page, int size)
         {
             try
             {
-                var salelistingsQuery = _saleListingRepository.Get(e=>e.CreatedBy.CompanyID == companyID && e.Deleted == null);
+                IQueryable<SaleListing> salelistingsQuery;
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    salelistingsQuery =_saleListingRepository.Get(e => e.Owner.VAT.Equals(vat) && e.Deleted == null && !e.IsSold && e.Description.Contains(search) || e.Title.Contains(search));
+                }
+                else
+                {
+                    salelistingsQuery = _saleListingRepository.Get(e => e.Owner.VAT.Equals(vat) && e.Deleted == null);
+                }
                 var salelistings = Filter(salelistingsQuery, sort, isAsc, page, size).ToList();
                 return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
             }
@@ -148,11 +156,22 @@ namespace deprosa.WebService
             }
         }
 
-        public List<SaleListingDTO> GetForSubCategory(int id, string sort, bool isAsc, int page, int size)
+        public List<SaleListingDTO> GetForSubCategory(int id, string search, string sort, bool isAsc, int page, int size)
         {
             try
             {
-                var salelistingsQuery = _saleListingRepository.Get(e=>e.ProductType.Category.ID == id && e.Deleted == null && !e.IsSold);
+                IQueryable<SaleListing> salelistingsQuery;
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    salelistingsQuery =
+                        _saleListingRepository.Get(
+                            e => e.ProductType.Category.ID == id && e.Deleted == null && !e.IsSold && e.Description.Contains(search) || e.Title.Contains(search));
+
+                }
+                else
+                {
+                    salelistingsQuery = _saleListingRepository.Get(e=>e.ProductType.Category.ID == id && e.Deleted == null && !e.IsSold);
+                }
                 var salelistings = Filter(salelistingsQuery, sort, isAsc, page, size).ToList();
                 return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
             }
@@ -162,7 +181,7 @@ namespace deprosa.WebService
             }
         }
 
-        public List<SaleListingDTO> GetBySearchString(string search, string sort, bool isAsc, int page, int size)
+        public List<SaleListingDTO> GetBySearchString(string search,  string sort, bool isAsc, int page, int size)
         {
 
             var salelistingsQuery = _saleListingRepository.Get(e=>e.Description.Contains(search) || e.Title.Contains(search) && !e.IsSold && e.Deleted == null);
