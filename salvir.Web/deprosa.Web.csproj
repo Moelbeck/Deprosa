@@ -299,6 +299,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Partial\_MenuPartial.cshtml" />
     <None Include="Views\Management\CompanySaleListings.cshtml" />
+    <None Include="Views\Management\SavedSaleListings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
