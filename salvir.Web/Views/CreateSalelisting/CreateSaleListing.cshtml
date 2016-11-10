@@ -63,42 +63,42 @@
 
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
                 {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_dimension.cshtml", Model)
+                    @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_dimension.cshtml", Model)
                 }
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.RAM))
                 {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_ram.cshtml", Model)
+                    @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_ram.cshtml", Model)
                 }
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Harddisk))
                 {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_harddisk.cshtml", Model)
+                    @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_harddisk.cshtml", Model)
                 }
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Length))
                 {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_length.cshtml", Model)
+                    @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_length.cshtml", Model)
                 }
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Processor))
                 {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_processor.cshtml", Model)
+                    @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_processor.cshtml", Model)
                 }
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Screen))
                 {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_screen.cshtml", Model)
+                    @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_screen.cshtml", Model)
                 }
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Thickness))
                 {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_thickness.cshtml", Model)
+                    @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_thickness.cshtml", Model)
                 }
                 if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Weight))
                 {
-                    @Html.Partial("~/Views/Shared/Partial/Salelisting/_weight.cshtml", Model)
+                    @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_weight.cshtml", Model)
                     if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.PrivateCar))
                     {
-                        @Html.Partial("~/Views/Shared/Partial/Salelisting/_privatecar.cshtml", Model)
+                        @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_privatecar.cshtml", Model)
                     }
                     if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.CompanyCar))
                     {
-                        @Html.Partial("~/Views/Shared/Partial/Salelisting/_companycar.cshtml", Model)
+                        @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_companycar.cshtml", Model)
 
                     }
                 }

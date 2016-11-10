@@ -83,9 +83,27 @@ namespace deprosa.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult SavedSaleListings()
+        public async Task<ActionResult> FollowingSalelistings(string sort = "", string search = "", int? page = null)
         {
-            return View();
+            ViewBag.CurrentSort = sort;
+            ViewBag.DateSortParm = sort = String.IsNullOrWhiteSpace(sort) ? "created_desc" : "";
+            ViewBag.TitleSortParam = sort == "title" ? "title_desc" : "title";
+            ViewBag.PriceSortParm = sort == "price" ? "price_desc" : "price";
+            int nextpage = 0;
+            if (page != null)
+            {
+                nextpage = (int)page;
+            }
+            if (search != null)
+            {
+                nextpage = 1;
+            }
+            var salelistings = await _saleListingService.GetFollowingSalelistings(CurrentUser.ID, sort, nextpage, search);
+            SaleListingListViewModel saleListingList = new SaleListingListViewModel
+            {
+                Salelistings = salelistings.ToPagedList(nextpage, int.MaxValue)
+            };
+            return View(saleListingList);
         }
 
         #region Account and company posts

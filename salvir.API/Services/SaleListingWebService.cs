@@ -139,7 +139,6 @@ namespace deprosa.WebService
             try
             {
                 IQueryable<SaleListing> salelistingsQuery;
-                var test =_saleListingRepository.Get(e => e.Deleted == null && !e.IsSold).Include(i=>i.Owner);
                 if (!string.IsNullOrWhiteSpace(search))
                 {
                     salelistingsQuery =_saleListingRepository.Get(e => e.Owner.VAT.Equals(vat) && e.Deleted == null && !e.IsSold && e.Description.Contains(search) || e.Title.Contains(search)).Include(i=>i.Owner);
@@ -147,6 +146,30 @@ namespace deprosa.WebService
                 else
                 {
                     salelistingsQuery = _saleListingRepository.Get(e => e.Owner.VAT.Equals(vat) && e.Deleted == null);
+                }
+                var salelistings = Filter(salelistingsQuery, sort, page, size).ToList();
+                return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<SaleListingDTO> GetFollowingSalelistings(int userid, string sort, int page, int size, string search)
+        {
+            try
+            {
+                IQueryable<SaleListing> salelistingsQuery;
+                var allsalelistings = _accountRepository.Get(e => e.ID == userid).SelectMany(s => s.Following);
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+
+                    salelistingsQuery = allsalelistings.Where(e => e.Deleted == null && !e.IsSold && e.Description.Contains(search) || e.Title.Contains(search));
+                }
+                else
+                {
+                    salelistingsQuery = allsalelistings.Where(e => !e.IsSold &&  e.Deleted == null);
                 }
                 var salelistings = Filter(salelistingsQuery, sort, page, size).ToList();
                 return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();

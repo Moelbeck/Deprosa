@@ -134,6 +134,16 @@ namespace WebService.Api.Controllers
             return BadRequest(ModelState);
         }
 
+        [HttpGet, Route("following/{userid}")]
+        public IHttpActionResult GetFollowingSalelistings(int userid, string sort, int page, int size, string search = null)
+        {
+            var salelistings = _salelistingService.GetFollowingSalelistings(userid, sort, page, size, search);
+            if (salelistings != null)
+            {
+                return Ok(salelistings);
+            }
+            return BadRequest();
+        }
         /// <summary>
         /// Get sale listings for category - Get
         /// </summary>

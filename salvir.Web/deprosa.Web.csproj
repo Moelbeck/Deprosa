@@ -284,22 +284,23 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
     <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_Car.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_CompanyCar.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_Dimension.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_Harddisk.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_Length.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_PrivateCar.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_Processor.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_Ram.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_Screen.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_Thickness.cshtml" />
-    <Content Include="Views\Shared\Partial\Salelisting\_Weight.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_Car.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_CompanyCar.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_Dimension.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_Harddisk.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_Length.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_PrivateCar.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_Processor.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_Ram.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_Screen.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_Thickness.cshtml" />
+    <Content Include="Views\Shared\Partial\SalelistingDetails\_Weight.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Partial\_MenuPartial.cshtml" />
     <None Include="Views\Management\CompanySaleListings.cshtml" />
-    <None Include="Views\Management\SavedSaleListings.cshtml" />
+    <None Include="Views\Management\FollowingSalelistings.cshtml" />
+    <Content Include="Views\Shared\Partial\_SalelistingList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

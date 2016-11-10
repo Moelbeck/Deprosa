@@ -1,0 +1,18 @@
+﻿@using PagedList.Mvc
+@model deprosa.Web.Model.SaleListingListViewModel
+
+    @foreach (var item in Model.Salelistings)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+        </tr>
+    }
+<br />

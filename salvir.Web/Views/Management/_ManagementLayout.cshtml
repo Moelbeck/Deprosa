@@ -10,8 +10,8 @@
             @Html.ActionLink("Virksomhedens Oplysninger", "CompanyManagement", "Management")
             @if (!string.IsNullOrWhiteSpace(CurrentUser.VAT))
             {
-                @Html.ActionLink("Mine annoncer","CompanySaleListings","Management")
-                @Html.ActionLink("Gemte annoncer", "SavedSaleListings", "Management")
+                @Html.ActionLink("Vores annoncer","CompanySaleListings","Management")
+                @Html.ActionLink("Gemte annoncer", "FollowingSalelistings", "Management")
             }
         </ul>
     </div>

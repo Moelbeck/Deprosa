@@ -24,7 +24,7 @@ namespace deprosa.Model
         [ForeignKey("CompanyID")]
         public virtual Company Company { get; set; }
 
-        //public virtual List<SaleListing> Following { get; set; }
+        public virtual List<SaleListing> Following { get; set; }
 
     }
 }

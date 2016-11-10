@@ -20,23 +20,9 @@
             @Html.ActionLink("Pris", "Index", new { sort = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
     </tr>
-    @foreach (var item in Model.Salelistings)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Created)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-        </tr>
-    }
+    @Html.Partial("~/Views/Shared/Partial/_SalelistingList.cshtml", Model)
 </table>
-<br />
-Page @(Model.Salelistings.PageCount < Model.Salelistings.PageNumber ? 0 : Model.Salelistings.PageNumber) of @Model.Salelistings.PageCount
 
 @Html.PagedListPager(Model.Salelistings, page => Url.Action("Index",
     new { page, sort = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+Side @(Model.Salelistings.PageCount < Model.Salelistings.PageNumber ? 0 : Model.Salelistings.PageNumber) af @Model.Salelistings.PageCount
