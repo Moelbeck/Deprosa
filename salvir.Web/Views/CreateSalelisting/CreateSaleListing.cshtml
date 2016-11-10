@@ -18,37 +18,37 @@
             <div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        @Html.DisplayNameFor(e => e.MainCategories)
-                        @Html.DropDownListFor(e => e.SelectedMainCategoryId, Model.MainCategoriesSelectList, "Vælg", new { @onchange = "SelectMainCategory(this.value)" })
+                        @Html.DisplayNameFor(e => e.Categories.MainCategories)
+                        @Html.DropDownListFor(e => e.Categories.SelectedMainCategoryId, Model.Categories.MainCategoriesSelectList, "Vælg", new { @onchange = "SelectMainCategory(this.value)" })
                     </div>
                 </div>
             </div>
-            @if (Model.SelectedMainCategoryId > 0)
+            @if (Model.Categories.SelectedMainCategoryId > 0)
             {
                 <div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            @Html.DisplayNameFor(e => e.SubCategories)
-                            @Html.DropDownListFor(e => e.SelectedSubCategoryId, Model.SubCategoriesSelectList, "Vælg", new { @onchange = "SelectSubCategory(this.value)" })
+                            @Html.DisplayNameFor(e => e.Categories.SubCategories)
+                            @Html.DropDownListFor(e => e.Categories.SelectedSubCategoryId, Model.Categories.SubCategoriesSelectList, "Vælg", new { @onchange = "SelectSubCategory(this.value)" })
                         </div>
                     </div>
                 </div>
 
             }
-            @if (Model.SelectedSubCategoryId > 0)
+            @if (Model.Categories.SelectedSubCategoryId > 0)
             {
                 <div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            @Html.DisplayNameFor(e => e.ProductTypes)
-                            @Html.DropDownListFor(e => e.SelectedProductTypeId, Model.ProductTypesSelectList, "Vælg",
+                            @Html.DisplayNameFor(e => e.Categories.ProductTypes)
+                            @Html.DropDownListFor(e => e.Categories.SelectedProductTypeId, Model.Categories.ProductTypesSelectList, "Vælg",
                                             new { @onchange = "SelectProductType(this.value)" })
                         </div>
                     </div>
                 </div>
             }
 
-            @if (Model.SelectedProductTypeId > 0)
+            @if (Model.Categories.SelectedProductTypeId > 0)
             {
                 <div>
                     <div class="form-group">
@@ -61,42 +61,42 @@
                     </div>
                 </div>
 
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
+                if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Dimensions))
                 {
                     @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_dimension.cshtml", Model)
                 }
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.RAM))
+                if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.RAM))
                 {
                     @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_ram.cshtml", Model)
                 }
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Harddisk))
+                if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Harddisk))
                 {
                     @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_harddisk.cshtml", Model)
                 }
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Length))
+                if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Length))
                 {
                     @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_length.cshtml", Model)
                 }
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Processor))
+                if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Processor))
                 {
                     @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_processor.cshtml", Model)
                 }
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Screen))
+                if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Screen))
                 {
                     @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_screen.cshtml", Model)
                 }
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Thickness))
+                if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Thickness))
                 {
                     @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_thickness.cshtml", Model)
                 }
-                if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Weight))
+                if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.Weight))
                 {
                     @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_weight.cshtml", Model)
-                    if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.PrivateCar))
+                    if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.PrivateCar))
                     {
                         @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_privatecar.cshtml", Model)
                     }
-                    if (Model.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.CompanyCar))
+                    if (Model.Categories.SelectedProductType.Types.HasFlag(deprosa.Common.eSalelistingTypes.CompanyCar))
                     {
                         @Html.Partial("~/Views/Shared/Partial/SalelistingDetails/_companycar.cshtml", Model)
 
@@ -140,7 +140,7 @@
             }
         </div>
     }
-@if (Model.SelectedProductTypeId > 0)
+@if (Model.Categories.SelectedProductTypeId > 0)
 {
     using (Html.BeginForm("UploadImages", "CreateSalelisting", FormMethod.Post))
      {

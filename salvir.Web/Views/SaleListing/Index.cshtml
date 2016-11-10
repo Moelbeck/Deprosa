@@ -4,7 +4,10 @@
     ViewBag.Title = @Model.MenuViewModel.SelectedMainCategory.Name;
     Layout = "../Shared/_Layout.cshtml";}
 
-@Html.Partial("Partial/_MenuPartial", Model.MenuViewModel)
+@*@Html.Partial("Partial/_MenuPartial", Model.MenuViewModel)*@
+@*@Html.DropDownListFor(e=>e.MenuViewModel.SubCategories, )*@
+@*@Html.DropDownListFor(e => e.SelectedMainCategoryId, e.MenuViewModel.SubCategories "Vælg", new { @onchange = "SelectMainCategory(this.value)" })*@
+
 
 <div class="body-content">
     <div>
