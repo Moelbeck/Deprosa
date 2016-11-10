@@ -119,12 +119,12 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Get sale listings for company - Get
         /// </summary>
-        [HttpGet, Route("company/{companyID}")]
-        public IHttpActionResult GetSaleListingsForCompany(string vat, string search, string sort, bool isAsc, int page, int size)
+        [HttpGet, Route("company/{vat}")]
+        public IHttpActionResult GetSaleListingsForCompany(string vat, string sort, int page, int size, string search = null)
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetForCompany(vat, search, sort, isAsc, page, size);
+                var salelisting = _salelistingService.GetForCompany(vat, search, sort, page, size);
                 if (salelisting != null)
                 {
                     return Ok(salelisting);
@@ -138,11 +138,11 @@ namespace WebService.Api.Controllers
         /// Get sale listings for category - Get
         /// </summary>
         [HttpGet, Route("category/{categoryID}")]
-        public IHttpActionResult GetSaleListingsForCategory(int categoryID, string search, string sort, bool isAsc, int page, int size)
+        public IHttpActionResult GetSaleListingsForCategory(int categoryID, string sort, int page, int size, string search)
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetForSubCategory(categoryID, search, sort, isAsc, page, size);
+                var salelisting = _salelistingService.GetForSubCategory(categoryID, search, sort, page, size);
                 if (salelisting != null)
                 {
                     int userid;
@@ -161,11 +161,11 @@ namespace WebService.Api.Controllers
         /// Get sale listing by search string - Get
         /// </summary>
         [HttpGet, Route("getBySearch/{search}")]
-        public IHttpActionResult GetSaleListingsBySearchString(string search, string sort, bool isAsc, int page, int size)
+        public IHttpActionResult GetSaleListingsBySearchString(string search, string sort, int page, int size)
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetBySearchString(search, sort, isAsc, page, size);
+                var salelisting = _salelistingService.GetBySearchString(search, sort, page, size);
                 if (salelisting != null)
                 {
                     int userid;

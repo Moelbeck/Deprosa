@@ -9,6 +9,7 @@ using System.Linq;
 using deprosa.Filter;
 using deprosa.Web.Model;
 using deprosa.WebsiteService;
+using PagedList;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -50,23 +51,35 @@ namespace deprosa.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult AccountManagement()
+        public async Task<ActionResult> AccountManagement()
         {
-            var accountinfo = _accountservice.GetAccountInformation(CurrentUser.ID).Result;
+            var accountinfo = await _accountservice.GetAccountInformation(CurrentUser.ID);
             return View(accountinfo);
         }
 
         [HttpGet]
-
-        public ActionResult CompanySaleListings(string sort, string search, int? page)
+        public async Task<ActionResult> CompanySaleListings(string sort="", string search="", int? page=null)
         {
+            ViewBag.CurrentSort = sort;
+            ViewBag.DateSortParm = sort = String.IsNullOrWhiteSpace(sort) ? "created_desc" : "";
+            ViewBag.TitleSortParam = sort == "title" ? "title_desc" : "title";
+            ViewBag.PriceSortParm = sort == "price" ? "price_desc" : "price";
             int nextpage=0;
             if (page != null)
             {
                 nextpage = (int) page;
             }
-            var salelistings = _saleListingService.GetSaleListingsForCompany(CurrentUser.VAT, search, sort, false, nextpage);
-            return View();
+            if (search != null)
+            {
+                nextpage = 1;
+            }
+
+            var salelistings =  await _saleListingService.GetSaleListingsForCompany(CurrentUser.VAT, sort, nextpage, search);
+            SaleListingListViewModel saleListingList = new SaleListingListViewModel
+            {
+                Salelistings = salelistings.ToPagedList(nextpage,int.MaxValue)
+            };
+            return View(saleListingList);
         }
 
         [HttpGet]
@@ -104,7 +117,7 @@ namespace deprosa.Web.Controllers
 
             }
 
-            return PartialView("AccountManagement", ModelState);
+            return PartialView("AccountManagement");
         }
         [HttpPost]
         public async Task<ActionResult> AddOrUpdateCompany(CompanyDTO company)
@@ -129,7 +142,7 @@ namespace deprosa.Web.Controllers
                 CurrentUser.AddCompanyInformation(savedOrUpdatedDTO);
                 return PartialView("CompanyManagement", savedOrUpdatedDTO);
             }
-            return PartialView("CompanyManagement", ModelState);
+            return PartialView("CompanyManagement");
         }
         #endregion
         private CompanyDTO CreateCompanyFromVatValidation(VatValidationDTO dto) 

@@ -34,11 +34,15 @@ namespace deprosa.ViewModel
         [Display(Name = "Pris")]
         public double Price { get; set; }
 
+        [Display(Name = "Tilstand")]
+        public eCondition Condition { get; set; }
+
+
         [Display(Name = "Udløbs dato")]
         public DateTime ExpirationDate { get; set; }
 
-        [Display(Name = "Tilstand")]
-        public eCondition Condition { get; set; }
+        [Display(Name = "Oprettet dato")]
+        public DateTime Created { get; set; }
 
         #endregion
 

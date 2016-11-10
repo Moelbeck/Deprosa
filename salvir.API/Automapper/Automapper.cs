@@ -194,6 +194,7 @@ namespace biz2biz.Service.Automapper
                                     .ForMember(e => e.Price, o => o.MapFrom(s => s.Price))
                                     .ForMember(e => e.Condition, o => o.MapFrom(s => s.Condition))
                                     .ForMember(e => e.ExpirationDate, o => o.MapFrom(s => s.ExpirationDate))
+                                    .ForMember(e => e.Created, o => o.MapFrom(s => s.Created))
                                     .ForMember(e => e.Height, o => o.MapFrom(s => s.Height))
                                     .ForMember(e => e.Width, o => o.MapFrom(s => s.Width))
                                     .ForMember(e => e.Depth, o => o.MapFrom(s => s.Depth))

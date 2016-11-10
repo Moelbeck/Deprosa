@@ -134,20 +134,21 @@ namespace deprosa.WebService
             }
             return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
         }
-        public List<SaleListingDTO> GetForCompany(string vat, string search, string sort, bool isAsc, int page, int size)
+        public List<SaleListingDTO> GetForCompany(string vat, string search, string sort, int page, int size)
         {
             try
             {
                 IQueryable<SaleListing> salelistingsQuery;
+                var test =_saleListingRepository.Get(e => e.Deleted == null && !e.IsSold).Include(i=>i.Owner);
                 if (!string.IsNullOrWhiteSpace(search))
                 {
-                    salelistingsQuery =_saleListingRepository.Get(e => e.Owner.VAT.Equals(vat) && e.Deleted == null && !e.IsSold && e.Description.Contains(search) || e.Title.Contains(search));
+                    salelistingsQuery =_saleListingRepository.Get(e => e.Owner.VAT.Equals(vat) && e.Deleted == null && !e.IsSold && e.Description.Contains(search) || e.Title.Contains(search)).Include(i=>i.Owner);
                 }
                 else
                 {
                     salelistingsQuery = _saleListingRepository.Get(e => e.Owner.VAT.Equals(vat) && e.Deleted == null);
                 }
-                var salelistings = Filter(salelistingsQuery, sort, isAsc, page, size).ToList();
+                var salelistings = Filter(salelistingsQuery, sort, page, size).ToList();
                 return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
             }
             catch (Exception)
@@ -156,7 +157,7 @@ namespace deprosa.WebService
             }
         }
 
-        public List<SaleListingDTO> GetForSubCategory(int id, string search, string sort, bool isAsc, int page, int size)
+        public List<SaleListingDTO> GetForSubCategory(int id, string search, string sort, int page, int size)
         {
             try
             {
@@ -172,7 +173,7 @@ namespace deprosa.WebService
                 {
                     salelistingsQuery = _saleListingRepository.Get(e=>e.ProductType.Category.ID == id && e.Deleted == null && !e.IsSold);
                 }
-                var salelistings = Filter(salelistingsQuery, sort, isAsc, page, size).ToList();
+                var salelistings = Filter(salelistingsQuery, sort, page, size).ToList();
                 return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
             }
             catch (Exception ex)
@@ -181,11 +182,11 @@ namespace deprosa.WebService
             }
         }
 
-        public List<SaleListingDTO> GetBySearchString(string search,  string sort, bool isAsc, int page, int size)
+        public List<SaleListingDTO> GetBySearchString(string search,  string sort, int page, int size)
         {
 
             var salelistingsQuery = _saleListingRepository.Get(e=>e.Description.Contains(search) || e.Title.Contains(search) && !e.IsSold && e.Deleted == null);
-            var salelistings = Filter(salelistingsQuery, sort, isAsc, page, size).ToList();
+            var salelistings = Filter(salelistingsQuery, sort, page, size).ToList();
             return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
         }
 
@@ -361,26 +362,36 @@ namespace deprosa.WebService
             comment.CommentType = eCommentType.SaleListing;
         }
 
-        IQueryable<SaleListing> Filter(IQueryable<SaleListing> salelistings, string sort, bool isAsc, int page, int size)
+        IQueryable<SaleListing> Filter(IQueryable<SaleListing> salelistings, string sort, int page, int size)
         {
             IQueryable<SaleListing> filtered = salelistings;
+            sort = sort.ToLower();
             switch (sort)
             {
-                case "Title":
-                        filtered = isAsc? salelistings.OrderBy(e => e.Title) : salelistings.OrderByDescending(e => e.Title);
+                case "title":
+                         filtered = salelistings.OrderBy(e => e.Title);
                     break;
-                case "Price":
-                    filtered = isAsc ? salelistings.OrderBy(e => e.Price) : salelistings.OrderByDescending(e => e.Price);
+                case "title_desc":
+                    filtered = salelistings.OrderByDescending(e => e.Title);
                     break;
-                case "Crated":
-                    filtered = isAsc ? salelistings.OrderBy(e => e.Created) : salelistings.OrderByDescending(e => e.Created);
+                case "price":
+                    filtered = salelistings.OrderBy(e => e.Price) ;
                     break;
-                    
+                case "price_desc":
+                    filtered = salelistings.OrderByDescending(e => e.Price);
+                    break;
+                case "created":
+                    filtered = salelistings.OrderBy(e => e.Created);
+                    break;
+                case "created_desc":
+                    filtered = salelistings.OrderByDescending(e => e.Created);
+                    break;
+
                 default:
                    filtered = salelistings.OrderBy(e => e.Created);
                     break;
             }
-            return filtered.Skip(size * page).Take(size);
+            return filtered.Skip(size * (page-1)).Take(size);
         }
         #endregion
     }

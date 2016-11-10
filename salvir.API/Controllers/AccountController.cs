@@ -73,7 +73,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Add Account to company - Post
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpPost, Route("{currentAccountId}/add")]
         public IHttpActionResult AddAccountToCompany(int currentAccountId, [FromBody]AccountCreateDTO newaccount)
         {
@@ -134,7 +134,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Get Account information - Get
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpGet, Route("{id}/accountinfo")]
         public IHttpActionResult GetAccountInformation(int id)
         {
@@ -152,7 +152,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Get company information - Get
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpGet, Route("{vat}/companyinfo")]
         public IHttpActionResult GetCompanyInformation(string vat)
         {
@@ -170,7 +170,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Update account information - Put
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpPut, Route("updateaccountinformation")]        
         public IHttpActionResult UpdateAccountInformation([FromBody]AccountUpdateDTO viewmodel)
         {
@@ -193,7 +193,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Update company information - Put
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpPut, Route("updatecompanyinformation")]
         public IHttpActionResult UpdateCompanyInformation([FromBody]CompanyUpdateRequest viewmodel)
         {
@@ -217,7 +217,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Checks if vat is in db - Get
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpGet, Route("{vat}/isvatindatabase")]
         public IHttpActionResult IsVatInDatabase(string vat)
         {
@@ -239,7 +239,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Checks if company email is in DB - Get
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpGet, Route("{email}/iscompanymailindatabase")]
         public IHttpActionResult IsCompanyEmailInDatabase(string email)
         {
@@ -257,7 +257,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Update Password - Post
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpPost, Route("updatepassword")]
         public IHttpActionResult UpdatePassword([FromBody]AccountUpdatePasswordViewModel accountviewmodel)
         {
@@ -276,7 +276,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Delete account - Delete
         /// </summary>
-        [Authorize]
+        [EnsureLoggedInAuthorize]
         [HttpDelete, Route("delete")]
         public IHttpActionResult DeleteAccount(int id)
         {
