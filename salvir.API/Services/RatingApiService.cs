@@ -13,12 +13,12 @@ namespace deprosa.WebService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RatingService" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select RatingService.svc or RatingService.svc.cs at the Solution Explorer and start debugging.
-    public class RatingWebService : IRatingWebService
+    public class RatingApiService : IRatingWebService
     {
 
         private readonly GenericRepository<Rating> _ratingRepository;
 
-        public RatingWebService()
+        public RatingApiService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
             _ratingRepository = new GenericRepository<Rating>(context);

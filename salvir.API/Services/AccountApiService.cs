@@ -21,12 +21,12 @@ namespace deprosa.WebService
     /// <summary>
     /// AccountService is handling login, creation etc for accounts
     /// </summary>
-    public class AccountWebService : IAccountWebtService
+    public class AccountApiService : IAccountWebtService
     {
         readonly GenericRepository<Account> _accountRepository;
         readonly GenericRepository<Company> _companyRepository;
         readonly CreateAndUpdateService _createAndUpdateService;
-        public AccountWebService()
+        public AccountApiService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
             _accountRepository = new GenericRepository<Account>(context);

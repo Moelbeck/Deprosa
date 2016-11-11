@@ -11,11 +11,11 @@ using System.Linq;
 
 namespace deprosa.WebService
 {
-    public class ManufacturerWebService : IManufacturerService
+    public class ManufacturerApiService : IManufacturerService
 
     {
         private GenericRepository<Manufacturer> _manufacturerRepository;
-        public ManufacturerWebService()
+        public ManufacturerApiService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
             _manufacturerRepository = new GenericRepository<Manufacturer>(context);

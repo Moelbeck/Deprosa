@@ -15,16 +15,16 @@ using deprosa.service;
 namespace WebService.Api.Controllers
 {
     [RoutePrefix("api/SaleListing")]
-    public class SaleListingController : ApiController
+    public class SaleListingApiController : ApiController
     {
-        private readonly SaleListingWebService _salelistingService;
-        private readonly CategoryWebService _categoryService;
+        private readonly SaleListingApiService _salelistingService;
+        private readonly CategoryApiService _categoryService;
         private LogService _log;
-        public SaleListingController()
+        public SaleListingApiController()
         {
-            _salelistingService = new SaleListingWebService();
+            _salelistingService = new SaleListingApiService();
             _log = new LogService();
-            _categoryService = new CategoryWebService();
+            _categoryService = new CategoryApiService();
         }
         #region Salelisting
 

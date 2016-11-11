@@ -15,14 +15,14 @@ namespace deprosa.WebService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "CategoryService" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select CategoryService.svc or CategoryService.svc.cs at the Solution Explorer and start debugging.
-    public class CategoryWebService : ICategoryWebService
+    public class CategoryApiService : ICategoryWebService
     {
         //private readonly IMainCategoryRepository _categoryRepository;
         //private readonly ISubCategoryRepository _subcategoryRepository;
         private readonly GenericRepository<MainCategory> _maincategory;
         private readonly GenericRepository<SubCategory> _subcategory;
 
-        public CategoryWebService()
+        public CategoryApiService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
             _maincategory = new GenericRepository<MainCategory>(context);

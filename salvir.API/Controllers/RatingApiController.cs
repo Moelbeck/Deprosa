@@ -10,13 +10,13 @@ using System.Web.Http;
 namespace WebService.Api.Controllers
 {
     [RoutePrefix("api/Rating")]
-    public class RatingController : ApiController
+    public class RatingApiController : ApiController
     {
-        private RatingWebService _ratingService;
+        private RatingApiService _ratingService;
 
-        public RatingController()
+        public RatingApiController()
         {
-            _ratingService = new RatingWebService();
+            _ratingService = new RatingApiService();
         }
         /// <summary>
         /// Create rating - Post
