@@ -35,14 +35,14 @@ namespace deprosa.Web.Controllers
         public async Task<ActionResult> CreateSaleListing(SaleListingCreateViewModel current)
         {
             CurrentSalelisting.SaleListingViewModel = current;
-            if (CurrentSalelisting.SaleListingViewModel.MainCategories == null)
+            if (CurrentSalelisting.SaleListingViewModel.Categories.MainCategories == null)
             {
                 CategoryStructureRequest request = await _categoryService.GetCategoryStructure();
-                CurrentSalelisting.SaleListingViewModel.MainCategories = request.MainCategories;
-                CurrentSalelisting.SaleListingViewModel.SubCategories = request.SubCategories;
-                CurrentSalelisting.SaleListingViewModel.ProductTypes = request.ProductTypes;
+                CurrentSalelisting.SaleListingViewModel.Categories.MainCategories = request.MainCategories;
+                CurrentSalelisting.SaleListingViewModel.Categories.SubCategories = request.SubCategories;
+                CurrentSalelisting.SaleListingViewModel.Categories.ProductTypes = request.ProductTypes;
             }
-            if (CurrentSalelisting.SaleListingViewModel.SelectedMainCategoryId <= 0)
+            if (CurrentSalelisting.SaleListingViewModel.Categories.SelectedMainCategoryId <= 0)
             {
                 CurrentSalelisting.SetSalelistingToNew();
             }
@@ -54,12 +54,12 @@ namespace deprosa.Web.Controllers
         {
             if (categoryid > 0)
             {
-                CurrentSalelisting.SaleListingViewModel.SelectedMainCategoryId = categoryid;
-                CurrentSalelisting.SaleListingViewModel.CurrentSubCategories = CurrentSalelisting.SaleListingViewModel.SubCategories.Where(e => e.MainCategory.ID == categoryid).ToList();
+                CurrentSalelisting.SaleListingViewModel.Categories.SelectedMainCategoryId = categoryid;
+                CurrentSalelisting.SaleListingViewModel.Categories.CurrentSubCategories = CurrentSalelisting.SaleListingViewModel.Categories.SubCategories.Where(e => e.MainCategory.ID == categoryid).ToList();
             }
             else
             {
-                CurrentSalelisting.SaleListingViewModel.SelectedMainCategoryId = 0;
+                CurrentSalelisting.SaleListingViewModel.Categories.SelectedMainCategoryId = 0;
             }
             return View("CreateSaleListing", CurrentSalelisting.SaleListingViewModel);
         }
@@ -68,8 +68,8 @@ namespace deprosa.Web.Controllers
         {
             if (categoryid > 0)
             {
-                CurrentSalelisting.SaleListingViewModel.SelectedSubCategoryId = categoryid;
-                CurrentSalelisting.SaleListingViewModel.CurrentProductTypes = CurrentSalelisting.SaleListingViewModel.ProductTypes.Where(e => e.SubCategory.ID == categoryid).ToList();
+                CurrentSalelisting.SaleListingViewModel.Categories.SelectedSubCategoryId = categoryid;
+                CurrentSalelisting.SaleListingViewModel.Categories.CurrentProductTypes = CurrentSalelisting.SaleListingViewModel.Categories.ProductTypes.Where(e => e.SubCategory.ID == categoryid).ToList();
 
             }
             return View("CreateSalelisting", CurrentSalelisting.SaleListingViewModel);
@@ -80,8 +80,8 @@ namespace deprosa.Web.Controllers
         {
             if (producttypeid > 0)
             {
-                CurrentSalelisting.SaleListingViewModel.SelectedProductTypeId = producttypeid;
-                CurrentSalelisting.SaleListingViewModel.SelectedProductType = CurrentSalelisting.SaleListingViewModel.ProductTypes.First(e => e.ID == producttypeid);
+                CurrentSalelisting.SaleListingViewModel.Categories.SelectedProductTypeId = producttypeid;
+                CurrentSalelisting.SaleListingViewModel.Categories.SelectedProductType = CurrentSalelisting.SaleListingViewModel.Categories.ProductTypes.First(e => e.ID == producttypeid);
                 CurrentSalelisting.SaleListingViewModel.SaleListing = new SaleListingCreateDTO();
             }
             return View("CreateSalelisting", CurrentSalelisting.SaleListingViewModel);
@@ -90,7 +90,7 @@ namespace deprosa.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(SaleListingCreateViewModel model)
         {
-            model.SaleListing.ProductType = CurrentSalelisting.SaleListingViewModel.SelectedProductType;
+            model.SaleListing.ProductType = CurrentSalelisting.SaleListingViewModel.Categories.SelectedProductType;
             ModelState.Remove("SaleListing.ProductType");
             if (ModelState.IsValid)
             {

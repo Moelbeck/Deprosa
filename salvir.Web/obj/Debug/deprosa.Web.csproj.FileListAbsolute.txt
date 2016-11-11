@@ -112,3 +112,7 @@ C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\PagedList.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\PagedList.Mvc.dll
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\PagedList.xml
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\PagedList.Mvc.xml
+C:\Work\Deprosa\salvir.Web\bin\PagedList.dll
+C:\Work\Deprosa\salvir.Web\bin\PagedList.Mvc.dll
+C:\Work\Deprosa\salvir.Web\bin\PagedList.xml
+C:\Work\Deprosa\salvir.Web\bin\PagedList.Mvc.xml
