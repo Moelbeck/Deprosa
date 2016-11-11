@@ -15,15 +15,15 @@ namespace WebService.Api.Controllers
 {
 
     [RoutePrefix("api/Category")]
-    public class CategoryApiController : ApiController
+    public class CategoryController : ApiController
     {
-        private readonly CategoryApiService _categoryService;
-        private readonly ProductTypeApiService _productService;
+        private readonly CategoryWebService _categoryService;
+        private readonly ProductTypeWebService _productService;
         private readonly LogService _log;
-        public CategoryApiController()
+        public CategoryController()
         {
-            _categoryService = new CategoryApiService();
-            _productService = new ProductTypeApiService();
+            _categoryService = new CategoryWebService();
+            _productService = new ProductTypeWebService();
             _log = new LogService();
         }
 

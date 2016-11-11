@@ -9,13 +9,13 @@ using System.Web.Http;
 namespace WebService.Api.Controllers
 {
     [RoutePrefix("api/Manufacturer")]
-    public class ManufacturerApiController : ApiController
+    public class ManufacturerController : ApiController
     {
-        private ManufacturerApiService _manufacturerservice;
+        private ManufacturerWebService _manufacturerservice;
 
-        public ManufacturerApiController()
+        public ManufacturerController()
         {
-            _manufacturerservice = new ManufacturerApiService();
+            _manufacturerservice = new ManufacturerWebService();
         }
         /// <summary>
         /// Get manufacturers in category - Get

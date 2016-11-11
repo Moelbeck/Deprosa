@@ -13,11 +13,11 @@ using System.Web;
 
 namespace deprosa.WebApi.Services
 {
-    public class ProductTypeApiService : IProductWebService
+    public class ProductTypeWebService : IProductWebService
     {
         private GenericRepository<ProductType> _productRepository;
 
-        public ProductTypeApiService()
+        public ProductTypeWebService()
         {
             BzaleDatabaseContext context = new BzaleDatabaseContext();
             _productRepository = new GenericRepository<ProductType>(context);

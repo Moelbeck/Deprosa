@@ -7,7 +7,7 @@ namespace deprosa.WebApi
 {
     [RoutePrefix("api/VAT")]
     //[RequireHttps]
-    public class VatApiController : ApiController
+    public class VATController : ApiController
     {
 
         /// <summary>
