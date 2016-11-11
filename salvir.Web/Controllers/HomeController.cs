@@ -2,7 +2,8 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using deprosa.Web.Model.ViewModel;
+using deprosa.Web.Data.Model.Session;
+using deprosa.Web.Data.Model.ViewModel;
 using deprosa.WebsiteService;
 using deprosaWeb.Model.ViewModel;
 
@@ -20,8 +21,13 @@ namespace deprosa.Web.Controllers
         public async Task<ActionResult> Index()
         {
             HighlightViewModel viewModel = new HighlightViewModel();
-            viewModel.MenuViewModel = new MenuViewModel();
-            viewModel.MenuViewModel.MainCategories = await _categoryService.GetAllMainCategories();
+            viewModel.CategoryViewModel = new CategoryViewModel();
+            if (CategoryStructure.CategoryViewModel.MainCategories == null)
+            {
+                var categorystructure = await _categoryService.GetCategoryStructure();
+                CategoryStructure.SetCategoryStructure(categorystructure);
+            }
+            viewModel.CategoryViewModel = CategoryStructure.CategoryViewModel;
             return View(viewModel);
         }
 

@@ -13,6 +13,19 @@ namespace deprosa.Web.Data.Model.ViewModel
 
         [Display(Name = "Valgte kategori")]
         public int SelectedMainCategoryId { get; set; }
+
+        public string SelectedMainCategoryName
+        {
+            get
+            {
+                if (SelectedMainCategoryId > 0)
+                {
+                    return MainCategories.FirstOrDefault(e => e.ID == SelectedMainCategoryId)?.Name;
+                }
+                return null;
+            }
+        }
+
         public SelectList MainCategoriesSelectList
         {
             get

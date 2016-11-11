@@ -1,19 +1,40 @@
 ﻿@model deprosaWeb.Model.ViewModel.HighlightViewModel
 
 @{
-    ViewBag.Title = @Model.MenuViewModel.SelectedMainCategory.Name;
+    ViewBag.Title = @Model.CategoryViewModel.SelectedMainCategoryName;
     Layout = "../Shared/_Layout.cshtml";}
 
-@*@Html.Partial("Partial/_MenuPartial", Model.MenuViewModel)*@
-@*@Html.DropDownListFor(e=>e.MenuViewModel.SubCategories, )*@
-@*@Html.DropDownListFor(e => e.SelectedMainCategoryId, e.MenuViewModel.SubCategories "Vælg", new { @onchange = "SelectMainCategory(this.value)" })*@
+@*@Html.Partial("Partial/_MenuPartial", Model.CategoryViewModel)*@
+@*@Html.DropDownListFor(e=>e.CategoryViewModel.SubCategories, )*@
+@*@Html.DropDownListFor(e => e.SelectedMainCategoryId, e.CategoryViewModel.SubCategories "Vælg", new { @onchange = "SelectMainCategory(this.value)" })*@
+<div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.DisplayNameFor(e => e.CategoryViewModel.SubCategories)
+            @Html.DropDownListFor(e => e.CategoryViewModel.SelectedSubCategoryId, Model.CategoryViewModel.SubCategoriesSelectList, "Vælg", new { @onchange = "SelectSubCategory(this.value)" })
+        </div>
+    </div>
+</div>
 
+            
+@if (Model.CategoryViewModel.SelectedSubCategoryId > 0)
+            {
+    <div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.DisplayNameFor(e => e.CategoryViewModel.ProductTypes)
+                @Html.DropDownListFor(e => e.CategoryViewModel.SelectedProductTypeId, Model.CategoryViewModel.ProductTypesSelectList, "Vælg",
+                                            new { @onchange = "SelectProductType(this.value)" })
+            </div>
+        </div>
+    </div>
+}
 
 <div class="body-content">
     <div>
         @if (Model.HighligthtedSaleListings.Any())
         {
-            <h4>Populærer annoncer for @Model.MenuViewModel.SelectedMainCategory.Name</h4>
+            <h4>Populærer annoncer for @Model.CategoryViewModel.SelectedMainCategoryName</h4>
             foreach (var
              item in
              Model.HighligthtedSaleListings)

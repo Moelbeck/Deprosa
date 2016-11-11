@@ -28,8 +28,8 @@ namespace deprosa.Web.Model
         }
         public static void SetSalelistingToNew()
         {
-            SaleListingViewModel.Categories.CurrentSubCategories = SaleListingViewModel.Categories.SubCategories;
-            SaleListingViewModel.Categories.CurrentProductTypes = SaleListingViewModel.Categories.ProductTypes;
+            SaleListingViewModel.CategoryViewModel.CurrentSubCategories = SaleListingViewModel.CategoryViewModel.SubCategories;
+            SaleListingViewModel.CategoryViewModel.CurrentProductTypes = SaleListingViewModel.CategoryViewModel.ProductTypes;
             SaleListingViewModel.SaleListing = new SaleListingCreateDTO();
         }
     }

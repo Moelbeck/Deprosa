@@ -46,7 +46,7 @@ namespace deprosa.WebApi.Authenticator
 
         private void AuthenticateUser(string id)
         {
-            AccountWebService accountService = new AccountWebService();
+            AccountApiService accountService = new AccountApiService();
             if (!string.IsNullOrWhiteSpace(id))
             {
                 int currentid;

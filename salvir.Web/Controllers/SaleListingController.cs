@@ -1,14 +1,7 @@
-﻿using deprosa.Common;
-using deprosa.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using deprosa.Filter;
-using deprosa.Web.Model;
-using deprosa.Web.Model.ViewModel;
+using deprosa.Web.Data.Model.Session;
 using deprosa.WebsiteService;
 using deprosaWeb.Model.ViewModel;
 
@@ -30,11 +23,45 @@ namespace deprosa.Web.Controllers
         public async Task<ActionResult> Index(int selected)
         {
             HighlightViewModel viewModel = new HighlightViewModel();
-            var request = await _salelistingService.GeHighlightSalelistingRequest(selected, false);
-            viewModel.MenuViewModel.SubCategories = request.SubCategories;
-            viewModel.HighligthtedSaleListings = request.HighlightedSalelistings;
-            viewModel.MenuViewModel.SelectedMainCategory = viewModel.MenuViewModel.SubCategories.First(e => e.MainCategory.ID == selected).MainCategory;
+
+            if (CategoryStructure.CategoryViewModel.MainCategories == null)
+            {
+                var request = await _salelistingService.GeHighlightSalelistingRequest(selected, false);
+                CategoryStructure.SetCategoryStructure(request.CategoryStructure);
+                viewModel.HighligthtedSaleListings = request.HighlightedSalelistings;
+            }
+            CategoryStructure.CategoryViewModel.SelectedMainCategoryId = selected;
+            if (!viewModel.HighligthtedSaleListings.Any())
+            {
+                viewModel.HighligthtedSaleListings = await _salelistingService.GetPopularForMain(selected);
+            }
+            viewModel.CategoryViewModel = CategoryStructure.CategoryViewModel;
             return View(viewModel);
         }
+
+        public async Task<ActionResult> SetSelectedSubCategory(int selected)
+        {
+            HighlightViewModel viewModel = new HighlightViewModel();
+            if (selected> 0)
+            {
+                var request = _salelistingService.GeHighlightSalelistingRequest(selected, false);
+                CategoryStructure.CategoryViewModel.SelectedSubCategoryId = selected;
+                CategoryStructure.CategoryViewModel.CurrentProductTypes = CategoryStructure.CategoryViewModel.ProductTypes.Where(e => e.SubCategory.ID == selected).ToList();
+                viewModel.CategoryViewModel = CategoryStructure.CategoryViewModel;
+                viewModel.HighligthtedSaleListings = request.Result.HighlightedSalelistings;
+            }
+            return View("Index", viewModel);
+        }
+
+        //public ActionResult SetSelectedProductType(int producttypeid)
+        //{
+        //    if (producttypeid > 0)
+        //    {
+        //        CategoryStructure.CategoryViewModel.SelectedProductTypeId = producttypeid;
+        //        CategoryStructure.CategoryViewModel.SelectedProductType = CategoryStructure.CategoryViewModel.ProductTypes.First(e => e.ID == producttypeid);
+        //        CurrentSalelisting.SaleListingViewModel.SaleListing = new SaleListingCreateDTO();
+        //    }
+        //    return View("CreateSalelisting", CurrentSalelisting.SaleListingViewModel);
+        //}
     }
 }

@@ -162,6 +162,7 @@
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\SaleListingController.cs" />
     <Compile Include="Data\Enum\Enum.cs" />
+    <Compile Include="Data\Model\Session\CategoryStructure.cs" />
     <Compile Include="Data\Model\ViewModel\CategoryViewModel.cs" />
     <Compile Include="Data\Model\ViewModel\SaleListingListViewModel.cs" />
     <Compile Include="Data\Services\ImageService.cs" />
@@ -173,7 +174,6 @@
     <Compile Include="Data\Model\Session\CurrentSalelistingCreate.cs" />
     <Compile Include="Data\Model\Session\CurrentUser.cs" />
     <Compile Include="Data\Model\ViewModel\HighlightViewModel.cs" />
-    <Compile Include="Data\Model\ViewModel\MenuViewModel.cs" />
     <Compile Include="Data\Model\ViewModel\SaleListingCreateViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Services\AccountService.cs" />

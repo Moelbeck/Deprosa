@@ -10,8 +10,6 @@ namespace deprosa.Common.RequestWrappers
     public class HighlightSalelistingRequest
     {
         public List<SaleListingDTO> HighlightedSalelistings { get; set; }
-        public List<SubCategoryDTO> SubCategories { get; set; }
-        public SubCategoryDTO SelectedSubCategory { get; set; }
-        public MainCategoryDTO SelectedMainCategory { get; set; }
+        public CategoryStructureRequest CategoryStructure { get; set; }
     }
 }
