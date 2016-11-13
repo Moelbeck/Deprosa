@@ -4,7 +4,10 @@
     ViewBag.Title = @Model.CategoryViewModel.SelectedMainCategoryName;
     Layout = "../Shared/_Layout.cshtml";}
 
-@*@Html.Partial("Partial/_MenuPartial", Model.CategoryViewModel)*@
+@foreach (var menu in Model.CategoryViewModel.SubCategories)
+{
+    <li>@Html.ActionLink(menu.Name, "Index", "SaleListing", new { selected = menu.ID }, null)</li>
+}
 @*@Html.DropDownListFor(e=>e.CategoryViewModel.SubCategories, )*@
 @*@Html.DropDownListFor(e => e.SelectedMainCategoryId, e.CategoryViewModel.SubCategories "Vælg", new { @onchange = "SelectMainCategory(this.value)" })*@
 <div>
@@ -48,4 +51,16 @@
         }
     </div>
 </div>
-
+@section Scripts{
+<script>
+    function SelectMainCategory(val) {
+        window.location.href = "/SaleListing/SetSelectedMainCategory?categoryid=" + val;
+    }
+    function SelectSubCategory(val) {
+        window.location.href = "/SaleListing/SetSelectedSubCategory?categoryid=" + val;
+    }
+    function SelectProductType(val) {
+        window.location.href = "/SaleListing/SetSelectedProductType?producttypeid=" + val;
+    }
+</script>
+}

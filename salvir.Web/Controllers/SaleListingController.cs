@@ -36,6 +36,7 @@ namespace deprosa.Web.Controllers
                 viewModel.HighligthtedSaleListings = await _salelistingService.GetPopularForMain(selected);
             }
             viewModel.CategoryViewModel = CategoryStructure.CategoryViewModel;
+            viewModel.CategoryViewModel.CurrentSubCategories = viewModel.CategoryViewModel.SubCategories.Where(e => e.MainCategory.ID == selected).ToList();
             return View(viewModel);
         }
 
