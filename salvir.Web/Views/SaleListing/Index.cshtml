@@ -6,31 +6,7 @@
 
 @foreach (var menu in Model.CategoryViewModel.SubCategories)
 {
-    <li>@Html.ActionLink(menu.Name, "Index", "SaleListing", new { selected = menu.ID }, null)</li>
-}
-@*@Html.DropDownListFor(e=>e.CategoryViewModel.SubCategories, )*@
-@*@Html.DropDownListFor(e => e.SelectedMainCategoryId, e.CategoryViewModel.SubCategories "Vælg", new { @onchange = "SelectMainCategory(this.value)" })*@
-<div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            @Html.DisplayNameFor(e => e.CategoryViewModel.SubCategories)
-            @Html.DropDownListFor(e => e.CategoryViewModel.SelectedSubCategoryId, Model.CategoryViewModel.SubCategoriesSelectList, "Vælg", new { @onchange = "SelectSubCategory(this.value)" })
-        </div>
-    </div>
-</div>
-
-            
-@if (Model.CategoryViewModel.SelectedSubCategoryId > 0)
-            {
-    <div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                @Html.DisplayNameFor(e => e.CategoryViewModel.ProductTypes)
-                @Html.DropDownListFor(e => e.CategoryViewModel.SelectedProductTypeId, Model.CategoryViewModel.ProductTypesSelectList, "Vælg",
-                                            new { @onchange = "SelectProductType(this.value)" })
-            </div>
-        </div>
-    </div>
+    <li>@Html.ActionLink(menu.Name, "Salelistings", "SaleListing", new { selectedsub = menu.ID }, null)</li>
 }
 
 <div class="body-content">
@@ -45,22 +21,9 @@
                 <div >
                     <text> @item.Title </text>
                     <text> @item.Price ,- </text>
-                    <text > @item.ProductType.Name</text >
+                    <text> @item.ProductType.Name</text >
                 </div>
             }
         }
     </div>
 </div>
-@section Scripts{
-<script>
-    function SelectMainCategory(val) {
-        window.location.href = "/SaleListing/SetSelectedMainCategory?categoryid=" + val;
-    }
-    function SelectSubCategory(val) {
-        window.location.href = "/SaleListing/SetSelectedSubCategory?categoryid=" + val;
-    }
-    function SelectProductType(val) {
-        window.location.href = "/SaleListing/SetSelectedProductType?producttypeid=" + val;
-    }
-</script>
-}

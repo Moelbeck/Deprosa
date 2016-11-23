@@ -9,7 +9,7 @@ namespace deprosa.Web.Data.Model.ViewModel
     public class CategoryViewModel
     {
         [Display(Name = "Kategorier:")]
-        public List<MainCategoryDTO> MainCategories { get; set; }
+        public List<MainCategoryDTO> MainCategories { get; set; } = new List<MainCategoryDTO>();
 
         [Display(Name = "Valgte kategori")]
         public int SelectedMainCategoryId { get; set; }
@@ -35,7 +35,7 @@ namespace deprosa.Web.Data.Model.ViewModel
             }
         }
 
-        public List<SubCategoryDTO> SubCategories { get; set; }
+        public List<SubCategoryDTO> SubCategories { get; set; } = new List<SubCategoryDTO>();
         [Display(Name = "Under kategorier:")]
         public List<SubCategoryDTO> CurrentSubCategories { get; set; }
 
@@ -49,7 +49,7 @@ namespace deprosa.Web.Data.Model.ViewModel
             }
         }
 
-        public List<ProductTypeDTO> ProductTypes { get; set; }
+        public List<ProductTypeDTO> ProductTypes { get; set; } = new List<ProductTypeDTO>();
         [Display(Name = "Type:")]
         public List<ProductTypeDTO> CurrentProductTypes { get; set; }
 

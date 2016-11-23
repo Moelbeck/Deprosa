@@ -1,9 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using deprosa.Web.Data.Model.Session;
+using deprosa.Web.Model;
 using deprosa.WebsiteService;
 using deprosaWeb.Model.ViewModel;
+using PagedList;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,6 +17,7 @@ namespace deprosa.Web.Controllers
         // GET: /<controller>/
         private SaleListingService _salelistingService;
         private readonly CategoryService _categoryService;
+
         public SaleListingController()
         {
             _salelistingService = new SaleListingService();
@@ -36,33 +40,41 @@ namespace deprosa.Web.Controllers
                 viewModel.HighligthtedSaleListings = await _salelistingService.GetPopularForMain(selected);
             }
             viewModel.CategoryViewModel = CategoryStructure.CategoryViewModel;
-            viewModel.CategoryViewModel.CurrentSubCategories = viewModel.CategoryViewModel.SubCategories.Where(e => e.MainCategory.ID == selected).ToList();
+            viewModel.CategoryViewModel.CurrentSubCategories =
+                viewModel.CategoryViewModel.SubCategories.Where(e => e.MainCategory.ID == selected).ToList();
             return View(viewModel);
         }
 
-        public async Task<ActionResult> SetSelectedSubCategory(int selected)
+        public async Task<ActionResult> Salelistings(int selectedsub = 0, string sort = "", string search = "", int? page = null)
         {
-            HighlightViewModel viewModel = new HighlightViewModel();
-            if (selected> 0)
+            ViewBag.CurrentSort = sort;
+            ViewBag.DateSortParm = sort = String.IsNullOrWhiteSpace(sort) ? "created_desc" : "";
+            ViewBag.TitleSortParam = sort == "title" ? "title_desc" : "title";
+            ViewBag.PriceSortParm = sort == "price" ? "price_desc" : "price";
+            int nextpage = 0;
+            if (page != null)
             {
-                var request = _salelistingService.GeHighlightSalelistingRequest(selected, false);
-                CategoryStructure.CategoryViewModel.SelectedSubCategoryId = selected;
-                CategoryStructure.CategoryViewModel.CurrentProductTypes = CategoryStructure.CategoryViewModel.ProductTypes.Where(e => e.SubCategory.ID == selected).ToList();
-                viewModel.CategoryViewModel = CategoryStructure.CategoryViewModel;
-                viewModel.HighligthtedSaleListings = request.Result.HighlightedSalelistings;
+                nextpage = (int) page;
             }
-            return View("Index", viewModel);
+            if (search != null)
+            {
+                nextpage = 1;
+            }
+            if (selectedsub > 0)
+            {
+                ViewBag.SelectedSub = selectedsub;
+            }
+            int sub = ViewBag.SelectedSub;
+            if (sub <= 0)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var salelistings = await _salelistingService.GetSaleListingsForCategory(sub, sort, nextpage, search);
+            SaleListingListViewModel saleListingList = new SaleListingListViewModel
+            {
+                Salelistings = salelistings.ToPagedList(nextpage, int.MaxValue)
+            };
+            return View(saleListingList);
         }
-
-        //public ActionResult SetSelectedProductType(int producttypeid)
-        //{
-        //    if (producttypeid > 0)
-        //    {
-        //        CategoryStructure.CategoryViewModel.SelectedProductTypeId = producttypeid;
-        //        CategoryStructure.CategoryViewModel.SelectedProductType = CategoryStructure.CategoryViewModel.ProductTypes.First(e => e.ID == producttypeid);
-        //        CurrentSalelisting.SaleListingViewModel.SaleListing = new SaleListingCreateDTO();
-        //    }
-        //    return View("CreateSalelisting", CurrentSalelisting.SaleListingViewModel);
-        //}
     }
 }

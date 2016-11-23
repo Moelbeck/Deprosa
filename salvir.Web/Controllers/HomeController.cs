@@ -1,5 +1,6 @@
 ﻿
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using deprosa.Web.Data.Model.Session;
@@ -22,7 +23,7 @@ namespace deprosa.Web.Controllers
         {
             HighlightViewModel viewModel = new HighlightViewModel();
             viewModel.CategoryViewModel = new CategoryViewModel();
-            if (CategoryStructure.CategoryViewModel.MainCategories == null)
+            if (!CategoryStructure.CategoryViewModel.MainCategories.Any())
             {
                 var categorystructure = await _categoryService.GetCategoryStructure();
                 CategoryStructure.SetCategoryStructure(categorystructure);
