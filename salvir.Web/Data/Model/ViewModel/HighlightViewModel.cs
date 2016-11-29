@@ -10,5 +10,6 @@ namespace deprosaWeb.Model.ViewModel
 
         public  List<SaleListingDTO> HighligthtedSaleListings { get; set; } = new List<SaleListingDTO>();
         
+        
     }
 }

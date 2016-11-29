@@ -126,7 +126,7 @@ namespace WebService.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetForCompany(vat, search, sort, page, size);
+                var salelisting = _salelistingService.GetForCompany(vat, sort, page, size, search);
                 if (salelisting != null)
                 {
                     return Ok(salelisting);
@@ -150,17 +150,41 @@ namespace WebService.Api.Controllers
         /// Get sale listings for category - Get
         /// </summary>
         [HttpGet, Route("category/{categoryID}")]
-        public IHttpActionResult GetSaleListingsForCategory(int categoryID, string sort, int page, int size, string search)
+        public IHttpActionResult GetSaleListingsForCategory(int categoryID, string sort, int page, int size, string search = null)
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetForSubCategory(categoryID, search, sort, page, size);
+                var salelisting = _salelistingService.GetForSubCategory(categoryID, sort, page, size, search);
                 if (salelisting != null)
                 {
                     int userid;
                     if (int.TryParse(Thread.CurrentPrincipal.Identity.Name, out userid) && userid > 0)
                     {
                         _log.LogCategory(userid, 0, categoryID);
+                    }
+                    return Ok(salelisting);
+                }
+                return NotFound();
+            }
+            return BadRequest(ModelState);
+        }
+
+        /// <summary>
+        /// Get sale listings for product type - Get
+        /// </summary>
+        [HttpGet, Route("producttype/{producttypeID}")]
+        public IHttpActionResult GetSaleListingsForProductType(int producttypeID, string sort, int page, int size, string search = null)
+        {
+            if (ModelState.IsValid)
+            {
+                var salelisting = _salelistingService.GetForProductType(producttypeID, sort, page, size, search);
+                if (salelisting != null)
+                {
+                    var categoryid = salelisting[0].ProductType.SubCategoryID;
+                    int userid;
+                    if (int.TryParse(Thread.CurrentPrincipal.Identity.Name, out userid) && userid > 0)
+                    {
+                        _log.LogCategory(userid, 0, categoryid);
                     }
                     return Ok(salelisting);
                 }

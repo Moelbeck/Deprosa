@@ -132,7 +132,7 @@ namespace deprosa.WebService
             }
             return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
         }
-        public List<SaleListingDTO> GetForCompany(string vat, string search, string sort, int page, int size)
+        public List<SaleListingDTO> GetForCompany(string vat, string sort, int page, int size, string search)
         {
             try
             {
@@ -178,7 +178,7 @@ namespace deprosa.WebService
             }
         }
 
-        public List<SaleListingDTO> GetForSubCategory(int id, string search, string sort, int page, int size)
+        public List<SaleListingDTO> GetForSubCategory(int id, string sort, int page, int size, string search)
         {
             try
             {
@@ -193,6 +193,30 @@ namespace deprosa.WebService
                 else
                 {
                     salelistingsQuery = _saleListingRepository.Get(e=>e.ProductType.Category.ID == id && e.Deleted == null && !e.IsSold);
+                }
+                var salelistings = Filter(salelistingsQuery, sort, page, size).ToList();
+                return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+        public List<SaleListingDTO> GetForProductType(int id, string sort, int page, int size, string search)
+        {
+            try
+            {
+                IQueryable<SaleListing> salelistingsQuery;
+                if (!string.IsNullOrWhiteSpace(search))
+                {
+                    salelistingsQuery =
+                        _saleListingRepository.Get(
+                            e => e.ProductType.ID == id && e.Deleted == null && !e.IsSold && e.Description.Contains(search) || e.Title.Contains(search));
+
+                }
+                else
+                {
+                    salelistingsQuery = _saleListingRepository.Get(e => e.ProductType.ID == id && e.Deleted == null && !e.IsSold);
                 }
                 var salelistings = Filter(salelistingsQuery, sort, page, size).ToList();
                 return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();

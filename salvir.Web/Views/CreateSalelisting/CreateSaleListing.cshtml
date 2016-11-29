@@ -28,7 +28,7 @@
                 <div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            @Html.DisplayNameFor(e => e.CategoryViewModel.SubCategories)
+                            @Html.DisplayNameFor(e => e.CategoryViewModel.CurrentSubCategories)
                             @Html.DropDownListFor(e => e.CategoryViewModel.SelectedSubCategoryId, Model.CategoryViewModel.SubCategoriesSelectList, "Vælg", new { @onchange = "SelectSubCategory(this.value)" })
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                 <div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            @Html.DisplayNameFor(e => e.CategoryViewModel.ProductTypes)
+                            @Html.DisplayNameFor(e => e.CategoryViewModel.CurrentProductTypes)
                             @Html.DropDownListFor(e => e.CategoryViewModel.SelectedProductTypeId, Model.CategoryViewModel.ProductTypesSelectList, "Vælg",
                                             new { @onchange = "SelectProductType(this.value)" })
                         </div>

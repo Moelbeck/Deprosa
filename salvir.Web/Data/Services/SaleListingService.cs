@@ -54,7 +54,11 @@ namespace deprosa.WebsiteService
         }
         public async Task<List<SaleListingDTO>> GetSaleListingsForCategory(int categoryid, string sort, int page, string search)
         {
-            string uri = string.Format("category/{0}?search={1}&sort={2}&page={4}&size={5}", categoryid, search, sort, page, Konstanter.PAGE_SIZE);
+            string uri = string.Format("category/{0}?sort={1}&page={2}&size={3}", categoryid, sort, page, Konstanter.PAGE_SIZE);
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                uri = string.Format("{0}&search={1}", uri, search);
+            }
             var salelisting = await client.GetResponseObject<List<SaleListingDTO>, List<SaleListingDTO>>(uri, eHttpMethodType.GET, null);
             return salelisting;
         }

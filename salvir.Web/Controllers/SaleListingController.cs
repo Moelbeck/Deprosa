@@ -24,28 +24,29 @@ namespace deprosa.Web.Controllers
             _categoryService = new CategoryService();
         }
 
-        public async Task<ActionResult> Index(int selected)
+        public async Task<ActionResult> Index(int? selected, bool ispostback = false)
         {
             HighlightViewModel viewModel = new HighlightViewModel();
-
-            if (CategoryStructure.CategoryViewModel.MainCategories == null)
+            if (selected != null)
             {
-                var request = await _salelistingService.GeHighlightSalelistingRequest(selected, false);
-                CategoryStructure.SetCategoryStructure(request.CategoryStructure);
+                int selectedid = selected.Value;
+                var request = await _salelistingService.GeHighlightSalelistingRequest(selectedid, false);
+                if (!ispostback)
+                {
+                    S_CategoryStructure.CategoryViewModel.SetCategoryStructure(request.CategoryStructure);
+                }
                 viewModel.HighligthtedSaleListings = request.HighlightedSalelistings;
+                
+                S_CategoryStructure.CategoryViewModel.SelectedMainCategoryId = selectedid;
+                S_CategoryStructure.CategoryViewModel.CurrentSubCategories = S_CategoryStructure.CategoryViewModel.SubCategories.Where(e => e.MainCategory.ID == selected).ToList();
+                S_CategoryStructure.CategoryViewModel.CurrentProductTypes = S_CategoryStructure.CategoryViewModel.CurrentProductTypes;
+                viewModel.CategoryViewModel.SetCategoryStructure(S_CategoryStructure.CategoryViewModel);
+                return View(viewModel);
             }
-            CategoryStructure.CategoryViewModel.SelectedMainCategoryId = selected;
-            if (!viewModel.HighligthtedSaleListings.Any())
-            {
-                viewModel.HighligthtedSaleListings = await _salelistingService.GetPopularForMain(selected);
-            }
-            viewModel.CategoryViewModel = CategoryStructure.CategoryViewModel;
-            viewModel.CategoryViewModel.CurrentSubCategories =
-                viewModel.CategoryViewModel.SubCategories.Where(e => e.MainCategory.ID == selected).ToList();
-            return View(viewModel);
+            return RedirectToAction("Index", "Home");
         }
 
-        public async Task<ActionResult> Salelistings(int selectedsub = 0, string sort = "", string search = "", int? page = null)
+        public async Task<ActionResult> Salelistings(string sort = "", string search = "", int? page = null)
         {
             ViewBag.CurrentSort = sort;
             ViewBag.DateSortParm = sort = String.IsNullOrWhiteSpace(sort) ? "created_desc" : "";
@@ -60,10 +61,9 @@ namespace deprosa.Web.Controllers
             {
                 nextpage = 1;
             }
-            if (selectedsub > 0)
-            {
-                ViewBag.SelectedSub = selectedsub;
-            }
+
+            ViewBag.SelectedSub = S_CategoryStructure.CategoryViewModel.SelectedSubCategoryId;
+            
             int sub = ViewBag.SelectedSub;
             if (sub <= 0)
             {
@@ -75,6 +75,27 @@ namespace deprosa.Web.Controllers
                 Salelistings = salelistings.ToPagedList(nextpage, int.MaxValue)
             };
             return View(saleListingList);
+        }
+
+        public ActionResult SetSelectedSubCategory(int categoryid)
+        {
+            if (categoryid > 0)
+            {
+                S_CategoryStructure.CategoryViewModel.SelectedSubCategoryId = categoryid;
+                S_CategoryStructure.CategoryViewModel.CurrentProductTypes = S_CategoryStructure.CategoryViewModel.ProductTypes.Where(e => e.SubCategory.ID == categoryid).ToList();
+
+            }
+            return RedirectToAction("Index",new {selected = S_CategoryStructure.CategoryViewModel.SelectedMainCategoryId, ispostback = true });
+
+        }
+        public ActionResult SetSelectedProductType(int producttypeid)
+        {
+            if (producttypeid > 0)
+            {
+                S_CategoryStructure.CategoryViewModel.SelectedProductTypeId = producttypeid;
+                S_CategoryStructure.CategoryViewModel.SelectedProductType = S_CategoryStructure.CategoryViewModel.ProductTypes.First(e => e.ID == producttypeid);
+            }
+            return RedirectToAction("Index", new { selected = S_CategoryStructure.CategoryViewModel.SelectedMainCategoryId, ispostback = true });
         }
     }
 }

@@ -46,3 +46,4 @@ C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.nochanges.reso
 C:\Work\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.addedforeignkeysalelisting.resources
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.nochanges.resources
 C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.addedforeignkeysalelisting.resources
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\obj\Debug\Repository.Migrations.typeisgonefromcategorylog.resources

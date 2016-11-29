@@ -21,14 +21,13 @@ namespace deprosa.Web.Controllers
         [OutputCache(Duration = 10, VaryByParam = "none")]
         public async Task<ActionResult> Index()
         {
-            HighlightViewModel viewModel = new HighlightViewModel();
-            viewModel.CategoryViewModel = new CategoryViewModel();
-            if (!CategoryStructure.CategoryViewModel.MainCategories.Any())
+            HighlightViewModel viewModel = new HighlightViewModel {CategoryViewModel = new CategoryViewModel()};
+            if (!S_CategoryStructure.CategoryViewModel.MainCategories.Any())
             {
                 var categorystructure = await _categoryService.GetCategoryStructure();
-                CategoryStructure.SetCategoryStructure(categorystructure);
+                S_CategoryStructure.CategoryViewModel.SetCategoryStructure(categorystructure);
             }
-            viewModel.CategoryViewModel = CategoryStructure.CategoryViewModel;
+            viewModel.CategoryViewModel = S_CategoryStructure.CategoryViewModel;
             return View(viewModel);
         }
 

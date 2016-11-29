@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web.Mvc;
+using deprosa.Common;
 
 namespace deprosa.Web.Data.Model.ViewModel
 {
@@ -30,7 +31,7 @@ namespace deprosa.Web.Data.Model.ViewModel
         {
             get
             {
-                var selectedmainid = SelectedMainCategoryId != null ? SelectedMainCategoryId : MainCategories.First().ID;
+                var selectedmainid = SelectedMainCategoryId;
                 return new SelectList(MainCategories, "ID", "Name", selectedmainid);
             }
         }
@@ -41,13 +42,7 @@ namespace deprosa.Web.Data.Model.ViewModel
 
         [Display(Name = "Valgte under kategori")]
         public int SelectedSubCategoryId { get; set; }
-        public SelectList SubCategoriesSelectList
-        {
-            get
-            {
-                return new SelectList(CurrentSubCategories, "ID", "Name");
-            }
-        }
+        public SelectList SubCategoriesSelectList => new SelectList(CurrentSubCategories, "ID", "Name");
 
         public List<ProductTypeDTO> ProductTypes { get; set; } = new List<ProductTypeDTO>();
         [Display(Name = "Type:")]
@@ -56,12 +51,28 @@ namespace deprosa.Web.Data.Model.ViewModel
         [Display(Name = "Valgte type")]
         public ProductTypeDTO SelectedProductType { get; set; }
         public int SelectedProductTypeId { get; set; }
-        public SelectList ProductTypesSelectList
+        public SelectList ProductTypesSelectList => new SelectList(CurrentProductTypes, "ID", "Name");
+
+        public void SetCategoryStructure(CategoryStructureRequest categorystructure)
         {
-            get
-            {
-                return new SelectList(CurrentProductTypes, "ID", "Name");
-            }
+            MainCategories = categorystructure.MainCategories;
+            SubCategories = categorystructure.SubCategories;
+            ProductTypes = categorystructure.ProductTypes;
+            SelectedMainCategoryId = 0;
+            SelectedSubCategoryId = 0;
+            SelectedProductTypeId = 0;
+        }
+
+        public void SetCategoryStructure(CategoryViewModel categorystructure)
+        {
+            MainCategories = categorystructure.MainCategories;
+            SubCategories = categorystructure.SubCategories;
+            ProductTypes = categorystructure.ProductTypes;
+            CurrentSubCategories = categorystructure.CurrentSubCategories;
+            CurrentProductTypes = categorystructure.CurrentProductTypes;
+            SelectedMainCategoryId = categorystructure.SelectedMainCategoryId;
+            SelectedSubCategoryId = categorystructure.SelectedSubCategoryId;
+            SelectedProductTypeId = categorystructure.SelectedProductTypeId;
         }
     }
 }

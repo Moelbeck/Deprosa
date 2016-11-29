@@ -127,9 +127,6 @@ namespace Repository.Migrations
                 #endregion
 
                 #region ProductTypes
-                var personbilSub = context.SubCategories.FirstOrDefault(e => e.Name == "Personbil");
-                var varevognSub = context.SubCategories.FirstOrDefault(e => e.Name == "Varevogn");
-                var murstenSub = context.SubCategories.FirstOrDefault(e => e.Name == "Mursten");
                 var stenSub = context.SubCategories.FirstOrDefault(e => e.Name == "Sten");
                 var sandSub = context.SubCategories.FirstOrDefault(e => e.Name == "Sand");
                 var jordSub = context.SubCategories.FirstOrDefault(e => e.Name == "Jord");
@@ -137,8 +134,6 @@ namespace Repository.Migrations
                 var computerSub = context.SubCategories.FirstOrDefault(e => e.Name == "Computer");
                 var computerdeleSub = context.SubCategories.FirstOrDefault(e => e.Name == "Computerdele");
                 var skaermeSub = context.SubCategories.FirstOrDefault(e => e.Name == "Skærme");
-                var telefonSub = context.SubCategories.FirstOrDefault(e => e.Name == "Telefon");
-                var diverseelektroSub = context.SubCategories.FirstOrDefault(e => e.Name == "Diverse");
 
                 context.ProductTypes.AddOrUpdate(e => e.Name,
                 #region sand type
@@ -156,7 +151,7 @@ namespace Repository.Migrations
                     new ProductType { Name = "Anden jordtype", Types = (eSalelistingTypes.Weight), Category = jordSub },
                 #endregion
                 #region Sten type
-                    new ProductType { Name = "Grus", Types = (eSalelistingTypes.Weight | eSalelistingTypes.Dimensions), Category = stenSub },
+                    new ProductType { Name = "Grus", Types = (eSalelistingTypes.Weight), Category = stenSub },
                     new ProductType { Name = "Kampsten", Types = (eSalelistingTypes.Weight | eSalelistingTypes.Dimensions), Category = stenSub },
                     new ProductType { Name = "Anden stentype", Types = (eSalelistingTypes.Weight | eSalelistingTypes.Dimensions), Category = stenSub },
                 #endregion
@@ -167,7 +162,7 @@ namespace Repository.Migrations
                 #endregion
                 #region Computer typer
                     new ProductType { Name = "Stationære", Types = (eSalelistingTypes.Processor | eSalelistingTypes.RAM | eSalelistingTypes.Harddisk), Category = computerSub },
-                    new ProductType { Name = "Bærebare", Types = (eSalelistingTypes.Processor | eSalelistingTypes.RAM | eSalelistingTypes.Harddisk | eSalelistingTypes.Screen), Category = computerSub },
+                    new ProductType { Name = "Bærbare", Types = (eSalelistingTypes.Processor | eSalelistingTypes.RAM | eSalelistingTypes.Harddisk | eSalelistingTypes.Screen), Category = computerSub },
                     new ProductType { Name = "Andre computere", Types = (eSalelistingTypes.Processor | eSalelistingTypes.RAM | eSalelistingTypes.Harddisk | eSalelistingTypes.Screen), Category = computerSub },
                 #endregion
                 #region Computerdele typer
@@ -184,8 +179,7 @@ namespace Repository.Migrations
                     new ProductType { Name = "Anden skærm", Types = (eSalelistingTypes.Dimensions | eSalelistingTypes.Screen), Category = skaermeSub }
 
                     #endregion
-                    #region Bil typer
-                    #endregion
+
 
                     );
                 #endregion

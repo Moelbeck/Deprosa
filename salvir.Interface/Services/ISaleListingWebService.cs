@@ -14,10 +14,10 @@ namespace deprosa.Interfaces
         SaleListingDTO GetSaleListingByID(int id);
 
  
-        List<SaleListingDTO> GetForCompany(string vat, string search, string sort, int page, int size);
+        List<SaleListingDTO> GetForCompany(string vat, string sort, int page, int size, string search);
 
  
-        List<SaleListingDTO> GetForSubCategory(int viewmodel, string search, string sort, int page, int size);
+        List<SaleListingDTO> GetForSubCategory(int viewmodel, string sort, int page, int size, string search);
         List<SaleListingDTO> GetPopular(List<int> logged, int categoryid, bool issub);
 
         List<SaleListingDTO> GetBySearchString(string search, string sort, int page, int size);

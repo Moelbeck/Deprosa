@@ -79,6 +79,10 @@
     <Compile Include="Migrations\201611082112389_addedforeignkeysalelisting.Designer.cs">
       <DependentUpon>201611082112389_addedforeignkeysalelisting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611290751303_typeisgonefromcategorylog.cs" />
+    <Compile Include="Migrations\201611290751303_typeisgonefromcategorylog.Designer.cs">
+      <DependentUpon>201611290751303_typeisgonefromcategorylog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -121,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611082112389_addedforeignkeysalelisting.resx">
       <DependentUpon>201611082112389_addedforeignkeysalelisting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611290751303_typeisgonefromcategorylog.resx">
+      <DependentUpon>201611290751303_typeisgonefromcategorylog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

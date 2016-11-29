@@ -1,0 +1,28 @@
+﻿@using deprosa.Web.Model
+@using PagedList.Mvc
+@model deprosa.Web.Model.SaleListingListViewModel
+
+@{
+    ViewBag.Title = "Salelistings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Salelistings</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.ActionLink("Titel", "Index", new { sort = ViewBag.TitleSortParam, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Dato", "Index", new { sort = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Pris", "Index", new { sort = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+    </tr>
+    @Html.Partial("~/Views/Shared/Partial/_SalelistingList.cshtml", Model)
+</table>
+
+@Html.PagedListPager(Model.Salelistings, page => Url.Action("Salelistings", new { page, sort = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+Side @(Model.Salelistings.PageCount < Model.Salelistings.PageNumber ? 0 : Model.Salelistings.PageNumber) af @Model.Salelistings.PageCount

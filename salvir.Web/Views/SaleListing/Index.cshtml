@@ -4,10 +4,41 @@
     ViewBag.Title = @Model.CategoryViewModel.SelectedMainCategoryName;
     Layout = "../Shared/_Layout.cshtml";}
 
-@foreach (var menu in Model.CategoryViewModel.SubCategories)
+@foreach (var menu in Model.CategoryViewModel.MainCategories)
 {
-    <li>@Html.ActionLink(menu.Name, "Salelistings", "SaleListing", new { selectedsub = menu.ID }, null)</li>
+    <li>@Html.ActionLink(menu.Name, "Index", "SaleListing", new { selected = menu.ID }, null)</li>
 }
+<div>
+    @if (Model.CategoryViewModel.SelectedMainCategoryId > 0)
+    {
+        <div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.DisplayNameFor(e => e.CategoryViewModel.CurrentSubCategories)
+                    @Html.DropDownListFor(e => e.CategoryViewModel.SelectedSubCategoryId, Model.CategoryViewModel.SubCategoriesSelectList, "Vælg", new { @onchange = "SelectSubCategory(this.value)" })
+                </div>
+            </div>
+        </div>
+
+    }
+    @if (Model.CategoryViewModel.SelectedSubCategoryId > 0)
+    {
+        <div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.DisplayNameFor(e => e.CategoryViewModel.CurrentProductTypes)
+                    @Html.DropDownListFor(e => e.CategoryViewModel.SelectedProductTypeId, Model.CategoryViewModel.ProductTypesSelectList, "Vælg",
+                        new { @onchange = "SelectProductType(this.value)" })
+                </div>
+            </div>
+        </div>
+    }
+    <a onclick="Search">
+        <div id="searchbutton" class="nav">
+           Søg
+        </div>
+    </a>
+</div>
 
 <div class="body-content">
     <div>
@@ -15,8 +46,8 @@
         {
             <h4>Populærer annoncer for @Model.CategoryViewModel.SelectedMainCategoryName</h4>
             foreach (var
-             item in
-             Model.HighligthtedSaleListings)
+                item in
+                Model.HighligthtedSaleListings)
             {
                 <div >
                     <text> @item.Title </text>
@@ -27,3 +58,28 @@
         }
     </div>
 </div>
+
+<style type="text/css">
+    #searchbutton { position: relative; cursor: pointer }
+.hyperspan {
+    position:absolute;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+}
+
+</style>
+<script>
+    function SelectSubCategory(val) {
+        window.location.href = "/Salelisting/SetSelectedSubCategory?categoryid=" + val;
+    }
+    function SelectProductType(val) {
+        window.location.href = "/Salelisting/SetSelectedProductType?producttypeid=" + val;
+    }
+
+    function Search() {
+        window.location.href = "/Salelisting/Salelistings";
+
+    }
+</script>

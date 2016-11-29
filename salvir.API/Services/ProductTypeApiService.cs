@@ -16,7 +16,7 @@ namespace deprosa.WebApi.Services
 {
     public class ProductTypeApiService : IProductWebService
     {
-        private GenericRepository<ProductType> _productRepository;
+        private readonly GenericRepository<ProductType> _productRepository;
 
         public ProductTypeApiService()
         {
@@ -57,11 +57,11 @@ namespace deprosa.WebApi.Services
                 var categorystructure = new CategoryStructureRequest();
                 foreach (var type in allproducttypes)
                 {
-                    if (!categorystructure.MainCategories.Any(e => e.ID == type.SubCategory.MainCategory.ID))
+                    if (categorystructure.MainCategories.All(e => e.ID != type.SubCategory.MainCategory.ID))
                     {
                         categorystructure.MainCategories.Add(type.SubCategory.MainCategory);
                     }
-                    if (!categorystructure.SubCategories.Any(e => e.ID == type.SubCategory.ID))
+                    if (categorystructure.SubCategories.All(e => e.ID != type.SubCategory.ID))
                     {
                         categorystructure.SubCategories.Add(type.SubCategory);
                     }

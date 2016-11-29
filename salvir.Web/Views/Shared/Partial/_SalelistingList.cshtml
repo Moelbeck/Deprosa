@@ -8,7 +8,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Created)
+                @Html.DisplayFor(modelItem => item.Created.ToShortDateString())
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
