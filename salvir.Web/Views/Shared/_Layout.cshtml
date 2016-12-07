@@ -25,22 +25,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-controller="Home" asp-action="Index" class="navbar-brand">Deprosa</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li>@Html.ActionLink("Deprosa", "Index", "Home")
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")
-                    <li>@Html.ActionLink("Om Deprosa", "About", "Home")
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @Html.Partial("Partial/_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderSection("SearchPartial", false)
-
-        @*Categories*@
 
         @RenderBody()
         <hr />

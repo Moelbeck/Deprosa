@@ -1,8 +1,4 @@
 ﻿using deprosa.ViewModel;
-using deprosa.Web.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 
 namespace deprosa.Web.Model

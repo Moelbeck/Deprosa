@@ -1,13 +1,15 @@
-﻿@using deprosa.Web.Model
-@using PagedList.Mvc
-@model deprosa.Web.Model.SaleListingListViewModel
+﻿@using PagedList.Mvc
+@model deprosa.Web.Data.Model.ViewModel.SaleListingListViewModel
 
 @{
     ViewBag.Title = "Salelistings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Salelistings</h2>
+@foreach (var menu in Model.CategoryViewModel.CurrentSubCategories)
+{
+    <li>@Html.ActionLink(menu.Name, "Index", "SaleListing", new { selected = menu.ID, issub = true}, null)</li>
+}
+<h2>Annoncer</h2>
 
 <table>
     <tr>
@@ -21,7 +23,25 @@
             @Html.ActionLink("Pris", "Index", new { sort = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
     </tr>
-    @Html.Partial("~/Views/Shared/Partial/_SalelistingList.cshtml", Model)
+    @foreach (var item in Model.Salelistings)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created, "DateTime")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Vælg", "Details",new {id = item.ID})
+            </td>
+        </tr>
+    }
+    <br />
+
 </table>
 
 @Html.PagedListPager(Model.Salelistings, page => Url.Action("Salelistings", new { page, sort = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -1,5 +1,5 @@
-﻿@using PagedList.Mvc
-@model deprosa.Web.Model.SaleListingListViewModel
+﻿@model deprosa.Web.Data.Model.ViewModel.SaleListingListViewModel
+
 
     @foreach (var item in Model.Salelistings)
     {
@@ -8,7 +8,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Created.ToShortDateString())
+                @Html.DisplayFor(modelItem => item.Created, "DateTime")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)

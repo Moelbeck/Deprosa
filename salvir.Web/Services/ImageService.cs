@@ -1,11 +1,4 @@
-﻿using deprosa.Common;
-using deprosa.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace deprosa.Service
 {

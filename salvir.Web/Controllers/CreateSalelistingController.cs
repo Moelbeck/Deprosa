@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using deprosa.Common;
 using deprosa.Filter;
 using deprosa.Service;
 using deprosa.ViewModel;
-using deprosa.Web.Data.Model.Session;
 using deprosa.Web.Data.Model.ViewModel;
 using deprosa.Web.Model;
 using deprosa.WebsiteService;
@@ -52,7 +48,6 @@ namespace deprosa.Web.Controllers
             }
             return View(CurrentSalelisting.SaleListingViewModel);
         }
-
 
         public ActionResult SetSelectedMainCategory(int categoryid)
         {

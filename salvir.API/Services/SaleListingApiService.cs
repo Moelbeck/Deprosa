@@ -218,7 +218,7 @@ namespace deprosa.WebService
                 {
                     salelistingsQuery = _saleListingRepository.Get(e => e.ProductType.ID == id && e.Deleted == null && !e.IsSold);
                 }
-                var salelistings = Filter(salelistingsQuery, sort, page, size).ToList();
+                var salelistings = Filter(salelistingsQuery, sort, page, size).Include(i => i.ProductType.Category).ToList();
                 return salelistings.Select(Mapper.Map<SaleListing, SaleListingDTO>).ToList();
             }
             catch (Exception ex)

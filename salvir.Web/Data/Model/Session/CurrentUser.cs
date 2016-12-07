@@ -1,12 +1,10 @@
 ﻿using deprosa.ViewModel;
-using System;
 using System.Web;
 
 namespace deprosa.Web.Model
 {
     public static class CurrentUser 
     {
-
         public static int ID
         {
             get

@@ -1,6 +1,4 @@
-﻿
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using deprosa.Web.Data.Model.Session;
@@ -29,20 +27,6 @@ namespace deprosa.Web.Controllers
             }
             viewModel.CategoryViewModel = S_CategoryStructure.CategoryViewModel;
             return View(viewModel);
-        }
-
-        public ActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
         }
 
         public ActionResult Error()

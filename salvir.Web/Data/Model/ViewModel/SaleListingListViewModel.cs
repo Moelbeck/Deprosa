@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using deprosa.ViewModel;
+﻿using deprosa.ViewModel;
 using PagedList;
 
-namespace deprosa.Web.Model
+namespace deprosa.Web.Data.Model.ViewModel
 {
     public class SaleListingListViewModel
     {
-
+        public CategoryViewModel CategoryViewModel { get; set; }
         public IPagedList<SaleListingDTO> Salelistings { get; set; }
     }
 }

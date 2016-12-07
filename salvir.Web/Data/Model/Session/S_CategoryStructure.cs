@@ -1,5 +1,4 @@
 ﻿using System.Web;
-using deprosa.Common;
 using deprosa.Web.Data.Model.ViewModel;
 
 namespace deprosa.Web.Data.Model.Session

@@ -1,5 +1,4 @@
-﻿@using System.Collections.Generic
-@model deprosa.ViewModel.AccountLoginDTO
+﻿@model deprosa.ViewModel.AccountLoginDTO
 
 @{
     ViewData["Title"] = "Log in";
@@ -75,6 +74,6 @@
         </div>*@
 </div>
 
-@*@section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}*@
+@section Scripts {
+    @{Html.RenderPartial("Partial/_ValidationScriptsPartial"); }
+}

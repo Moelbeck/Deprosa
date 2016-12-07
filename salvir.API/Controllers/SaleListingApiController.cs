@@ -32,7 +32,7 @@ namespace WebService.Api.Controllers
         /// <summary>
         /// Get sale listing by id - Get
         /// </summary>
-        [HttpGet]
+        [HttpGet, Route("{id}")]
         public IHttpActionResult GetSaleListingByID(int id)
         {
             if (ModelState.IsValid)
@@ -102,17 +102,6 @@ namespace WebService.Api.Controllers
                 var popularsale = _salelistingService.GetPopular(popularlogged,categoryid,isSub);
                 request.HighlightedSalelistings = popularsale;
                 request.CategoryStructure = _productTypeApiService.GetCategoryStructure();
-                //request.CategoryStructure.SubCategories = !isSub
-                //    ? _categoryService.GetSubCategoriesForMain(categoryid)
-                //    : new List<SubCategoryDTO>();
-                //var accountname = Thread.CurrentPrincipal.Identity.Name;
-                //int userid;
-                //if (int.TryParse(accountname, out userid) && userid > 0)
-                //{
-                //    int mainid = !isSub ? categoryid : 0;
-                //    int subid =  isSub ? categoryid : 0;
-                //    _log.LogCategory(userid, mainid, subid);
-                //}
                 return Ok(request);
             }
             return BadRequest(ModelState);
@@ -155,7 +144,7 @@ namespace WebService.Api.Controllers
             if (ModelState.IsValid)
             {
                 var salelisting = _salelistingService.GetForSubCategory(categoryID, sort, page, size, search);
-                if (salelisting != null)
+                if (salelisting.Any())
                 {
                     int userid;
                     if (int.TryParse(Thread.CurrentPrincipal.Identity.Name, out userid) && userid > 0)
@@ -178,7 +167,7 @@ namespace WebService.Api.Controllers
             if (ModelState.IsValid)
             {
                 var salelisting = _salelistingService.GetForProductType(producttypeID, sort, page, size, search);
-                if (salelisting != null)
+                if (salelisting.Any())
                 {
                     var categoryid = salelisting[0].ProductType.SubCategoryID;
                     int userid;
