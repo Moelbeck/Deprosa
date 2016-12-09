@@ -1,15 +1,10 @@
 ﻿using deprosa.WebService;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using deprosa.ViewModel;
 using System.Net.Http;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Security;
 
 namespace deprosa.WebApi.Authenticator
 {
@@ -46,7 +41,7 @@ namespace deprosa.WebApi.Authenticator
 
         private void AuthenticateUser(string id)
         {
-            AccountApiService accountService = new AccountApiService();
+            AccountWebService accountService = new AccountWebService();
             if (!string.IsNullOrWhiteSpace(id))
             {
                 int currentid;

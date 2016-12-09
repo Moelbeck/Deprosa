@@ -1,21 +1,16 @@
-﻿using deprosa.WebService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
+using deprosa.Service;
 
 namespace WebService.Api.Controllers
 {
     [RoutePrefix("api/Manufacturer")]
     public class ManufacturerApiController : ApiController
     {
-        private ManufacturerApiService _manufacturerservice;
+        private readonly ManufacturerWebService _manufacturerservice;
 
         public ManufacturerApiController()
         {
-            _manufacturerservice = new ManufacturerApiService();
+            _manufacturerservice = new ManufacturerWebService();
         }
         /// <summary>
         /// Get manufacturers in category - Get

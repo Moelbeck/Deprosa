@@ -1,0 +1,44 @@
+﻿@using deprosa.Web.Model
+@using PagedList.Mvc
+@model deprosa.Website.Data.Model.ViewModel.SaleListingListViewModel
+
+@{
+    ViewBag.Title = "Dine annoncer";
+    Layout = "_ManagementLayout.cshtml";
+}
+
+<h2>@CurrentUser.CompanyName's annoncer</h2>
+<table>
+    <tr>
+        <th>
+            @Html.ActionLink("Titel", "CompanySaleListings", new { sort = ViewBag.TitleSortParam, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Dato", "CompanySaleListings", new { sort = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Pris", "CompanySaleListings", new { sort = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+    </tr>
+    @foreach (var item in Model.Salelistings)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created, "DateTime")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Vælg", "Details","Salelisting",null, new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.PagedListPager(Model.Salelistings, page => Url.Action("CompanySaleListings",
+    new { page, sort = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+Side @(Model.Salelistings.PageCount < Model.Salelistings.PageNumber ? 0 : Model.Salelistings.PageNumber) af @Model.Salelistings.PageCount

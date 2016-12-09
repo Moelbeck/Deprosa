@@ -1,0 +1,12 @@
+﻿@model deprosa.Web.Data.Model.ViewModel.CategoryViewModel
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            @foreach (var menu in Model.MainCategories)
+            {
+                <li>@Html.ActionLink(menu.Name, "Index", "SaleListing", new {selected = menu.ID}, null)</li>
+            }
+        </ul>
+    </div>
+</div>

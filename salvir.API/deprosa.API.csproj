@@ -47,9 +47,9 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="AutoMapper, Version=5.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
@@ -205,7 +205,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Authenticator\AuthenticationMessageHandler.cs" />
     <Compile Include="Authenticator\CustomAuthorize.cs" />
-    <Compile Include="Automapper\Automapper.cs" />
     <Compile Include="Controllers\AccountApiController.cs" />
     <Compile Include="Controllers\CategoryApiController.cs" />
     <Compile Include="Controllers\ManufacturerApiController.cs" />
@@ -216,29 +215,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AccountApiService.cs" />
-    <Compile Include="Services\CategoryApiService.cs" />
-    <Compile Include="Services\Internal Services\CreateAndUpdateService.cs" />
-    <Compile Include="Services\Internal Services\ImageService.cs" />
-    <Compile Include="Services\Internal Services\LogService.cs" />
-    <Compile Include="Services\Internal Services\PasswordValidationService.cs" />
-    <Compile Include="Services\Internal Services\SubscriptionService.cs" />
-    <Compile Include="Services\ManufacturerApiService.cs" />
-    <Compile Include="Services\ProductTypeApiService.cs" />
-    <Compile Include="Services\RatingApiService.cs" />
-    <Compile Include="Services\SaleListingApiService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Services\VATChecker\checkVatService.cs" />
-    <Compile Include="Services\VATChecker\VisVatCheck.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\deprosa.Service\deprosa.Service.csproj">
+      <Project>{30591D91-41FC-4F5F-B801-2D058905B1A8}</Project>
+      <Name>deprosa.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\salvir.Common\deprosa.Common.csproj">
       <Project>{31900e7a-2fba-4044-b41c-2e861b8f2b24}</Project>
       <Name>deprosa.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\salvir.Interface\deprosa.Interface.csproj">
-      <Project>{bd925ce6-2517-4585-8452-70cb36f03c42}</Project>
-      <Name>deprosa.Interface</Name>
     </ProjectReference>
     <ProjectReference Include="..\salvir.Model\deprosa.Model.csproj">
       <Project>{c244f6f3-25fe-4f1e-97c1-276f4cc4da66}</Project>

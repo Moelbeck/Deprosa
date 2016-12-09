@@ -1,0 +1,9 @@
+#:C:\Users\Z6CPS\Academy\Deprosa\deprosa.Website\deprosa.Website.xproj
+C:\Users\Z6CPS\Academy\Deprosa\deprosa.Website\deprosa.Website.xproj|C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\deprosa.Common.csproj
+C:\Users\Z6CPS\Academy\Deprosa\deprosa.Website\deprosa.Website.xproj|C:\Users\Z6CPS\Academy\Deprosa\deprosa.Service\deprosa.Service.csproj
+C:\Users\Z6CPS\Academy\Deprosa\deprosa.Service\deprosa.Service.csproj|C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\deprosa.Common.csproj
+C:\Users\Z6CPS\Academy\Deprosa\deprosa.Service\deprosa.Service.csproj|C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\deprosa.Model.csproj
+C:\Users\Z6CPS\Academy\Deprosa\deprosa.Service\deprosa.Service.csproj|C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\deprosa.Repository.csproj
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\deprosa.Model.csproj|C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\deprosa.Common.csproj
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\deprosa.Repository.csproj|C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\deprosa.Common.csproj
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Repository\deprosa.Repository.csproj|C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\deprosa.Model.csproj

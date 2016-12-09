@@ -2,7 +2,6 @@
 using deprosa.Model;
 using deprosa.Model.Base;
 using deprosa.Model.Log;
-using Repository.Migrations;
 using System.Data.Entity;
 //using Repository.Migrations;
 
@@ -15,7 +14,12 @@ namespace deprosa.Repository.DatabaseContext
             : base("ConnectionString")
         {
             Configuration.LazyLoadingEnabled = false;
-            InitializeDatabase();
+            //InitializeDatabase();
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<BzaleDatabaseContext>(null);
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Account> Accounts { get; set; }
@@ -36,14 +40,14 @@ namespace deprosa.Repository.DatabaseContext
         public DbSet<LogSaleListing> LogSaleListings{ get; set; }
         public DbSet<LogSearch> LogSearches{ get; set; }
 
-        private void InitializeDatabase()
-        {
-            if (Database.Exists())
-            {
-                //Database.Initialize(true);
-                //var config = new Configuration();
-                //config.Seed(this);
-            }
-        }
+        //private void InitializeDatabase()
+        //{
+        //    if (Database.Exists())
+        //    {
+        //        //Database.Initialize(true);
+        //        //var config = new Configuration();
+        //        //config.Seed(this);
+        //    }
+        //}
     }
 }

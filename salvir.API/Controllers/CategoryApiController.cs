@@ -1,15 +1,9 @@
-﻿using deprosa.ViewModel;
-using deprosa.WebService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Threading;
 using System.Web.Http;
-using deprosa.WebApi.Services;
-using deprosa.Common;
 using deprosa.service;
+using deprosa.Service;
+using deprosa.Services;
 
 namespace WebService.Api.Controllers
 {
@@ -17,13 +11,13 @@ namespace WebService.Api.Controllers
     [RoutePrefix("api/Category")]
     public class CategoryApiController : ApiController
     {
-        private readonly CategoryApiService _categoryService;
-        private readonly ProductTypeApiService _productService;
+        private readonly CategoryWebService _categoryService;
+        private readonly ProductTypeWebService _productService;
         private readonly LogService _log;
         public CategoryApiController()
         {
-            _categoryService = new CategoryApiService();
-            _productService = new ProductTypeApiService();
+            _categoryService = new CategoryWebService();
+            _productService = new ProductTypeWebService();
             _log = new LogService();
         }
 

@@ -116,3 +116,16 @@ C:\Work\Deprosa\salvir.Web\bin\PagedList.dll
 C:\Work\Deprosa\salvir.Web\bin\PagedList.Mvc.dll
 C:\Work\Deprosa\salvir.Web\bin\PagedList.xml
 C:\Work\Deprosa\salvir.Web\bin\PagedList.Mvc.xml
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Interface.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Repository.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Model.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\AutoMapper.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\EntityFramework.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Service.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Interface.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Repository.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\deprosa.Model.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\AutoMapper.xml
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\EntityFramework.xml
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\EntityFramework.SqlServer.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Web\bin\EntityFramework.SqlServer.xml

@@ -9,7 +9,7 @@ using deprosa.Service;
 using deprosa.ViewModel;
 using deprosa.Web.Data.Model.ViewModel;
 using deprosa.Web.Model;
-using deprosa.WebsiteService;
+using deprosa.WebApi.Services;
 
 namespace deprosa.Web.Controllers
 {
@@ -17,14 +17,14 @@ namespace deprosa.Web.Controllers
     {
         // GET: CreateSalelisting
         #region Create Sale listing
-        private SaleListingService _salelistingService;
-        private readonly CategoryService _categoryService;
+        private SalelistingWebService _salelistingService;
+        private readonly ProductTypeWebService _categoryService;
         private readonly ImageService _imageService;
 
         public CreateSalelistingController()
         {
-            _salelistingService = new SaleListingService();
-            _categoryService = new CategoryService();
+            _salelistingService = new salelistingwe();
+            _categoryService = new ProductTypeWebService();
             _imageService = new ImageService();
         }
 
@@ -35,7 +35,7 @@ namespace deprosa.Web.Controllers
             CurrentSalelisting.SaleListingViewModel = current;
             if (CurrentSalelisting.SaleListingViewModel.CategoryViewModel == null)
             {
-                CategoryStructureRequest request = await _categoryService.GetCategoryStructure();
+                CategoryStructureRequest request =  _categoryService.GetCategoryStructure();
                 CurrentSalelisting.SaleListingViewModel.CategoryViewModel = new CategoryViewModel();
                 CurrentSalelisting.SaleListingViewModel.CategoryViewModel.SetCategoryStructure(request);
                 CurrentSalelisting.SaleListingViewModel.CategoryViewModel = CurrentSalelisting.SaleListingViewModel.CategoryViewModel;

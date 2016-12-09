@@ -11,11 +11,11 @@ namespace WebService.Api.Controllers
     [RoutePrefix("api/Account")]
     public class AccountApiController : ApiController
     {
-        private AccountApiService _accountService;
+        private AccountWebService _accountService;
         private LogService _log;
         public AccountApiController()
         {
-            _accountService = new AccountApiService();
+            _accountService = new AccountWebService();
             _log = new LogService();
         }
         /// <summary>

@@ -1,5 +1,4 @@
 ﻿using deprosa.Model.Base;
-using System.Collections.Generic;
 
 namespace deprosa.Model
 {

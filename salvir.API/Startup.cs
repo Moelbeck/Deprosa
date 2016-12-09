@@ -1,5 +1,7 @@
-﻿using AutoMapper;
-using biz2biz.Service.Automapper;
+﻿//using AutoMapper;
+
+using AutoMapper;
+using deprosa.Service.Automapper;
 using deprosa.API;
 using deprosa.WebApi.Authenticator;
 using Microsoft.Owin;
@@ -8,15 +10,11 @@ using Microsoft.Owin;
 namespace deprosa.API
 {
     using System.Web.Http;
-    using Microsoft.Owin;
-    using Microsoft.Owin.Extensions;
-    using Microsoft.Owin.FileSystems;
-    using Microsoft.Owin.StaticFiles;
     using Owin;
 
     public class Startup
     {
-        private MapperConfiguration _mapperConfiguration { get; set; }
+        private MapperConfiguration MapperConfiguration { get; set; }
 
         public void Configuration(IAppBuilder app)
         {
@@ -43,9 +41,9 @@ namespace deprosa.API
             //    FileSystem = new PhysicalFileSystem("./public"),
             //    EnableDirectoryBrowsing = true,
             //});
-            _mapperConfiguration = new MapperConfiguration(cfg =>
+            MapperConfiguration = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new BzaleAutoMapper());
+                cfg.AddProfile(new DeprosaAutoMapper());
             });
         }
     }

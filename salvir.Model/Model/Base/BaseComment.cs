@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using deprosa.Model.Base;
 
 namespace deprosa.Model.Base
 {

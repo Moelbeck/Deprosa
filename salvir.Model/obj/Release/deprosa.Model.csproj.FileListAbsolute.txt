@@ -5,3 +5,10 @@ C:\Work\Deprosa\salvir.Model\bin\Release\deprosa.Common.pdb
 C:\Work\Deprosa\salvir.Model\obj\Release\deprosa.Model.csprojResolveAssemblyReference.cache
 C:\Work\Deprosa\salvir.Model\obj\Release\deprosa.Model.dll
 C:\Work\Deprosa\salvir.Model\obj\Release\deprosa.Model.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\bin\Release\deprosa.Model.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\bin\Release\deprosa.Model.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\bin\Release\deprosa.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\bin\Release\deprosa.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\obj\Release\deprosa.Model.csprojResolveAssemblyReference.cache
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\obj\Release\deprosa.Model.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Model\obj\Release\deprosa.Model.pdb

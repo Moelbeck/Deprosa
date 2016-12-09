@@ -16,7 +16,6 @@ namespace deprosa.WebsiteService
     {
         private string accountURI = string.Format("{0}{1}", Konstanter.BASEURI, "SaleListing/");
         private HttpBaseClient client;
-
         public SaleListingService()
         {
             client = new HttpBaseClient(accountURI);

@@ -2,3 +2,7 @@ C:\Work\Deprosa\salvir.Common\bin\Release\deprosa.Common.dll
 C:\Work\Deprosa\salvir.Common\bin\Release\deprosa.Common.pdb
 C:\Work\Deprosa\salvir.Common\obj\Release\deprosa.Common.dll
 C:\Work\Deprosa\salvir.Common\obj\Release\deprosa.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\bin\Release\deprosa.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\bin\Release\deprosa.Common.pdb
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Release\deprosa.Common.dll
+C:\Users\Z6CPS\Academy\Deprosa\salvir.Common\obj\Release\deprosa.Common.pdb

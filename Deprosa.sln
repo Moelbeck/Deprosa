@@ -5,15 +5,15 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deprosa.Common", "salvir.Common\deprosa.Common.csproj", "{31900E7A-2FBA-4044-B41C-2E861B8F2B24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deprosa.Interface", "salvir.Interface\deprosa.Interface.csproj", "{BD925CE6-2517-4585-8452-70CB36F03C42}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deprosa.Model", "salvir.Model\deprosa.Model.csproj", "{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deprosa.Repository", "salvir.Repository\deprosa.Repository.csproj", "{30E341C1-9AEE-46CC-9405-7B78C45DD237}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deprosa.API", "salvir.API\deprosa.API.csproj", "{11C6A161-034C-4D40-B9B8-07F36078D36C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deprosa.Web", "salvir.Web\deprosa.Web.csproj", "{459320E3-7C93-45E3-AB29-345083E0AE4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deprosa.Service", "deprosa.Service\deprosa.Service.csproj", "{30591D91-41FC-4F5F-B801-2D058905B1A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "deprosa.Website", "deprosa.Website\deprosa.Website.csproj", "{BB309255-00E9-43A3-AB85-D4427FF26C65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{31900E7A-2FBA-4044-B41C-2E861B8F2B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31900E7A-2FBA-4044-B41C-2E861B8F2B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31900E7A-2FBA-4044-B41C-2E861B8F2B24}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD925CE6-2517-4585-8452-70CB36F03C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD925CE6-2517-4585-8452-70CB36F03C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD925CE6-2517-4585-8452-70CB36F03C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD925CE6-2517-4585-8452-70CB36F03C42}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C244F6F3-25FE-4F1E-97C1-276F4CC4DA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,10 +37,14 @@ Global
 		{11C6A161-034C-4D40-B9B8-07F36078D36C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11C6A161-034C-4D40-B9B8-07F36078D36C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11C6A161-034C-4D40-B9B8-07F36078D36C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{459320E3-7C93-45E3-AB29-345083E0AE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{459320E3-7C93-45E3-AB29-345083E0AE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{459320E3-7C93-45E3-AB29-345083E0AE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{459320E3-7C93-45E3-AB29-345083E0AE4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30591D91-41FC-4F5F-B801-2D058905B1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30591D91-41FC-4F5F-B801-2D058905B1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30591D91-41FC-4F5F-B801-2D058905B1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30591D91-41FC-4F5F-B801-2D058905B1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB309255-00E9-43A3-AB85-D4427FF26C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB309255-00E9-43A3-AB85-D4427FF26C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB309255-00E9-43A3-AB85-D4427FF26C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB309255-00E9-43A3-AB85-D4427FF26C65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

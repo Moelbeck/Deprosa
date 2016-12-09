@@ -1,22 +1,17 @@
 ﻿using deprosa.ViewModel;
-using deprosa.WebService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using deprosa.Service;
 
 namespace WebService.Api.Controllers
 {
     [RoutePrefix("api/Rating")]
     public class RatingApiController : ApiController
     {
-        private RatingApiService _ratingService;
+        private RatingWebService _ratingService;
 
         public RatingApiController()
         {
-            _ratingService = new RatingApiService();
+            _ratingService = new RatingWebService();
         }
         /// <summary>
         /// Create rating - Post

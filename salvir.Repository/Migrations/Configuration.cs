@@ -4,7 +4,6 @@ namespace Repository.Migrations
     using deprosa.Model;
     using deprosa.Repository.DatabaseContext;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 

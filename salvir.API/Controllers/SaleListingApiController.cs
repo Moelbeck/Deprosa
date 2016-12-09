@@ -1,31 +1,28 @@
 ﻿using deprosa.Common;
 using deprosa.ViewModel;
-using deprosa.WebService;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading;
 using System.Web.Http;
 using deprosa.API.Authenticator;
 using deprosa.Common.RequestWrappers;
 using deprosa.service;
-using deprosa.WebApi.Services;
+using deprosa.Service;
+using deprosa.Services;
 
 namespace WebService.Api.Controllers
 {
     [RoutePrefix("api/SaleListing")]
     public class SaleListingApiController : ApiController
     {
-        private readonly SaleListingApiService _salelistingService;
-        private readonly ProductTypeApiService _productTypeApiService;
+        private readonly SalelistingWebService _salelistingService;
+        private readonly ProductTypeWebService _productTypeWebService;
         private LogService _log;
         public SaleListingApiController()
         {
-            _salelistingService = new SaleListingApiService();
+            _salelistingService = new SalelistingWebService();
             _log = new LogService();
-            _productTypeApiService = new ProductTypeApiService();
+            _productTypeWebService = new ProductTypeWebService();
         }
         #region Salelisting
 
@@ -60,8 +57,7 @@ namespace WebService.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var popularlogged = _log.GetPopularSalelistingsForSub(subid);
-                var popularsale = _salelistingService.GetPopular(popularlogged,subid,true);
+                var popularsale = _salelistingService.GetPopular(subid,true);
                 return Ok(popularsale);
             }
             return BadRequest(ModelState);
@@ -71,8 +67,7 @@ namespace WebService.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var popularlogged = _log.GetPopularSalelistingsForMain(mainid);
-                var popularsale = _salelistingService.GetPopular(popularlogged,mainid,false);
+                var popularsale = _salelistingService.GetPopular(mainid,false);
                 return Ok(popularsale);
             }
             return BadRequest(ModelState);
@@ -82,8 +77,7 @@ namespace WebService.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var popularlogged = _log.GetPopularSalelistingsForUser(userid);
-                var popularsale = _salelistingService.GetPopular(popularlogged,0,false);
+                var popularsale = _salelistingService.GetPopular(0,false);
                 return Ok(popularsale);
             }
             return BadRequest(ModelState);
@@ -95,13 +89,9 @@ namespace WebService.Api.Controllers
             if (ModelState.IsValid)
             {
                 HighlightSalelistingRequest request = new HighlightSalelistingRequest();
-                List<int> popularlogged = new List<int>();
-                popularlogged = !isSub
-                    ? _log.GetPopularSalelistingsForMain(categoryid)
-                    : _log.GetPopularSalelistingsForSub(categoryid);
-                var popularsale = _salelistingService.GetPopular(popularlogged,categoryid,isSub);
+                var popularsale = _salelistingService.GetPopular(categoryid,isSub);
                 request.HighlightedSalelistings = popularsale;
-                request.CategoryStructure = _productTypeApiService.GetCategoryStructure();
+                request.CategoryStructure = _productTypeWebService.GetCategoryStructure();
                 return Ok(request);
             }
             return BadRequest(ModelState);
@@ -115,7 +105,7 @@ namespace WebService.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetForCompany(vat, sort, page, size, search);
+                var salelisting = _salelistingService.GetForCompany(vat, sort, page, search);
                 if (salelisting != null)
                 {
                     return Ok(salelisting);
@@ -128,7 +118,7 @@ namespace WebService.Api.Controllers
         [HttpGet, Route("following/{userid}")]
         public IHttpActionResult GetFollowingSalelistings(int userid, string sort, int page, int size, string search = null)
         {
-            var salelistings = _salelistingService.GetFollowingSalelistings(userid, sort, page, size, search);
+            var salelistings = _salelistingService.GetFollowingSalelistings(userid, sort, page, search);
             if (salelistings != null)
             {
                 return Ok(salelistings);
@@ -143,7 +133,7 @@ namespace WebService.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetForSubCategory(categoryID, sort, page, size, search);
+                var salelisting = _salelistingService.GetForSubCategory(categoryID, sort, page, search);
                 if (salelisting.Any())
                 {
                     int userid;
@@ -166,7 +156,7 @@ namespace WebService.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetForProductType(producttypeID, sort, page, size, search);
+                var salelisting = _salelistingService.GetForProductType(producttypeID, sort, page, search);
                 if (salelisting.Any())
                 {
                     var categoryid = salelisting[0].ProductType.SubCategoryID;
@@ -190,7 +180,7 @@ namespace WebService.Api.Controllers
         {
             if (ModelState.IsValid)
             {
-                var salelisting = _salelistingService.GetBySearchString(search, sort, page, size);
+                var salelisting = _salelistingService.GetBySearchString(search, sort, page);
                 if (salelisting != null)
                 {
                     int userid;
